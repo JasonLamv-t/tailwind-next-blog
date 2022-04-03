@@ -1,19 +1,9 @@
 const projectsData = [
   {
-    title: 'A Search Engine',
-    description: `What if you could look up any information in the world? Webpages, images, videos
-    and more. Google has many features to help you find exactly what you're looking
-    for.`,
-    imgSrc: '/static/images/google.png',
-    href: 'https://www.google.com',
-  },
-  {
-    title: 'The Time Machine',
-    description: `Imagine being able to travel back in time or to the future. Simple turn the knob
-    to the desired date and press "Go". No more worrying about lost keys or
-    forgotten headphones with this simple yet affordable solution.`,
-    imgSrc: '/static/images/time-machine.jpg',
-    href: '/blog/the-time-machine',
+    title: 'Serverless-Devs / FC',
+    description: `Serverless Devs is an open source and open platform for Serverless developers, which is committed to providing developers with a strong tool chain architecture.`,
+    imgSrc: '/static/images/serverless-devs.jpeg',
+    href: 'https://github.com/Serverless-Devs/Serverless-Devs',
   },
 ]
 
