@@ -37,8 +37,23 @@ jobs:
         run: |
           docker build -t $IMG_REPO/$IMG_NAME:$IMG_TAG .
           docker push $IMG_REPO/$IMG_NAME:$IMG_TAG
+  deploy:
+    name: Deploy Image to Tencent ECS
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Login to Tencent ECS
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.ECS_HOSTNAME }}
+          username: ubuntu
+          key: '${{ secrets.ECS_PRIVATE_KEY }}'
+          envs: IMG_REPO, IMG_NAME, IMG_TAG
+          script: docker rm -f $IMG_NAME &&
+            docker run -d --restart=always -p 3000:3000 --name $IMG_NAME $IMG_REPO/$IMG_NAME:$IMG_TAG
 
 env:
   IMG_REPO: registry.cn-shenzhen.aliyuncs.com/image-vt
   IMG_NAME: cc-my-next-blog
-  IMG_TAG: latest
+  IMG_TAG: ${{ github.sha }}
