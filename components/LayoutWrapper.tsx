@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import siteMetadata from '@/data/siteMetadata'
 import headerNavLinks from '@/data/headerNavLinks'
 import Link from './Link'
@@ -7,25 +6,31 @@ import Footer from './Footer'
 import MobileNav from './MobileNav'
 import ThemeSwitch from './ThemeSwitch'
 import { ReactNode } from 'react'
+import Image from '@/components/Image'
 
 interface Props {
   children: ReactNode
 }
 
 const LayoutWrapper = ({ children }: Props) => {
+  const logoSrc = '/static/images/logo.jpg'
+
   return (
     <SectionContainer>
       <div className="flex h-screen flex-col justify-between">
         <header className="flex items-center justify-between py-10">
-          <div>
+          <div className="-mt-3">
             <Link href="/" aria-label={siteMetadata.headerTitle}>
               <div className="flex items-center justify-between">
-                <div className="mr-3">
-                  {/* <Logo /> */}
-                  <img className="w-14 rounded-full" alt="logo" src="/static/images/logo.jpg" />
-                </div>
+                <Image
+                  width="56"
+                  height="56"
+                  className="w-14 rounded-full"
+                  src={logoSrc}
+                  alt="logo"
+                />
                 {typeof siteMetadata.headerTitle === 'string' ? (
-                  <div className="hidden h-6 text-2xl font-semibold sm:block">
+                  <div className="ml-3 hidden h-6 text-2xl font-semibold sm:block">
                     {siteMetadata.headerTitle}
                   </div>
                 ) : (

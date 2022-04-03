@@ -13,7 +13,7 @@
     "build-test": "docker build -t cc-my-next-blog .",
     "run-test": "docker run -d --name cc-my-next-blog -p 3100:3000 cc-my-next-blog",
     "build-image": "docker buildx build --platform linux/amd64,linux/arm64 --push -t registry.cn-shenzhen.aliyuncs.com/image-vt/cc-my-next-blog:latest .",
-    "run-image": "docker rm -f cc-my-next-blog && docker rmi registry.cn-shenzhen.aliyuncs.com/image-vt/cc-my-next-blog && docker run -d -p 9000:3000 --name cc-my-next-blog registry.cn-shenzhen.aliyuncs.com/image-vt/cc-my-next-blog"
+    "run-image": "docker rm -f cc-my-next-blog && docker rmi registry.cn-shenzhen.aliyuncs.com/image-vt/cc-my-next-blog && docker run -d -p 3000:3000 --name cc-my-next-blog registry.cn-shenzhen.aliyuncs.com/image-vt/cc-my-next-blog"
   },
   "dependencies": {
     "@fontsource/inter": "4.5.2",
