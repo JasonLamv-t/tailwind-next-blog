@@ -44,7 +44,7 @@ canonicalUrl:
 
 开始之前，最好先阅读 [GitHub Actions 文档](https://docs.github.com/cn/actions)，主要参考的是 [语法部分](https://docs.github.com/cn/actions/using-workflows/workflow-syntax-for-github-actions) 当然，文档中可能有过多你不需要的细节，通常情况下一些教程对于新手可能更加友好，但是当你的需求超出教程提供的范围时，官方文档能为你减少在搜索引擎上耗费的时间。以下将按照实践的顺序行文，因为这些步骤在实际应用中是可以重复/替换顺序的，为了便于教程外场景的参考，我将不会注明顺序。
 
-\## 创建工作流定义文件
+## 创建工作流定义文件
 
 在项目的根目录下创建`.github/workflow`目录，并在其中创建`CICD.yml`文件，当然文件名是可以任意更改的，但是后缀需要为`.yml`/`.yaml`。此处附上省略的代码：
 
