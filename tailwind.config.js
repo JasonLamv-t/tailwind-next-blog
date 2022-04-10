@@ -29,7 +29,7 @@ module.exports = {
         14: '3.5rem',
       },
       fontFamily: {
-        sans: ['InterVariable', ...defaultTheme.fontFamily.sans],
+        sans: ['InterVariable', ...defaultTheme.fontFamily['sans']],
       },
       colors: {
         primary: colors.teal,
@@ -103,6 +103,7 @@ module.exports = {
               color: theme('colors.gray.900'),
               borderLeftColor: theme('colors.gray.200'),
             },
+            img: { marginTop: 0, marginBottom: 0 },
           },
         },
         dark: {
