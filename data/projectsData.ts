@@ -5,6 +5,12 @@ const projectsData = [
     imgSrc: '/static/images/serverless-devs.jpeg',
     href: 'https://github.com/Serverless-Devs/Serverless-Devs',
   },
+  {
+    title: 'React-annotate',
+    description: 'React component for computer vision dataset annotation',
+    imgSrc: '/static/images/react-annotate.jpg',
+    href: 'https://github.com/ZitySpace/react-annotate',
+  },
 ]
 
 export default projectsData
