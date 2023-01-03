@@ -12,7 +12,7 @@ linkedin: https://www.linkedin.cn/injobs/in/jason-lam-0827181b0
 github: https://github.com/JasonLamv-t
 ---
 
-<h2 class="flex"><img src="https://tva1.sinaimg.cn/large/e6c9d24egy1h1571l0uucg205k05egri.gif" width="32" />Hi, I'm Jason Lam!</h2>
+<h2 class="flex"><img src="https://image-lake.oss-cn-hangzhou.aliyuncs.com/uPic/e6c9d24egy1h1571l0uucg205k05egri.gif" width="32" />Hi, I'm Jason Lam!</h2>
 
 👇🏼 Read this code to know about me 👇🏼
 
