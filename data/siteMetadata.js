@@ -2,6 +2,7 @@ const siteMetadata = {
   title: 'Brachistochrone',
   author: 'Jason Lam',
   headerTitle: 'Brachistochrone',
+  beian: '粤ICP备2021039182号-1',
   description: "Jason Lam's personal website",
   language: 'zh-cn, en-us',
   theme: 'system', // system, dark or light
