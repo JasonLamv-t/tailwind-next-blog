@@ -7,9 +7,9 @@ const siteMetadata = {
   language: 'zh-cn, en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://jasonlam.cc',
-  siteRepo: 'https://github.com/JasonLamv-t/cc-my-next-blog.git',
+  siteRepo: 'https://github.com/JasonLamv-t/jasonlamv-t.github.io',
   siteLogo: '/static/images/logo.jpg',
-  image: '/static/images/avatar.jpg',
+  image: '/static/images/avatar-22.jpg',
   // socialBanner: '/static/images/twitter-card.png',
   email: 'jasonlamv-t@hotmail.com',
   github: 'https://github.com/JasonLamv-t',
