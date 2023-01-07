@@ -1,7 +1,7 @@
 ---
 title: Practice of Koa with Typescript - Part 1
 date: '2022-12-23'
-tags: ['koa', 'typescript', 'backend', 'nodejs', 'starter', 'eslint', 'mongodb']
+tags: ['koa', 'typescript', 'backend', 'nodejs', 'starter', 'eslint', 'mongodb', 'router']
 draft: false
 summary: 最近闲来无事，于是决定对 Koa 框架进行简单的熟悉，并了解和使用一些包。本文介绍了一个基于 TS 的 Koa 项目如何从0开始搭建。
 images: []
@@ -15,6 +15,7 @@ canonicalUrl:
 - dotenv & cross-env
 - pino
 - mongo & mongoose & mongo-express
+- koa-router & koa-combine-routers
 
 ## Steps
 
@@ -169,7 +170,9 @@ canonicalUrl:
      server: {
        port: process.env.SERVER_PORT || 3000,
      },
-     debug: process.env.DEBUG === 'true',
+     mode: {
+       DEBUG: process.env.NODE_ENV === 'development',
+     },
    }
 
    export default config
@@ -182,6 +185,7 @@ canonicalUrl:
    import config from './config'
 
    const SERVER_PORT = config.server.port
+   const { DEBUG } = config.mode
 
    app.listen(SERVER_PORT, () => {
      if (DEBUG) console.log('Debug mode!')
@@ -194,7 +198,7 @@ canonicalUrl:
    ```json
    ...
      "scripts": {
-       "dev": "cross-env DEBUG=true tsnd --respawn src/server.ts"
+       "dev": "cross-env NODE_ENV=development tsnd --respawn src/server.ts"
      },
    ...
    ```
@@ -203,7 +207,7 @@ canonicalUrl:
 
    ```bash
    > koa-example@1.0.0 dev /Users/jasonlam/VscodeProjects/koa-example
-   > cross-env DEBUG=true tsnd --respawn src/server.ts
+   > cross-env NODE_ENV=development tsnd --respawn src/server.ts
 
    [INFO] 17:51:57 ts-node-dev ver. 2.0.0 (using ts-node ver. 10.9.1, typescript ver. 4.9.4)
    Debug mode!
@@ -232,7 +236,7 @@ canonicalUrl:
 
    app.use(async (ctx: Context) => {
      ctx.body = 'hello koa'
-     if (config.debug) logger.info('request!')
+     if (config.mode.DEBUG) logger.info('request!')
    })
 
    export default app
@@ -312,37 +316,41 @@ services:
       ...
       ```
 
-4. 修改 /src/app.ts：
+4. 修改 /src/server.ts：
 
    ```typescript
-   ...
-   import mongoose from 'mongoose';
+   import app from './app'
+   import config from './config'
+   import mongoose from 'mongoose'
+   import pino from 'koa-pino-logger'
 
-   const app: Koa<DefaultState, DefaultContext> = new Koa();
-   const pinoInstance = pino();
-   const { logger } = pinoInstance;
+   const SERVER_PORT = config.server.port
+   const { DEBUG } = config.mode
+   const { logger } = pino()
 
    // Init MongoDB
-   const { url: mongoURL, options: mongoOptions } = config.db.mongo;
-   mongoose.connect(mongoURL, mongoOptions);
+   const { url: mongoURL, options: mongoOptions } = config.db.mongo
+   mongoose.connect(mongoURL, mongoOptions)
 
-   const db = mongoose.connection;
+   const db = mongoose.connection
    db.on('error', (err) => {
-     logger.error(err);
-   });
+     logger.error(err)
+   })
    db.once('connected', () => {
-     logger.info('Mongo connected');
-     app.emit('ready');
-   });
+     logger.info('Mongo connected')
+     app.emit('ready')
+   })
    db.on('reconnected', () => {
-     logger.info('Mongo re-connected');
-   });
+     logger.info('Mongo re-connected')
+   })
    db.on('disconnected', () => {
-     logger.info('Mongo disconnected');
-   });
+     logger.info('Mongo disconnected')
+   })
 
-   // Middlewares
-   ...
+   app.listen(SERVER_PORT, () => {
+     if (DEBUG) console.log('Debug mode!')
+     console.info('Server listening on port: ' + SERVER_PORT)
+   })
    ```
 
 5. 执行 `pnpm dev`，此时可以在控制台看到以下的日志输出则说明成功连接上数据库：
