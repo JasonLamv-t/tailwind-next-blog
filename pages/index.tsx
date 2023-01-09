@@ -1,5 +1,10 @@
-export default function Home() {
-  console.log(process.env.NODE_ENV);
+import { IndexSEO } from '../components/SEO';
 
-  return <h1 className="text-3xl font-bold underline">Hello world!</h1>;
+export default function Home() {
+  return (
+    <>
+      <IndexSEO />
+      <h1 className="text-3xl font-bold underline">Hello world!</h1>
+    </>
+  );
 }
