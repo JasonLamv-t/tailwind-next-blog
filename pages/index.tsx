@@ -1,6 +1,5 @@
-import { IndexSEO } from '../components/SEO';
-import { ThemeSwitcher } from '../components/ThemeSwitcher';
-import site from '../data/meta/site';
+import { IndexSEO } from 'components/SEO';
+import site from 'data/meta/site';
 
 export default function Home() {
   return (
@@ -14,7 +13,6 @@ export default function Home() {
           <p className="text-lg leading-7">{site.description}</p>
         </div>
       </div>
-      <ThemeSwitcher />
     </>
   );
 }
