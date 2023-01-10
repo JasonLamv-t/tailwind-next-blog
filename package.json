@@ -10,6 +10,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.7",
+    "@heroicons/react": "^2.0.13",
     "@next/font": "13.1.1",
     "@tabler/icons": "^1.119.0",
     "@tailwindcss/typography": "^0.5.8",
