@@ -5,7 +5,10 @@ const siteData = {
   description: "Jason Lam's personal website",
   language: 'zh-cn, en-us',
   theme: 'system', // system, dark or light
-  url: 'https://jasonlam.cc',
+  url:
+    process.env.NODE_ENV === 'development'
+      ? 'http://localhost:3000'
+      : 'https://jasonlam.cc',
   logo: '/images/logo.jpg',
   // siteRepo: 'https://github.com/JasonLamv-t/jasonlamv-t.github.io',
   // beian: '粤ICP备2021039182号-1',

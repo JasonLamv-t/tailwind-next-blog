@@ -1,7 +1,7 @@
+import author from 'data/meta/author';
+import site from 'data/meta/site';
 import { NextSeo } from 'next-seo';
 import { useRouter } from 'next/router';
-import site from '../data/meta/site';
-import author from '../data/meta/author';
 
 export const IndexSEO = ({}) => {
   const router = useRouter();

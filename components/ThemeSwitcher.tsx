@@ -1,8 +1,8 @@
-import { IconSun, IconMoon } from '@tabler/icons';
+import { MoonIcon, SunIcon } from '@heroicons/react/24/solid';
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
 
-export const ThemeSwitcher = () => {
+const ThemeSwitcher = () => {
   const [mounted, setMounted] = useState<boolean>(false);
   const { theme, setTheme, resolvedTheme } = useTheme();
 
@@ -12,6 +12,7 @@ export const ThemeSwitcher = () => {
 
   return (
     <button
+      className="w-6 h-6"
       onClick={() =>
         setTheme(
           theme === 'dark' || resolvedTheme === 'dark' ? 'light' : 'dark'
@@ -20,11 +21,13 @@ export const ThemeSwitcher = () => {
     >
       {mounted ? (
         theme === 'dark' || resolvedTheme === 'dark' ? (
-          <IconSun />
+          <SunIcon />
         ) : (
-          <IconMoon />
+          <MoonIcon />
         )
       ) : null}
     </button>
   );
 };
+
+export default ThemeSwitcher;
