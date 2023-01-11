@@ -7,11 +7,11 @@ const authorData = {
   location: 'Shenzhen, China',
   social: {
     email: 'jasonlamv-t@hotmail.com',
-    githubId: 'JasonLamv-t',
-    twitterId: 'JasonLamv-t',
+    github: 'JasonLamv-t',
+    twitter: 'JasonLamv-t',
+    linkedin: 'https://www.linkedin.cn/injobs/in/jason-lam-0827181b0'
     // facebook: 'https://facebook.com',
     // youtube: 'https://youtube.com',
-    linkedin: 'https://www.linkedin.cn/injobs/in/jason-lam-0827181b0'
   }
 };
 

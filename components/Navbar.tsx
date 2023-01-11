@@ -1,6 +1,6 @@
 import { Disclosure, Transition } from '@headlessui/react';
 import { IconMenu2, IconX } from '@tabler/icons';
-import site from 'data/meta/site';
+import siteData from 'data/meta/site';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -22,11 +22,15 @@ const Navbar = () => {
         <>
           <header className="flex items-center justify-between py-10">
             <div className="-mt-3">
-              <Link href="/" aria-label={site.title}>
+              <Link href="/" aria-label={siteData.title}>
                 <div className="flex items-center justify-between">
-                  <Image className="w-14 rounded-full" src={logo} alt="logo" />
+                  <Image
+                    className="w-14 h-14 rounded-full"
+                    src={logo}
+                    alt="logo"
+                  />
                   <div className="ml-3 hidden h-6 text-2xl font-semibold sm:block">
-                    {site.title}
+                    {siteData.title}
                   </div>
                 </div>
               </Link>

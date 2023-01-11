@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import Footer from './Footer';
 import Navbar from './Navbar';
 
 const LayoutWrapper = ({ children }: { children: ReactNode }) => {
@@ -7,7 +8,7 @@ const LayoutWrapper = ({ children }: { children: ReactNode }) => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <Navbar />
         <main className="mb-auto">{children}</main>
-        {/* <Footer /> */}
+        <Footer />
       </div>
     </>
   );
