@@ -1,14 +1,15 @@
 import {
-  IconMail,
+  IconBrandFacebook,
   IconBrandGithub,
   IconBrandLinkedin,
   IconBrandTwitter,
-  IconBrandFacebook,
   IconBrandYoutube,
+  IconMail,
   TablerIcon
 } from '@tabler/icons';
-import Link from 'next/link';
 import { toString } from 'lodash-es';
+import Link from 'next/link';
+import IconBrandBilibili from './icons/bilibili';
 
 interface SocialLink {
   Icon: TablerIcon;
@@ -22,7 +23,8 @@ const SocialLinks: { [key: string]: SocialLink } = {
   linkedin: { Icon: IconBrandLinkedin },
   twitter: { Icon: IconBrandTwitter, prefix: 'https://twitter.com/' },
   facebook: { Icon: IconBrandFacebook, prefix: 'https://www.facebook.com/' },
-  youtube: { Icon: IconBrandYoutube, prefix: 'https://www.youtube.com/' }
+  youtube: { Icon: IconBrandYoutube, prefix: 'https://www.youtube.com/' },
+  bilibili: { Icon: IconBrandBilibili, prefix: 'https://space.bilibili.com/' }
 };
 
 const SocialIconLink = ({
@@ -34,7 +36,10 @@ const SocialIconLink = ({
 }) => {
   const { Icon, prefix, suffix } = SocialLinks[platform];
   return (
-    <Link href={toString(prefix) + value + toString(suffix)}>
+    <Link
+      href={toString(prefix) + value + toString(suffix)}
+      className="w-6 h-6"
+    >
       <Icon />
     </Link>
   );
