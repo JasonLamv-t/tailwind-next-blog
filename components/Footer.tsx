@@ -17,15 +17,17 @@ const Footer = () => {
         <div>{siteData.author}</div>
         <div>{` • `}</div>
         <div>{`© ${new Date().getFullYear()}`}</div>
-        <div>{` • `}</div>
-        <Link href="/">{siteData.title}</Link>
+        {siteData.beian ? (
+          <>
+            <div>{` • `}</div>
+            <Link href="https://beian.miit.gov.cn/">{siteData.beian}</Link>
+          </>
+        ) : null}
       </div>
       <div className="mb-8 flex space-x-2 text-sm text-gray-500 dark:text-gray-400">
         <Link href="https://github.com/jasonlamv-t/tailwind-next-blog">
           Tailwind Next Blog
         </Link>
-        {/* <div>{` • `}</div> */}
-        {/* <Link href="https://beian.miit.gov.cn/">{siteData.beian}</Link> */}
       </div>
     </footer>
   );
