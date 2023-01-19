@@ -1,0 +1,124 @@
+---
+title: Practice of Koa with Typescript - Part 2
+date: '2023-01-05'
+tags: ['koa', 'typescript', 'backend', 'nodejs', 'jest', 'test', 'multi-process', 'jwt', 'cluster']
+draft: true
+summary: 最近闲来无事，于是决定对 Koa 框架进行简单的熟悉，并了解和使用一些包。本文介绍了如何引入 jwt 并 以 TDD 的方式实现登陆注册功能，并通过 cluster 进行性能调优。
+images: []
+layout: PostLayout
+canonicalUrl:
+---
+
+本文在 [前文](/blog/practice-of-koa-with-typescript-part1) 基础上继续完善，引入 jest 作为测试框架，并使用 JWT（Json Web Token）以 TDD（Test Driven Development）的方式实现用户的注册和登录功能，同时进行性能测试和调优。同样的，简单介绍本文使用到的工具、包和框架：
+
+- jest & supertest & te-jest
+- koa-bodyparser
+- koa-jwt & jsonwebtoken
+
+## Steps
+
+### §1-测试环境的搭建
+
+1. 安装依赖：`pnpm add -D jest @types/jest ts-jest supertest`
+
+2. 创建 jest 配置文件，执行 `pnpm jest --init`，下面是我的选择：
+
+   ```bash
+   The following questions will help Jest to create a suitable configuration for your project
+
+   ✔ Would you like to use Jest when running "test" script in "package.json"? … yes
+   ✔ Would you like to use Typescript for the configuration file? … yes
+   ✔ Choose the test environment that will be used for testing › node
+   ✔ Do you want Jest to add coverage reports? … yes
+   ✔ Which provider should be used to instrument code for coverage? › v8
+   ✔ Automatically clear mock calls, instances, contexts and results before every test? … yes
+
+   ✏️  Modified /Users/jasonlam/VscodeProjects/koa-example/package.json
+
+   📝  Configuration file created at /Users/jasonlam/VscodeProjects/koa-example/jest.config.ts
+   ```
+
+3. 修改 jest.config.ts：
+
+   ```typescript
+   export default {
+     clearMocks: true,
+     collectCoverage: true,
+     coverageDirectory: 'coverage',
+     coverageProvider: 'v8',
+     preset: 'ts-jest',
+     testEnvironment: 'node',
+   }
+   ```
+
+4. 修改 package.json：
+
+   ```json
+   ...
+     "scripts": {
+         "dev": "cross-env NODE_ENV=development tsnd --respawn src/server.ts",
+         "test": "cross-env NODE_ENV=test jest --detectOpenHandles"
+       }
+   ...
+   ```
+
+5. 创建第一个测试文件 tests/server.test.ts：
+
+   ```typescript
+   import mongoose from 'mongoose'
+   import app from '../src/app'
+   import config from '../src/config'
+
+   const mockListen = jest.fn()
+   app.listen = mockListen
+
+   afterEach(async () => {
+     mockListen.mockReset()
+     await mongoose.connection.close()
+   })
+
+   test('Server works', async () => {
+     require('../src/server')
+     expect(mockListen.mock.calls.length).toBe(1)
+     expect(mockListen.mock.calls[0][0]).toBe(config.server.port)
+   })
+   ```
+
+6. 执行 `pnpm test` 来运行测试：
+
+   ```bash
+   ➜  koa-example git:(main) ✗ pnpm test
+   > koa-example@1.0.0 test /Users/jasonlam/VscodeProjects/koa-example
+   > jest
+
+   (node:79731) [MONGOOSE] DeprecationWarning: Mongoose: the `strictQuery` option will be switched back to `false` by default i
+   n Mongoose 7. Use `mongoose.set('strictQuery', false);` if you want to prepare for this change. Or use `mongoose.set('strictQuery', true);` to suppress this warning.                                                                                   (Use `node --trace-deprecation ...` to show where the warning was created)
+   {"level":30,"time":1673084874708,"pid":79731,"hostname":"MacBook-Air.lan","msg":"Mongo connected"}
+   {"level":30,"time":1673084874714,"pid":79731,"hostname":"MacBook-Air.lan","msg":"Mongo disconnected"}
+    PASS  tests/server.test.ts
+     ✓ Server works (587 ms)
+
+   -----------------|---------|----------|---------|---------|-------------------
+   File             | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s
+   -----------------|---------|----------|---------|---------|-------------------
+   All files        |   89.79 |    66.66 |     100 |   89.79 |
+    src             |   85.71 |      100 |     100 |   85.71 |
+     app.ts         |   89.47 |      100 |     100 |   89.47 | 15-16
+     server.ts      |   83.78 |      100 |     100 |   83.78 | 16,23,30-31,35-36
+    src/config      |     100 |        0 |     100 |     100 |
+     index.ts       |     100 |        0 |     100 |     100 | 9
+    src/routes      |     100 |      100 |     100 |     100 |
+     index.ts       |     100 |      100 |     100 |     100 |
+    src/routes/auth |   85.71 |      100 |     100 |   85.71 |
+     index.ts       |   85.71 |      100 |     100 |   85.71 | 10-11
+   -----------------|---------|----------|---------|---------|-------------------
+   Test Suites: 1 passed, 1 total
+   Tests:       1 passed, 1 total
+   Snapshots:   0 total
+   Time:        1.861 s
+   Ran all test suites.
+   ```
+
+​ 这样，基于 TS 和 Jest 的测试环境就搭建完成了，并且成功跑了一个测试
+
+### §2-TDD 实践——注册登录功能的开发

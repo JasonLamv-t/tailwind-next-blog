@@ -1,0 +1,230 @@
+---
+title: 前端国际化实践
+date: '2021-11-10'
+tags: ['react', 'frontend', 'I18n', 'NextJS', 'internationalization']
+draft: false
+summary: 这是我第一次接触国际化/i18n，在实践过程中学到了一些东西，特地记录一下。这不是一篇友好的快速入门的新手教程，但是有一些过程中的坑和解决技巧。
+images: []
+layout: PostLayout
+canonicalUrl:
+---
+
+这是我第一次接触国际化/i18n，在实践过程中学到了一些东西，特地记录一下。这不是一篇友好的快速入门的新手教程，但是有一些过程中的坑和解决技巧。
+
+首先说明技术和背景
+
+- 项目已实现很多，不宜从头来过，而且要求快速实现
+- 原生英文 -> 转中+英，中优先
+- 项目基于 NextJS 构建，属于 React 阵营，使用 TypeScript
+- 后端使用 FastAPI，使用 python
+- UI 无框架，使用 tailwindcss 和 tailwindui
+- 使用 react-toastify 来实现大部分提示
+
+## 知识 思路
+
+### NextJS
+
+[Advanced Features: Internationalized Routing | Next.js (nextjs.org)](https://nextjs.org/docs/advanced-features/i18n-routing)
+
+根据文档，NextJS 提供了基于路由的实现方案，通过 Link.loccale 来切换语言。需要准备两套网站，对于文档类等动态需求不大的项目来说，这个方案简单，成本也不高，因为大段落的国际化准备另外一套代码在部署上问题不大，而且本身国际化工作基本上属于有参考的重构，国际化后部署耦合性较低。
+
+但是不适合本项目，本项目虽然部分使用了 SSG，但是还是一个交互式（需要同后端做多次数据交换）的应用，代码的大部分内容是逻辑代码而非内容显示代码，如果准备两套代码，翻译部分的工作量基本没有变化，但是代码量会 double，这不是一个明智的做法。
+
+### i18next
+
+[Introduction - i18next documentation](https://www.i18next.com/)
+
+An internationalization framework written in and for javascript. 使用 key-value 方式对网站的内容进行管理，符合需要，但是管理配置相对还是稍微复杂一点。[Supported Frameworks - i18next documentation](https://www.i18next.com/overview/supported-frameworks)可查看对应框架的包
+
+### react-i18next
+
+[Introduction - react-i18next documentation](https://react.i18next.com/)
+
+基于 i18next 的适用于 react 的封装，因此很多高级配置本身还是需要查看 i18next 文档
+
+### next-i18next
+
+[isaachinman/next-i18next: The easiest way to translate your NextJs apps. (github.com)](https://github.com/isaachinman/next-i18next)
+
+本次前端使用的框架，基于 react-i18n 而来，配置使用较为简单，但是文档说明不全，simple example 过于 simple 了，有些常见场景没有做额外的说明。
+
+### 如何识别地区和语言
+
+首先，可以通过 IP 来进行识别，虽然现在很多 IP 都是动态的，并不能代表访问者的真实信息，但是依然可以简单反馈用户所在的国家区域，因此，置信度还可以。
+
+其次，可以通过浏览器获取用户的语言信息，[localization - JavaScript for detecting browser language preference - Stack Overflow](https://stackoverflow.com/questions/1043339/javascript-for-detecting-browser-language-preference)
+
+### 前后端如何统一
+
+即使我们检测到用户的语言信息，但是用户依然可能会切换语言，如何将这个状态进行保存和在前后端之间同步呢？基本上和前端请求和缓存用户信息和登录态的思路一致，通过 token、session、cookie、localstorge 等方式。每次在请求的 query、header 中设置单独字段，或者将用户的语言保存在 token 中，当用户切换时置换 token
+
+## 实践
+
+### 配置
+
+选用了 next-i18next 对前端项目进行国际化改造，根据前文，需要添加一个`next-i18next.config.js`的配置文件并修改`next.config.js`
+
+```js
+// next-i18next.config.js
+module.exports = {
+  i18n: {
+    defaultLocale: 'zh',		// 默认语言
+    locales: ['en', 'zh'],	// 通用标识，可以任意自定义，具体见后文
+  },
+  reloadOnPrerender: true,		// 默认字典文件只在服务启动时加载一次，为了方便调试需要增加此项，文档：https://github.com/isaachinman/next-i18next#reloading-resources-in-development
+  localeExtension: 'yml'		// 字典文件拓展名，默认是json, 由于我用的是yaml文件，因此修改为yml，需要根据你实际文件的后缀来进行修改，
+}
+
+// next.config.js
+module.exports = {
+    i18n,
+		...
+}
+```
+
+### 字典文件
+
+默认的字典文件应该是 json 格式的，但是对于手写来说，个人觉得 yaml 更好一点，因此对默认配置进行了修改，使其识别 yaml/yml 文件。配置如上。
+
+```shell
+# 字典文件位置
+/public
+├── ...other_files
+└── locales
+    ├── en
+    |   ├── common.yml
+    │   └── name_space.yml
+    └── zh
+    		├── common.yml
+        └── name-space.yml
+```
+
+#### common 和 namespace
+
+和 c++类似，i18n 也有 namespace 的概念，可以通过 namespace 来指定关键字匹配哪一个文件。在笔者的使用经验中，按页面/模块来划分作用域和关键词的命名空间是比较合理的方式；官方的文档和示例项目中，都使用了`common`，这也是一个 namespace，当然你也可以用其他词或者符号代替，这里提出是因为，网站有一些本网站常见的专有名词，或有一些简单无歧义的常用词/句，由于他们的在整个网站中都有出现，使用一个公有的 namespace 对这些关键词进行管理比较简便。
+
+### 使用
+
+i18n 需要在三个层级中配置语句和钩子才能正常使用：
+
+```tsx
+// /pages/_app.tsx	全局，只需一次，用于添加I18nextProvider
+import { appWithTranslation } from 'next-i18next';
+...
+export default appWithTranslation(MyApp);
+```
+
+```tsx
+// 页面钩子，只需要在page中引用，用于引入配置和关键词
+// /page/static_page.tsx	纯静态页面
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+...
+export const getStaticProps = async ({ locale }: { locale: string }) => ({
+  props: {
+    ...(await serverSideTranslations(locale, ['common', 'namespace_1', 'namespace_2'])),
+  },
+});
+
+// /page/ssr_page.tsx  SSR页面
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+...
+export const getServerSideProps = async ({ locale }: { locale: string }) => ({
+  props: {
+    ...(await serverSideTranslations(locale, ['common', 'na mespace_1', 'namespace_2'])),
+  },
+});
+```
+
+```tsx
+// any page or component 任何需要国际化的页面
+import { useTranslation } from 'next-i18next';
+...
+export const Footer = () => {
+  const { t } = useTranslation('footer');
+  console.log(t('keyword'))
+  return (
+    <footer>
+      <p>{t('description')}</p>
+    </footer>
+  );
+};
+```
+
+#### 多命名空间/ multiple namespaces
+
+首先在页面钩子中，需要引入你需要使用到的 namespace，上文的例子就是引入了多个 namespace
+
+- 方法一：单次指定 namespace
+
+  关键词前加上 namespace：`t('another_namespace:keyword')`
+
+- 方法二：定义不同 namespace 的翻译函数
+
+  ```tsx
+  ...
+  const { t } = useTraslation('common');
+  const m = useTraslation('main').t;
+  ...
+  ```
+
+  这种方法适用于同个组件/页面中需要多次使用多个 namespace 的情况
+
+#### 翻译函数 / t
+
+```tsx
+// 以下是翻译函数 t 在不同情况下的返回值
+t('no existed keyword: any words') // no existed keyword: any words
+
+// zh/namespace.yml: h: 你好
+// en/namespace.yml: h: hello
+t('h') // zh: 你好 / en: hello
+
+// zh/namespace.yml: h: 你好
+t('h') // zh: 你好 / en: 你好
+```
+
+#### 骚操作？
+
+##### 前端处理后端文本国际化
+
+请看以下例子：
+
+```tsx
+// a page
+...
+const click = async (arg) => {
+  try {
+    return await some_request(arg);
+  }catch(err){
+    console.log(err instance of Error? err.messahe : err as string);
+  }
+}
+...
+```
+
+```ts
+export const some_request = (arg: any)
+=>{
+  ...
+  	if (some_case) {
+      throw new Error(...)
+    }
+}
+```
+
+在以上情况中，如果是已有项目，我们需要 track 每个请求和可能的错误信息，这样过于麻烦。这里提供了一种在不修改后端情况下的解决方案：由后端提供所有可能的错误信息，然后对其进行国际化，类似：
+
+```yaml
+Hello World: 你好世界	# zh/common.yml
+Hello World: Hello World	# cn/common.yml
+```
+
+##### ts/js 文件中进行国际化，获取 i18n 实例
+
+`const { t } = useTranslation`只能在页面或组件方法中使用，但是在实际中，有些复杂场景的提示往往是在 ts/js 方法中实现的，因此我们需要获取 i18n 的实例：
+
+```ts
+import { i18n } from 'next-i18next'
+const new_t = i18n?.getFixedT(i18n?.language, ['common', 'namesapce_`', 'namespace_2'])
+new_t?.('keyword')
+```
