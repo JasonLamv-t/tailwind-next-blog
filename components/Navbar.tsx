@@ -25,11 +25,11 @@ const Navbar = () => {
               <Link href="/" aria-label={siteData.title}>
                 <div className="flex items-center justify-between">
                   <Image
-                    className="w-14 h-14 rounded-full"
+                    className="w-12 h-12 mt-3 rounded-full"
                     src={logo}
                     alt="logo"
                   />
-                  <div className="ml-3 hidden h-6 text-2xl font-semibold sm:block">
+                  <div className="ml-3 h-6 text-2xl font-semibold sm:block">
                     {siteData.title}
                   </div>
                 </div>
