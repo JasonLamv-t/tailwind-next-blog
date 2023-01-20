@@ -15,4 +15,3 @@ const LayoutWrapper = ({ children }: { children: ReactNode }) => {
 };
 
 export default LayoutWrapper;
-1;
