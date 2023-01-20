@@ -8,6 +8,7 @@ import {
   IconMail,
   TablerIcon
 } from '@tabler/icons';
+import clsx from 'clsx';
 import { toString } from 'lodash-es';
 import Link from 'next/link';
 
@@ -29,16 +30,18 @@ const SocialLinks: { [key: string]: SocialLink } = {
 
 const SocialIconLink = ({
   platform,
-  value
+  value,
+  className
 }: {
   platform: string;
   value: string;
+  className?: string;
 }) => {
   const { Icon, prefix, suffix } = SocialLinks[platform];
   return (
     <Link
       href={toString(prefix) + value + toString(suffix)}
-      className="w-6 h-6"
+      className={clsx(className, 'w-6 h-6')}
     >
       <Icon />
     </Link>
