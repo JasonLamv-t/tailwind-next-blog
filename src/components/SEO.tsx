@@ -1,5 +1,5 @@
-import author from 'data/meta/author';
-import siteData from 'data/meta/site';
+import author from '#/meta/author';
+import siteData from '#/meta/site';
 import { NextSeo } from 'next-seo';
 import { useRouter } from 'next/router';
 

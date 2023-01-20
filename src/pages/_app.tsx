@@ -1,8 +1,8 @@
-import LayoutWrapper from 'components/LayoutWrapper';
-import siteData from 'data/meta/site';
+import siteData from '#/meta/site';
+import LayoutWrapper from '@/components/LayoutWrapper';
+import '@/styles/globals.css';
 import { ThemeProvider } from 'next-themes';
 import type { AppProps } from 'next/app';
-import 'styles/globals.css';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (

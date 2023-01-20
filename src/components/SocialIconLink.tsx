@@ -1,3 +1,4 @@
+import { IconBrandBilibili } from '@/components/Icons';
 import {
   IconBrandFacebook,
   IconBrandGithub,
@@ -9,7 +10,6 @@ import {
 } from '@tabler/icons';
 import { toString } from 'lodash-es';
 import Link from 'next/link';
-import IconBrandBilibili from './icons/IconBrandBilibili';
 
 interface SocialLink {
   Icon: TablerIcon;

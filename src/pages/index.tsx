@@ -1,5 +1,5 @@
-import { IndexSEO } from 'components/SEO';
-import siteData from 'data/meta/site';
+import siteData from '#/meta/site';
+import { IndexSEO } from '@/components/SEO';
 
 export default function Home() {
   return (
@@ -10,7 +10,7 @@ export default function Home() {
           <h1 className="text-3xl font-extrabold leading-9 tracking-tight sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
             Latest
           </h1>
-          <p className="text-lg leading-7">{siteData.description}</p>
+          <div className="text-lg leading-7">{siteData.description}</div>
         </div>
       </div>
     </>

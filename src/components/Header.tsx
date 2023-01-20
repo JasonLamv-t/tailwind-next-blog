@@ -1,19 +1,19 @@
+import siteData from '#/meta/site';
+import logo from '@/assets/images/logo.jpg';
+import ThemeSwitcher from '@/components/ThemeSwitcher';
 import { Disclosure, Transition } from '@headlessui/react';
-import { IconMenu2, IconX } from '@tabler/icons';
-import siteData from 'data/meta/site';
+import { IconMenu2, IconMoon, IconSun, IconX } from '@tabler/icons';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import logo from 'public/images/logo.jpg';
-import ThemeSwitcher from './ThemeSwitcher';
 
 const navigation = [
-  { name: 'Blog', href: '/blog' },
+  { name: 'Blogs', href: '/blogs' },
   { name: 'Projects', href: '/projects' },
   { name: 'About', href: '/about' }
 ];
 
-const Navbar = () => {
+const Header = () => {
   const router = useRouter();
 
   return (
@@ -47,13 +47,13 @@ const Navbar = () => {
                   </Link>
                 ))}
               </div>
-              <ThemeSwitcher />
               <Disclosure.Button
                 className="sm:hidden block h-6 w-6"
                 aria-hidden="true"
               >
                 {open ? <IconX /> : <IconMenu2 />}
               </Disclosure.Button>
+              <ThemeSwitcher />
             </div>
           </header>
 
@@ -91,4 +91,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default Header;

@@ -1,7 +1,7 @@
-import authorData from 'data/meta/author';
-import siteData from 'data/meta/site';
+import authorData from '#/meta/author';
+import siteData from '#/meta/site';
+import SocialIconLink from '@/components/SocialIconLink';
 import Link from 'next/link';
-import SocialIconLink from './SocialIconLink';
 
 const Footer = () => {
   const socialData = Object.entries(authorData.social);

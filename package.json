@@ -36,6 +36,7 @@
     "@next/env": "^13.1.1",
     "@types/lodash-es": "^4.17.6",
     "autoprefixer": "^10.4.13",
+    "clsx": "^1.2.1",
     "next-sitemap": "^3.1.44",
     "postcss": "^8.4.21",
     "postcss-preset-env": "^7.8.3",

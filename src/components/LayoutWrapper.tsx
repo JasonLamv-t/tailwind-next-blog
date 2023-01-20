@@ -1,12 +1,12 @@
+import Footer from '@/components/Footer';
+import Header from '@/components/Header';
 import { ReactNode } from 'react';
-import Footer from './Footer';
-import Navbar from './Navbar';
 
 const LayoutWrapper = ({ children }: { children: ReactNode }) => {
   return (
     <>
       <div className="container h-screen flex flex-col mx-auto px-4 sm:px-6 lg:px-8">
-        <Navbar />
+        <Header />
         <main className="mb-auto">{children}</main>
         <Footer />
       </div>

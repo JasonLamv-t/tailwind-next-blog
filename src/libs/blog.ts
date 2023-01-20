@@ -1,8 +1,8 @@
 import fs from 'fs';
 import matter from 'gray-matter';
+import { orderBy } from 'lodash-es';
 import path from 'path';
 import { getAllFilePaths } from './file';
-import { orderBy } from 'lodash-es';
 
 const blogsPath = 'data/blogs';
 
