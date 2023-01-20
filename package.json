@@ -31,7 +31,6 @@
     "typescript": "4.9.4"
   },
   "devDependencies": {
-    "@fullhuman/postcss-purgecss": "^5.0.0",
     "@next/bundle-analyzer": "^13.1.2",
     "@next/env": "^13.1.1",
     "@types/lodash-es": "^4.17.6",
