@@ -27,6 +27,7 @@ function Article({ blog }: { blog: BlogMeta }) {
           </div>
         </Card.Eyebrow>
         <Card.Title>{blog.title}</Card.Title>
+        <Card.Badges badges={blog.tags} />
         <Card.Description>{blog.summary}</Card.Description>
         <Card.CTA>Read more</Card.CTA>
       </Card>

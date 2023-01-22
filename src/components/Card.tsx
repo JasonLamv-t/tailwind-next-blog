@@ -36,6 +36,21 @@ Card.Title = function Title({
   return <Component>{children}</Component>;
 };
 
+Card.Badges = function Badges({ badges }: { badges: string[] }) {
+  return (
+    <div className="space-x-2">
+      {badges.map((badge) => (
+        <span
+          className="inline-flex items-center rounded-full bg-indigo-100 px-2.5 py-0.5 text-xs font-medium text-gray-800"
+          key={badge}
+        >
+          {badge}
+        </span>
+      ))}
+    </div>
+  );
+};
+
 Card.Description = function Description({
   className,
   children,
