@@ -23,7 +23,7 @@ const siteData: SiteData = {
   url: 'https://jasonlam.cc',
   logo: '/images/logo.jpg',
   banner: '/images/pandas.jpg',
-  locale: 'zh-CN'
+  locale: 'zh-CN',
   // beian: '粤ICP备2021039182号'
   // siteRepo: 'https://github.com/JasonLamv-t/jasonlamv-t.github.io',
   // image: '/static/images/avatar-22.jpg',

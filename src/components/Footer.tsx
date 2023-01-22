@@ -7,7 +7,7 @@ const Footer = () => {
   const socialData = Object.entries(authorData.social);
 
   return (
-    <footer className="border-t">
+    <footer className="mt-4">
       <div className="mx-auto max-w-7xl py-10 md:flex md:items-center md:justify-between">
         <div className="flex justify-center space-x-4 md:order-1 ">
           {socialData.map(([platform, value]) => (
