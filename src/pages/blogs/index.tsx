@@ -1,8 +1,9 @@
 import Card from '@/components/Card';
-import { getAllBlogsMeta } from '@/libs/blog';
+import { getAllBlogMetaAndSlug } from '@/libs/utils';
 import { BlogMeta } from '@/types/blog';
+import path from 'path';
 
-function Article({ blog }: { blog: BlogMeta }) {
+function Article({ blog }: { blog: BlogMeta & { href: string } }) {
   return (
     <article className="md:grid md:grid-cols-5 md:items-baseline">
       <Card.Eyebrow
@@ -12,7 +13,7 @@ function Article({ blog }: { blog: BlogMeta }) {
       >
         {blog.dateString}
       </Card.Eyebrow>
-      <Card href="/" className="md:col-span-4">
+      <Card href={blog.href} className="md:col-span-4">
         <Card.Eyebrow
           as="time"
           className="md:hidden md:col-span-1"
@@ -27,7 +28,7 @@ function Article({ blog }: { blog: BlogMeta }) {
           </div>
         </Card.Eyebrow>
         <Card.Title>{blog.title}</Card.Title>
-        <Card.Badges badges={blog.tags} />
+        {/* <Card.Badges badges={blog.tags} /> */}
         <Card.Description>{blog.summary}</Card.Description>
         <Card.CTA>Read more</Card.CTA>
       </Card>
@@ -35,7 +36,11 @@ function Article({ blog }: { blog: BlogMeta }) {
   );
 }
 
-export default function Blogs({ blogs }: { blogs: BlogMeta[] }) {
+export default function BlogList({
+  blogs,
+}: {
+  blogs: (BlogMeta & { href: string })[];
+}) {
   return (
     <>
       <div className="md:border-l md:border-zinc-100 md:pl-6 md:dark:border-zinc-700/40">
@@ -50,6 +55,10 @@ export default function Blogs({ blogs }: { blogs: BlogMeta[] }) {
 }
 
 export function getStaticProps() {
-  const AllBlogsMeta = getAllBlogsMeta();
-  return { props: { blogs: AllBlogsMeta } };
+  const AllBlogs = getAllBlogMetaAndSlug().map(({ meta, slug }) => ({
+    ...meta,
+    href: path.join('blogs', slug.join('/')),
+  }));
+
+  return { props: { blogs: AllBlogs } };
 }
