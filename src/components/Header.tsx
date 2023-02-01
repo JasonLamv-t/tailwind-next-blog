@@ -12,7 +12,7 @@ import { Fragment } from 'react';
 const navigation = [
   ['Blogs', '/blogs'],
   ['Projects', '/projects'],
-  ['About', '/about']
+  ['About', '/about'],
 ];
 
 function NavItem({ href, children }: { href: string; children: string }) {

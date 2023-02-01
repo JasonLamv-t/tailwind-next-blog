@@ -1,7 +1,6 @@
 import Card from '@/components/Card';
 import { getAllBlogMetaAndSlug } from '@/libs/utils';
 import { BlogMeta } from '@/types/blog';
-import path from 'path';
 
 function Article({ blog }: { blog: BlogMeta & { href: string } }) {
   return (
@@ -57,7 +56,7 @@ export default function BlogList({
 export function getStaticProps() {
   const AllBlogs = getAllBlogMetaAndSlug().map(({ meta, slug }) => ({
     ...meta,
-    href: path.join('blogs', slug.join('/')),
+    href: 'blogs/' + slug.join('/'),
   }));
 
   return { props: { blogs: AllBlogs } };

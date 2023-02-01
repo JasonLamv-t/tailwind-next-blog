@@ -7,21 +7,15 @@ import matter from 'gray-matter';
 import { orderBy } from 'lodash-es';
 import path from 'path';
 
-const pathmap = {
-  blog: 'data/blogs',
-  project: 'data/projects',
-};
-
 /**
  * Get all md/mdx files name in the directory of the specified type
  * @param type blog | project
  * @returns list of the file names
  */
-export const getAllFilenames = (type: 'blog' | 'project') => {
-  return fg.sync(['**/*.md', '**/*.mdx'], {
-    cwd: path.resolve(pathmap[type]),
+export const getAllFilenames = (type: 'blogs' | 'projects') =>
+  fg.sync(['**/*.md', '**/*.mdx'], {
+    cwd: path.resolve('data', type),
   });
-};
 
 /**
  * Format the filename to slug list
@@ -29,19 +23,30 @@ export const getAllFilenames = (type: 'blog' | 'project') => {
  * @returns slugs in string list format
  */
 export const formatFilename = (filename: string) =>
-  filename.replace('.md', '').replaceAll(' ', '-').split('/');
+  filename
+    .replace(/.(md|mdx)$/i, '')
+    .replaceAll(' ', '-')
+    .split('/');
+
+/**
+ *
+ * @param filename the filename of the blog/project
+ * @param type subfolder in the data folder
+ * @returns file contents
+ */
+export const readFile = (filename: string, type: 'blogs' | 'projects') =>
+  fs.readFileSync(path.resolve('data', type, filename), 'utf8');
 
 /**
  * Get the meta of all the blogs
  * @returns all publish blogs' meta in date order
  */
 export const getAllBlogMetaAndSlug = () => {
-  const blogFilenames = getAllFilenames('blog');
+  const blogFilenames = getAllFilenames('blogs');
 
   const blogMetaAndSlug = blogFilenames
     .map((filename) => {
-      const filePath = path.resolve(pathmap.blog, filename);
-      const MDFile = fs.readFileSync(filePath, 'utf8');
+      const MDFile = readFile(filename, 'blogs');
       const meta = matter(MDFile).data as BlogMeta;
       meta.dateString = new Date(meta.date).toLocaleDateString(
         siteData.locale,
