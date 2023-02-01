@@ -4,20 +4,16 @@ import { isEqual } from 'lodash-es';
 import { getMDXComponent } from 'mdx-bundler/client';
 import { useMemo } from 'react';
 import ArticleLayout from '@/layouts/ArticleLayout';
+import Pre from '@/components/Pre';
 
 export default function Blog({ code }: { code: string }) {
   const MDXContent = useMemo(() => getMDXComponent(code), [code]);
+  const components = {
+    pre: Pre,
+    wrapper: ArticleLayout,
+  };
 
-  const components = { wrapper: ArticleLayout };
-
-  return (
-    <>
-      Blog
-      <main>
-        <MDXContent components={components} />
-      </main>
-    </>
-  );
+  return <MDXContent components={components} />;
 }
 
 export function getStaticPaths() {

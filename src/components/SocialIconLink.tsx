@@ -25,13 +25,13 @@ const SocialLinks: { [key: string]: SocialLink } = {
   twitter: { Icon: IconBrandTwitter, prefix: 'https://twitter.com/' },
   facebook: { Icon: IconBrandFacebook, prefix: 'https://www.facebook.com/' },
   youtube: { Icon: IconBrandYoutube, prefix: 'https://www.youtube.com/' },
-  bilibili: { Icon: IconBrandBilibili, prefix: 'https://space.bilibili.com/' }
+  bilibili: { Icon: IconBrandBilibili, prefix: 'https://space.bilibili.com/' },
 };
 
 const SocialIconLink = ({
   platform,
   value,
-  className
+  className,
 }: {
   platform: string;
   value: string;

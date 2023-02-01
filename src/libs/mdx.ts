@@ -1,12 +1,12 @@
+import exportToc, { Heading, Toc } from '@jasonlamv-t/remark-toc-export';
 import { bundleMDX } from 'mdx-bundler';
-import { readFile } from './utils';
+import path from 'path';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import rehypeKatex from 'rehype-katex';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
-import exportToc, { Heading, Toc } from '@jasonlamv-t/remark-toc-export';
 import remarkSlug from 'remark-slug';
-import rehypeKatex from 'rehype-katex';
-import rehypeAutolinkHeadings from 'rehype-autolink-headings';
-import path from 'path';
+import { readFile } from './utils';
 
 export const parseMDX = async (
   filename: string,
@@ -40,7 +40,7 @@ export const parseMDX = async (
         rehypeKatex,
         rehypeAutolinkHeadings,
       ];
-      
+
       return options;
     },
   });
