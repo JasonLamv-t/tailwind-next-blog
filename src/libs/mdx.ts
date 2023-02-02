@@ -3,14 +3,14 @@ import { bundleMDX } from 'mdx-bundler';
 import path from 'path';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeKatex from 'rehype-katex';
+import rehypePresetMinify from 'rehype-preset-minify';
 import rehypePrism from 'rehype-prism-plus';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 import remarkSlug from 'remark-slug';
 
-import { readFile } from './utils';
-
 import siteData from '#/meta/site';
+import { readFile } from './utils';
 
 export const parseMDX = async (
   filename: string,
@@ -50,6 +50,7 @@ export const parseMDX = async (
             showLineNumbers: siteData.showCodeLineNumbers ?? false,
           },
         ],
+        rehypePresetMinify,
       ];
 
       return options;

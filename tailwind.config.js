@@ -133,8 +133,14 @@ module.exports = {
               fontWeight: theme('fontWeight.semibold'),
               backgroundColor: 'var(--tw-prose-code-bg)',
               borderRadius: theme('borderRadius.lg'),
-              paddingLeft: theme('spacing.1'),
-              paddingRight: theme('spacing.1'),
+              paddingLeft: theme('spacing.2'),
+              paddingRight: theme('spacing.2'),
+            },
+            'code::before': {
+              content: 'none',
+            },
+            'code::after': {
+              content: 'none',
             },
             'a code': {
               color: 'inherit',
