@@ -3,10 +3,14 @@ import { bundleMDX } from 'mdx-bundler';
 import path from 'path';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeKatex from 'rehype-katex';
+import rehypePrism from 'rehype-prism-plus';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 import remarkSlug from 'remark-slug';
+
 import { readFile } from './utils';
+
+import siteData from '#/meta/site';
 
 export const parseMDX = async (
   filename: string,
@@ -39,6 +43,13 @@ export const parseMDX = async (
         ...(options.rehypePlugins ?? []),
         rehypeKatex,
         rehypeAutolinkHeadings,
+        [
+          rehypePrism,
+          {
+            ignoreMissing: true,
+            showLineNumbers: siteData.showCodeLineNumbers ?? false,
+          },
+        ],
       ];
 
       return options;
