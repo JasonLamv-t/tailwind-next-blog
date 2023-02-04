@@ -38,6 +38,20 @@ export const readFile = (filename: string, type: 'blogs' | 'projects') =>
   fs.readFileSync(path.resolve('data', type, filename), 'utf8');
 
 /**
+ * Format the date to local string
+ * @param date date string or date object
+ * @returns
+ */
+export const formatDate = (date: Date | string) => {
+  return new Date(date).toLocaleDateString(siteData.locale, {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+    timeZone: 'UTC',
+  });
+};
+
+/**
  * Get the meta of all the blogs
  * @returns all publish blogs' meta in date order
  */
@@ -48,15 +62,7 @@ export const getAllBlogMetaAndSlug = () => {
     .map((filename) => {
       const MDFile = readFile(filename, 'blogs');
       const meta = matter(MDFile).data as BlogMeta;
-      meta.dateString = new Date(meta.date).toLocaleDateString(
-        siteData.locale,
-        {
-          day: 'numeric',
-          month: 'long',
-          year: 'numeric',
-          timeZone: 'UTC',
-        }
-      );
+      meta.dateString = formatDate(meta.date);
 
       const slug = meta.canonicalUrl
         ? [meta.canonicalUrl]

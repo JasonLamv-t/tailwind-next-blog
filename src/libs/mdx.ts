@@ -10,7 +10,7 @@ import remarkMath from 'remark-math';
 import remarkSlug from 'remark-slug';
 
 import siteData from '#/meta/site';
-import { readFile } from './utils';
+import { formatDate, readFile } from './utils';
 
 export const parseMDX = async (
   filename: string,
@@ -19,7 +19,7 @@ export const parseMDX = async (
   const source = readFile(filename, type);
 
   const toc: Toc = [];
-  const res = await bundleMDX({
+  const { code, matter } = await bundleMDX({
     source,
     cwd: path.resolve('src', 'components'),
     mdxOptions(options, frontmatter) {
@@ -57,5 +57,8 @@ export const parseMDX = async (
     },
   });
 
-  return { ...res, toc };
+  const meta = matter.data;
+  meta.dateString = formatDate(meta.date);
+
+  return { code, toc, meta };
 };

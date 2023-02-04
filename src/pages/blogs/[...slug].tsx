@@ -7,20 +7,14 @@ import ArticleLayout from '@/layouts/ArticleLayout';
 import Pre from '@/components/Pre';
 import { BlogMeta } from '@/types/blog';
 
-export default function Blog({
-  code,
-  frontMatter,
-}: {
-  code: string;
-  frontMatter: BlogMeta;
-}) {
+export default function Blog({ code, meta }: { code: string; meta: BlogMeta }) {
   const MDXContent = useMemo(() => getMDXComponent(code), [code]);
   const components = {
     pre: Pre,
     wrapper: ArticleLayout,
   };
 
-  return <MDXContent components={components} />;
+  return <MDXContent components={components} {...meta} />;
 }
 
 export function getStaticPaths() {
