@@ -11,7 +11,7 @@ export default function ArticleLayout({
   children,
 }: BlogMeta & { children: ReactNode }) {
   return (
-    <div className="px-8">
+    <div className="md:px-8">
       <BlogSEO title={title} summary={summary} date={date} tags={tags} />
       <article className="prose max-w-none dark:prose-invert">
         <header className="flex flex-col">

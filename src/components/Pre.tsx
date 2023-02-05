@@ -1,5 +1,5 @@
 import { useState, useRef, ReactNode } from 'react';
-import { IconClipboardCheck, IconCopy } from '@tabler/icons';
+import { IconCopy, IconCheck } from '@tabler/icons';
 
 const Pre = ({ children }: { children?: ReactNode }) => {
   const codeBlockRef = useRef<HTMLDivElement>(null);
@@ -37,7 +37,7 @@ const Pre = ({ children }: { children?: ReactNode }) => {
           onClick={onCopy}
         >
           {copied ? (
-            <IconClipboardCheck className="text-green-400" />
+            <IconCheck className="text-green-400" />
           ) : (
             <IconCopy className="text-gray-300" />
           )}

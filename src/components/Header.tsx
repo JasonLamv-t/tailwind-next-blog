@@ -118,7 +118,7 @@ function MobileNavigation({ className }: { className?: string }) {
 }
 
 const Header = () => (
-  <header className="flex items-center justify-between py-10">
+  <header className="flex items-center justify-between py-6 sm:py-10">
     <Link href="/" aria-label={siteData.title}>
       <div className="flex items-center justify-between">
         <Image
