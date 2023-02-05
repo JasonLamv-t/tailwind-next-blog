@@ -1,14 +1,18 @@
+import { BlogSEO } from '@/components/SEO';
 import { BlogMeta } from '@/types/blog';
 import { ReactNode } from 'react';
 
 export default function ArticleLayout({
   title,
+  summary,
   date,
   dateString,
+  tags,
   children,
 }: BlogMeta & { children: ReactNode }) {
   return (
     <div className="px-8">
+      <BlogSEO title={title} summary={summary} date={date} tags={tags} />
       <article className="prose max-w-none dark:prose-invert">
         <header className="flex flex-col">
           <h1>{title}</h1>
