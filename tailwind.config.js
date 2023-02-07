@@ -5,6 +5,9 @@ module.exports = {
   plugins: [require('@tailwindcss/typography')],
   theme: {
     extend: {
+      minHeight: {
+        48: '12rem',
+      },
       typography: (theme) => ({
         invert: {
           css: {
@@ -80,7 +83,7 @@ module.exports = {
             p: {
               marginTop: theme('spacing.7'),
               marginBottom: theme('spacing.7'),
-              wordBreak: 'break-word'
+              wordBreak: 'break-word',
             },
             // Headings
             'h2, h3': {
