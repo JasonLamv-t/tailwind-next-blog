@@ -23,7 +23,7 @@ export default function AuthorLayout({ children }: { children: ReactNode }) {
         <Image
           src={avatar}
           alt="avatar"
-          className="w-48 md:w-56 lg:w-64 mx-auto sm:rotate-2 rounded-2xl"
+          className="w-48 md:w-56 lg:w-64 mx-auto sm:-rotate-2 rounded-2xl"
         />
         <div className="mt-6 sm:col-span-2">
           <h1 className="text-2xl font-bold leading-8 mb-4">{name}</h1>
@@ -81,7 +81,7 @@ export default function AuthorLayout({ children }: { children: ReactNode }) {
               />
             ))}
             <IconMinusVertical />
-            <Link href="/resources/Resume.pdf" title="resume">
+            <Link href="/resources/resume.pdf" title="resume">
               <IconFileText className="text-zinc-500 transition hover:text-teal-500 dark:text-zinc-200 dark:hover:text-teal-500" />
             </Link>
           </ul>

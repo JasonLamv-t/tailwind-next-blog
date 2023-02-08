@@ -8,7 +8,7 @@
     "prebuild": "node scripts/prebuild.js",
     "build": "pnpm prebuild && next build && next-sitemap",
     "export": "pnpm build && next export",
-    "start": "next start",
+    "start": "node scripts/prebuild.js && next start",
     "lint": "next lint"
   },
   "dependencies": {
