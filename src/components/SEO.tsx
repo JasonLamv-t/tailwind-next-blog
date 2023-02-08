@@ -4,18 +4,25 @@ import { BlogMeta } from '@/types/blog';
 import { NextSeo } from 'next-seo';
 import { useRouter } from 'next/router';
 
-export const IndexSEO = ({}) => {
+export const CommonSEO = ({
+  title = siteData.title,
+  description = siteData.description,
+}: {
+  title?: string;
+  description?: string;
+}) => {
   const url = siteData.url + useRouter().asPath;
+  const isIndex = useRouter().pathname === '/index';
 
   return (
     <NextSeo
-      title={siteData.title}
-      description={siteData.description}
+      title={title}
+      description={description}
       canonical={url}
       additionalLinkTags={[
         {
-          rel: 'icon',
-          href: siteData.url + siteData.logo,
+          rel: 'shortcut icon',
+          href: siteData.url + '/favicon.ico',
         },
       ]}
       twitter={{
@@ -26,8 +33,8 @@ export const IndexSEO = ({}) => {
       openGraph={{
         type: 'website',
         url,
-        title: siteData.title,
-        description: siteData.description,
+        title: title,
+        description: description,
         images: [
           {
             url: siteData.url + siteData.banner,
@@ -50,13 +57,12 @@ export const BlogSEO = ({
   return (
     <NextSeo
       title={title}
-      titleTemplate={siteData.title + ' | %s'}
       description={summary}
       canonical={url}
       additionalLinkTags={[
         {
-          rel: 'icon',
-          href: siteData.url + siteData.logo,
+          rel: 'shortcut icon',
+          href: siteData.url + '/favicon.ico',
         },
       ]}
       twitter={{

@@ -1,4 +1,5 @@
 import Card from '@/components/Card';
+import { CommonSEO } from '@/components/SEO';
 import { getAllBlogMetaAndSlug } from '@/libs/utils';
 import { BlogMeta } from '@/types/blog';
 
@@ -42,6 +43,7 @@ export default function BlogList({
 }) {
   return (
     <>
+      <CommonSEO title="Blogs | Brachistochrone" />
       <div className="md:border-l md:border-zinc-100 md:pl-6 md:dark:border-zinc-700/40">
         <div className="flex max-w-4xl flex-col space-y-2">
           {blogs.map((blog) => (
