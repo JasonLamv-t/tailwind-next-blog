@@ -34,8 +34,8 @@ export const formatFilename = (filename: string) =>
  * @param type subfolder in the data folder
  * @returns file contents
  */
-export const readFile = (filename: string, type: 'blogs' | 'projects') =>
-  fs.readFileSync(path.resolve('data', type, filename), 'utf8');
+export const readFile = (filename: string, type?: 'blogs' | 'projects') =>
+  fs.readFileSync(path.resolve('data', type ?? '', filename), 'utf8');
 
 /**
  * Format the date to local string

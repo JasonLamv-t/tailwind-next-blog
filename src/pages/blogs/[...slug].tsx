@@ -1,11 +1,11 @@
+import Pre from '@/components/Pre';
+import ArticleLayout from '@/layouts/ArticleLayout';
 import { parseMDX } from '@/libs/mdx';
-import { getAllBlogMetaAndSlug, readFile } from '@/libs/utils';
+import { getAllBlogMetaAndSlug } from '@/libs/utils';
+import { BlogMeta } from '@/types/blog';
 import { isEqual } from 'lodash-es';
 import { getMDXComponent } from 'mdx-bundler/client';
 import { useMemo } from 'react';
-import ArticleLayout from '@/layouts/ArticleLayout';
-import Pre from '@/components/Pre';
-import { BlogMeta } from '@/types/blog';
 
 export default function Blog({ code, meta }: { code: string; meta: BlogMeta }) {
   const MDXContent = useMemo(() => getMDXComponent(code), [code]);

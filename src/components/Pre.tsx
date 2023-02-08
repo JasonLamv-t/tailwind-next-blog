@@ -1,5 +1,5 @@
-import { useState, useRef, ReactNode } from 'react';
-import { IconCopy, IconCheck } from '@tabler/icons';
+import { IconCheck, IconCopy } from '@tabler/icons-react';
+import { ReactNode, useRef, useState } from 'react';
 
 const Pre = ({ children }: { children?: ReactNode }) => {
   const codeBlockRef = useRef<HTMLDivElement>(null);

@@ -14,7 +14,7 @@ import { formatDate, readFile } from './utils';
 
 export const parseMDX = async (
   filename: string,
-  type: 'blogs' | 'projects'
+  type?: 'blogs' | 'projects'
 ) => {
   const source = readFile(filename, type);
 

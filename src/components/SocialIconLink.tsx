@@ -1,19 +1,19 @@
-import { IconBrandBilibili } from '@/components/Icons';
 import {
+  Icon,
+  IconBrandBilibili,
   IconBrandFacebook,
   IconBrandGithub,
   IconBrandLinkedin,
   IconBrandTwitter,
   IconBrandYoutube,
-  IconMail,
-  TablerIcon
-} from '@tabler/icons';
+  IconMail
+} from '@tabler/icons-react';
 import clsx from 'clsx';
 import { toString } from 'lodash-es';
 import Link from 'next/link';
 
 interface SocialLink {
-  Icon: TablerIcon;
+  Icon: Icon;
   prefix?: string;
   suffix?: string;
 }

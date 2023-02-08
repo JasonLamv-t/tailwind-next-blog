@@ -8,13 +8,13 @@ import Card from '@/components/Card';
 const projects: Project[] = [
   {
     name: 'Remark-toc-export',
-    description: 'Remark plugin to generate a toc based on h tags and spit the output back using callbacks',
+    description: 'Remark plugin to generate a toc based on h tags and spit the output back using callbacks.',
     link: 'https://github.com/JasonLamv-t/remark-toc-export#remark-toc-export',
     logo: RemarkLogo,
   },
   {
     name: 'React-annotate',
-    description: 'React component for computer vision dataset annotation',
+    description: 'React component for computer vision dataset annotation.',
     link: 'https://github.com/ZitySpace/react-annotate',
     logo: ReactAnnotateLogo,
   },

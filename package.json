@@ -5,7 +5,8 @@
   "homepage": "https://jasonlam.cc",
   "scripts": {
     "dev": "next dev",
-    "build": "next build && next-sitemap",
+    "prebuild": "node scripts/prebuild.js",
+    "build": "pnpm prebuild && next build && next-sitemap",
     "export": "pnpm build && next export",
     "start": "next start",
     "lint": "next lint"

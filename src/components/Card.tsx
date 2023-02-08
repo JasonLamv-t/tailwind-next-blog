@@ -1,7 +1,7 @@
+import { IconArrowRight } from '@tabler/icons-react';
 import clsx from 'clsx';
 import Link from 'next/link';
 import { ElementType, ReactNode } from 'react';
-import { IconArrowRight } from '@tabler/icons';
 
 export default function Card({
   as: Component = 'div',
