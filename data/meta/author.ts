@@ -41,7 +41,7 @@ const authorData: AuthorData = {
     github: 'JasonLamv-t',
     linkedin: 'https://www.linkedin.cn/injobs/in/jason-lam-0827181b0',
     bilibili: '10905363',
-    twitter: 'JasonLamv-t',
+    // twitter: 'JasonLamv-t',
     // facebook: 'jasonlamv.t',
     // youtube: '@jasonlamv-t'
   },
