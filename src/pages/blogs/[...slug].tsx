@@ -1,6 +1,6 @@
-import Pre from '@/components/Pre';
 import ArticleLayout from '@/layouts/ArticleLayout';
 import { parseMDX } from '@/libs/mdx';
+import { mdxComponents } from '@/libs/mdxComponets';
 import { getAllBlogMetaAndSlug } from '@/libs/utils';
 import { BlogMeta } from '@/types/blog';
 import { isEqual } from 'lodash-es';
@@ -8,13 +8,12 @@ import { getMDXComponent } from 'mdx-bundler/client';
 import { useMemo } from 'react';
 
 export default function Blog({ code, meta }: { code: string; meta: BlogMeta }) {
-  const MDXContent = useMemo(() => getMDXComponent(code), [code]);
-  const components = {
-    pre: Pre,
-    wrapper: ArticleLayout,
-  };
+  const MDXContent = useMemo(
+    () => getMDXComponent(code, mdxComponents),
+    [code]
+  );
 
-  return <MDXContent components={components} {...meta} />;
+  return <MDXContent components={{ wrapper: ArticleLayout }} {...meta} />;
 }
 
 export function getStaticPaths() {
