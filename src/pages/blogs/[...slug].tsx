@@ -1,11 +1,11 @@
-import MDXRender from '@/components/MDXRender';
+import MDXRenderer from '@/components/MDXRenderer';
 import { parseMDX } from '@/libs/mdx';
 import { getAllBlogMetaAndSlug } from '@/libs/utils';
 import { BlogMeta } from '@/types/blog';
 import { isEqual } from 'lodash-es';
 
 export default function Blog({ code, meta }: { code: string; meta: BlogMeta }) {
-  return <MDXRender code={code} layout={'ArticleLayout'} meta={meta} />;
+  return <MDXRenderer code={code} layout={'ArticleLayout'} meta={meta} />;
 }
 
 export function getStaticPaths() {

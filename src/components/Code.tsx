@@ -1,7 +1,7 @@
 import { IconCheck, IconCopy } from '@tabler/icons-react';
 import { ReactNode, useRef, useState } from 'react';
 
-const Pre = ({ children }: { children?: ReactNode }) => {
+export const Pre = ({ children }: { children?: ReactNode }) => {
   const codeBlockRef = useRef<HTMLDivElement>(null);
   const [hovered, setHovered] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -48,5 +48,3 @@ const Pre = ({ children }: { children?: ReactNode }) => {
     </div>
   );
 };
-
-export default Pre;

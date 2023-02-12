@@ -1,10 +1,10 @@
 import { BlogMeta } from '@/types/blog';
 import { getMDXComponent } from 'mdx-bundler/client';
 import { useMemo } from 'react';
+import { Pre } from './Code';
 import Note from './Note';
-import Pre from './Pre';
 
-export default function MDXRender({
+export default function MDXRenderer({
   code,
   layout,
   meta,
