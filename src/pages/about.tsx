@@ -1,17 +1,8 @@
-import Pre from '@/components/Pre';
-import AuthorLayout from '@/layouts/AuthorLayout';
+import MDXRender from '@/components/MDXRender';
 import { parseMDX } from '@/libs/mdx';
-import { getMDXComponent } from 'mdx-bundler/client';
-import { useMemo } from 'react';
 
 export default function About({ code }: { code: string }) {
-  const MDXContent = useMemo(() => getMDXComponent(code), [code]);
-  const components = {
-    pre: Pre,
-    wrapper: AuthorLayout,
-  };
-
-  return <MDXContent components={components} />;
+  return <MDXRender code={code} layout={'AuthorLayout'} />;
 }
 
 export async function getStaticProps() {
