@@ -1,4 +1,5 @@
-import exportToc, { Heading, Toc } from '@jasonlamv-t/remark-toc-export';
+import rehypeCodeTitle from '@jasonlamv-t/rehype-code-title';
+import exportToc, { Heading, Toc } from '@jasonlamv-t/remark-toc-extract';
 import { bundleMDX } from 'mdx-bundler';
 import path from 'path';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
@@ -43,6 +44,7 @@ export const parseMDX = async (
         ...(options.rehypePlugins ?? []),
         rehypeKatex,
         rehypeAutolinkHeadings,
+        rehypeCodeTitle,
         [
           rehypePrism,
           {
