@@ -66,18 +66,20 @@ WebMonitor
 #! /usr/bin/env node
 // 指定脚本解析执行器，所有命令脚本文件都是必须的
 
-const { Command } = require('commander')
-const program = new Command()
+const { Command } = require('commander');
+const program = new Command();
 
 program
   .version('1.1.0')
-  .command('run', 'run a monitor process immediately', { executableFile: 'run' })
+  .command('run', 'run a monitor process immediately', {
+    executableFile: 'run',
+  })
   .alias('r')
   .command('config', 'config', { executableFile: 'config' })
-  .alias('c')
+  .alias('c');
 // .command('子命令', '命令描述', { executableFile: '子命令文件路径' }).alias('命令别称')
 
-program.parse(process.argv) // 无论子命令还是根命令都需要执行program.parse方法，参数详见commander文档
+program.parse(process.argv); // 无论子命令还是根命令都需要执行program.parse方法，参数详见commander文档
 ```
 
 ```
@@ -119,20 +121,20 @@ $ wmcli --version
 创建一个主题文件/plugins/theme.js，用于定义一些特定输出的主题，你可以根据自己喜好修改
 
 ```javascript
-const chalk = require('chalk')
-const error = chalk.bgRedBright.white
-const warning = chalk.keyword('orange')
-const info = chalk.yellowBright
+const chalk = require('chalk');
+const error = chalk.bgRedBright.white;
+const warning = chalk.keyword('orange');
+const info = chalk.yellowBright;
 
-console.log(error('error test'))
-console.log(warning('warning test'))
-console.log(info('info test'))
+console.log(error('error test'));
+console.log(warning('warning test'));
+console.log(info('info test'));
 
 module.exports = {
   error,
   warning,
   info,
-}
+};
 ```
 
 ### 子命令
@@ -144,18 +146,18 @@ module.exports = {
 ```javascript
 #! /usr/bin/env node
 
-const inquirer = require('inquirer')
-const fs = require('fs')
-const os = require('os')
-const { Command } = require('commander')
-const program = new Command() // 同样适用new Command对象创建子命令实例
-const { error, warning, info } = require('../plugins/theme')
+const inquirer = require('inquirer');
+const fs = require('fs');
+const os = require('os');
+const { Command } = require('commander');
+const program = new Command(); // 同样适用new Command对象创建子命令实例
+const { error, warning, info } = require('../plugins/theme');
 
-program
+program;
 // .option('-p --path <absolue path>', 'config file path')
 
-program.parse(process.argv) // 无论子命令还是根命令都需要执行program.parse方法，参数详见commander文档
-const options = program.opts() // 通过执行program.opts方法获取全部参数对象
+program.parse(process.argv); // 无论子命令还是根命令都需要执行program.parse方法，参数详见commander文档
+const options = program.opts(); // 通过执行program.opts方法获取全部参数对象
 
 // 定义提示列表，对应对象属性详见inquirer文档
 const promptList = [
@@ -164,26 +166,28 @@ const promptList = [
     message: '请输入Server酱的SCKEY:', // 提示消息
     name: 'server_sckey', // 变量亩
   },
-]
+];
 
 // 执行inquirer.prompt方法显示提示
 // 需要注意的是，一旦执行此方法会按顺序显示传入列表的所有提示并获取输入
 // 显然，这是一个异步操作，复杂的表单需要多次按照表单逻辑调用inquirer.prompt方法来实现
 inquirer.prompt(promptList).then((answers) => {
-  const configDirPath = os.homedir() + '/.webmonitor/' // 获取用户目录绝对路径拼接配置文件夹路径
-  let config = {}
+  const configDirPath = os.homedir() + '/.webmonitor/'; // 获取用户目录绝对路径拼接配置文件夹路径
+  let config = {};
   // 判断配置文件路径是否存在，不存在则创建路径
   if (fs.existsSync(configDirPath + 'config.json')) {
-    const rawdata = fs.readFileSync(configDirPath + 'config.json')
-    config = JSON.parse(rawdata)
-  } else if (!fs.existsSync(configDirPath)) fs.mkdirSync(configDirPath)
+    const rawdata = fs.readFileSync(configDirPath + 'config.json');
+    config = JSON.parse(rawdata);
+  } else if (!fs.existsSync(configDirPath)) fs.mkdirSync(configDirPath);
 
-  config.server_sckey = answers.server_sckey // 读入输入
+  config.server_sckey = answers.server_sckey; // 读入输入
 
   // 保存到配置文件
-  fs.writeFileSync(configDirPath + 'config.json', JSON.stringify(config), { flag: 'w+' })
-  console.log(info(`Config file save as ${configDirPath}config.json`))
-})
+  fs.writeFileSync(configDirPath + 'config.json', JSON.stringify(config), {
+    flag: 'w+',
+  });
+  console.log(info(`Config file save as ${configDirPath}config.json`));
+});
 ```
 
 #### run 命令参数定义
@@ -217,15 +221,17 @@ program
   )
   // 自定义参数，使用new Option方法创建，choices要求输入值在枚举范围内，default设置默认值，其他方法commander.js文档并无说明，但是可以通过查看Option方法定义代码找到对应接口
   .addOption(
-    new Option('-m, --method <request method>', 'current get only').choices(['get']).default('get')
+    new Option('-m, --method <request method>', 'current get only')
+      .choices(['get'])
+      .default('get')
   )
   .option('-r, --retry <retry time>', 'retry times limit', validator.isInt, 5)
-  .option('-w, --wechat', 'enable Wechat push notification')
+  .option('-w, --wechat', 'enable Wechat push notification');
 
-program.parse(process.argv)
+program.parse(process.argv);
 
-const options = program.opts() // 解析获取参数对象
-if (options.debug) console.log('options: ', options) // 如果是调试模式则打印全部参数
+const options = program.opts(); // 解析获取参数对象
+if (options.debug) console.log('options: ', options); // 如果是调试模式则打印全部参数
 ```
 
 #### 实现逻辑
@@ -242,35 +248,39 @@ const getRes = async () => {
   return new Promise((resolve, reject) => {
     axios[options.method](options.url)
       .then((r) => {
-        const $ = cheerio.load(r.data)
-        if (options.debug) console.log($.text())
-        resolve($.text())
+        const $ = cheerio.load(r.data);
+        if (options.debug) console.log($.text());
+        resolve($.text());
       })
       .catch((e) => {
         if (e.response) {
           // The request was made and the server responded with a status code
           // that falls out of the range of 2xx
-          console.log(error('Error! Request error. StatusCode:', e.response.status))
+          console.log(
+            error('Error! Request error. StatusCode:', e.response.status)
+          );
           if (options.debug || options.log) {
-            console.log('Response Data:', e.response.data)
-            console.log('Response Header:', e.response.headers)
+            console.log('Response Data:', e.response.data);
+            console.log('Response Header:', e.response.headers);
           }
         } else if (e.request) {
           // The request was made but no response was received
           // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
           // http.ClientRequest in node.js
-          console.log(error('The request was made but no response was received'))
-          if (options.debug || options.log) console.log('Request:', e.request)
-          else console.log(warning("add '-l' flag for more info"))
+          console.log(
+            error('The request was made but no response was received')
+          );
+          if (options.debug || options.log) console.log('Request:', e.request);
+          else console.log(warning("add '-l' flag for more info"));
         } else {
           // Something happened in setting up the request that triggered an Error
-          console.log('Error', e.message)
+          console.log('Error', e.message);
         }
-        if (options.debug) console.log(e.config)
-        reject(e)
-      })
-  })
-}
+        if (options.debug) console.log(e.config);
+        reject(e);
+      });
+  });
+};
 ```
 
 #### 主函数
@@ -278,60 +288,68 @@ const getRes = async () => {
 ```javascript
 const main = async () => {
   // 如果配置了微信推送，读取配置并构建通知方法
-  if (options.wechat) options.wechat = await notify.wechat()
-  if (!options.wechat) return -1 // 检查是否构建通知方法成功
+  if (options.wechat) options.wechat = await notify.wechat();
+  if (!options.wechat) return -1; // 检查是否构建通知方法成功
 
   let requestCount = 0,
-    retryCount = 0
+    retryCount = 0;
   let origin = await getRes() // 获取初始页面
     .then((r) => {
-      return r
+      return r;
     })
     .catch((e) => {
-      console.log(e)
-      return false
-    })
+      console.log(e);
+      return false;
+    });
 
-  console.log(origin)
+  console.log(origin);
 
-  if (!origin) return { code: -1, message: 'Failed to request a web page for the first time.' }
-  console.log('The request for the web page is successful. Start monitoring.')
+  if (!origin)
+    return {
+      code: -1,
+      message: 'Failed to request a web page for the first time.',
+    };
+  console.log('The request for the web page is successful. Start monitoring.');
 
   // 构建定时循环
   let pro = setInterval(async () => {
     // 获取新的页面内容
     let newWeb = await getRes()
       .then((r) => {
-        requestCount++
-        retryCount = 0
-        return r
+        requestCount++;
+        retryCount = 0;
+        return r;
       })
       .catch((e) => {
-        retryCount++
-        return false
-      })
+        retryCount++;
+        return false;
+      });
 
     // The web page has not changed and is in log mode
     if (newWeb && newWeb == origin && options.log)
-      console.log(`Request ${requestCount} times. The web page remains unchanged.`)
+      console.log(
+        `Request ${requestCount} times. The web page remains unchanged.`
+      );
     else if (newWeb && newWeb != origin) {
-      console.log(info('The web page has changed!'))
-      if (options.wechat) options.wechat() // 调用微信通知
+      console.log(info('The web page has changed!'));
+      if (options.wechat) options.wechat(); // 调用微信通知
       if (!options.daemon) {
         // 非守护模式则退出
-        console.log('process exit')
-        clearInterval(pro)
-      } else origin = newWeb
+        console.log('process exit');
+        clearInterval(pro);
+      } else origin = newWeb;
     } else if (!newWeb && retryCount <= options.retry)
-      console.log(warning(`Request fail, retry for ${retryCount} times`))
+      console.log(warning(`Request fail, retry for ${retryCount} times`));
     else if (!newWeb && retryCount > options.retry) {
-      console.log(error('The number of retries exceeds the limit! Process exit.'))
-      clearInterval(pro)
+      console.log(
+        error('The number of retries exceeds the limit! Process exit.')
+      );
+      clearInterval(pro);
     }
-  }, 1000 * options.interval)
-}
+  }, 1000 * options.interval);
+};
 
-main()
+main();
 ```
 
 ### 其他
@@ -342,18 +360,18 @@ main()
 
 ```javascript
 const wechat = async () => {
-  const configDirPath = os.homedir() + '/.webmonitor/'
-  let config = {}
+  const configDirPath = os.homedir() + '/.webmonitor/';
+  let config = {};
   if (fs.existsSync(configDirPath + 'config.json')) {
-    const rawdata = fs.readFileSync(configDirPath + 'config.json')
-    config = JSON.parse(rawdata)
+    const rawdata = fs.readFileSync(configDirPath + 'config.json');
+    config = JSON.parse(rawdata);
   }
 
   if (!config.server_sckey) {
-    console.log(error('Error: server酱 SCKEY no configured.'))
-    console.log(info("please run 'wmcli config' to config SCKEY"))
-    console.log('process exit.')
-    return false
+    console.log(error('Error: server酱 SCKEY no configured.'));
+    console.log(info("please run 'wmcli config' to config SCKEY"));
+    console.log('process exit.');
+    return false;
   }
 
   const promptList = [
@@ -367,7 +385,7 @@ const wechat = async () => {
       message: '请输入通知消息内容:',
       name: 'content',
     },
-  ]
+  ];
 
   return await inquirer.prompt(promptList).then((answers) => {
     return function () {
@@ -376,10 +394,10 @@ const wechat = async () => {
           text: answers.title,
           desp: answers.content,
         },
-      })
-    }
-  })
-}
+      });
+    };
+  });
+};
 ```
 
 #### 参数处理验证器
@@ -387,22 +405,23 @@ const wechat = async () => {
 [/plugins/validator.js](https://github.com/JasonLamv-t/WebMonitor/blob/main/plugins/validator.js)
 
 ```javascript
-const { InvalidOptionArgumentError } = require('commander') // commander自带的异常
+const { InvalidOptionArgumentError } = require('commander'); // commander自带的异常
 
 function isUrl(url) {
   const r = new RegExp(
     '^(?!mailto:)(?:(?:http|https|ftp)://|//)(?:\\S+(?::\\S*)?@)?(?:(?:(?:[1-9]\\d?|1\\d\\d|2[01]\\d|22[0-3])(?:\\.(?:1?\\d{1,2}|2[0-4]\\d|25[0-5])){2}(?:\\.(?:[0-9]\\d?|1\\d\\d|2[0-4]\\d|25[0-4]))|(?:(?:[a-z\\u00a1-\\uffff0-9]+-?)*[a-z\\u00a1-\\uffff0-9]+)(?:\\.(?:[a-z\\u00a1-\\uffff0-9]+-?)*[a-z\\u00a1-\\uffff0-9]+)*(?:\\.(?:[a-z\\u00a1-\\uffff]{2,})))|localhost)(?::\\d{2,5})?(?:(/|\\?|#)[^\\s]*)?$',
     'g'
-  )
-  if (!r.test(url)) throw new InvalidOptionArgumentError('Not a legitimate URL.') // 抛出异常
-  return url
+  );
+  if (!r.test(url))
+    throw new InvalidOptionArgumentError('Not a legitimate URL.'); // 抛出异常
+  return url;
 }
 
 function isInt(value, dummyPrevious) {
   // parseInt takes a string and a radix
-  const parsedValue = parseInt(value, 10)
-  if (isNaN(parsedValue)) throw new InvalidOptionArgumentError('Not a number.')
-  return parsedValue
+  const parsedValue = parseInt(value, 10);
+  if (isNaN(parsedValue)) throw new InvalidOptionArgumentError('Not a number.');
+  return parsedValue;
 }
 ```
 

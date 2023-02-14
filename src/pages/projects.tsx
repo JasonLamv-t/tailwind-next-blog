@@ -2,16 +2,24 @@ import { Project } from '@/types/project';
 import ServerlessDevsLogo from '@/assets/images/serverless-devs.jpeg';
 import ReactAnnotateLogo from '@/assets/images/react-annotate.jpg';
 import RemarkLogo from '@/assets/images/remark-logo.svg';
+import RehypeLogo from '@/assets/images/rehype-logo.svg';
 import Image from 'next/image';
 import Card from '@/components/Card';
 import { CommonSEO } from '@/components/SEO';
 
 const projects: Project[] = [
   {
-    name: 'Remark-toc-export',
+    name: 'Rehype-code-title',
+    description:
+      'Rehype plugin to add code block title in pre element as div element.',
+    link: 'https://github.com/JasonLamv-t/rehype-code-title#rehype-code-title',
+    logo: RehypeLogo,
+  },
+  {
+    name: 'Remark-toc-extract',
     description:
       'Remark plugin to generate a toc based on h tags and spit the output back using callbacks.',
-    link: 'https://github.com/JasonLamv-t/remark-toc-export#remark-toc-export',
+    link: 'https://github.com/JasonLamv-t/remark-toc-extract#remark-toc-extract',
     logo: RemarkLogo,
   },
   {

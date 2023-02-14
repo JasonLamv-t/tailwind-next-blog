@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.7.10",
-    "@jasonlamv-t/rehype-code-title": "^0.0.2",
+    "@jasonlamv-t/rehype-code-title": "^0.0.4",
     "@jasonlamv-t/remark-toc-extract": "^0.0.1",
     "@next/font": "13.1.1",
     "@tabler/icons-react": "^2.2.0",

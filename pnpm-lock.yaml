@@ -2,7 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@headlessui/react': ^1.7.10
-  '@jasonlamv-t/rehype-code-title': ^0.0.2
+  '@jasonlamv-t/rehype-code-title': ^0.0.4
   '@jasonlamv-t/remark-toc-extract': ^0.0.1
   '@next/bundle-analyzer': ^13.1.6
   '@next/env': ^13.1.6
@@ -44,7 +44,7 @@ specifiers:
 
 dependencies:
   '@headlessui/react': 1.7.10_biqbaboplfbrettd7655fr4n2y
-  '@jasonlamv-t/rehype-code-title': 0.0.2
+  '@jasonlamv-t/rehype-code-title': 0.0.4
   '@jasonlamv-t/remark-toc-extract': 0.0.1
   '@next/font': 13.1.1
   '@tabler/icons-react': 2.2.0_react@18.2.0
@@ -519,8 +519,8 @@ packages:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
     dev: false
 
-  /@jasonlamv-t/rehype-code-title/0.0.2:
-    resolution: {integrity: sha512-p2V1eTiy7loqFncBXeZJJFCMFAKek+P0GwCocnUoUKlQ+EKDp45a8IvmCu5hMZHsz/FIbgztw5N1GEbLw9Lcsw==}
+  /@jasonlamv-t/rehype-code-title/0.0.4:
+    resolution: {integrity: sha512-d/OCUspk2R9v1VQDVy8SuVREDUCj1xSmfPBaRILgFQdWvNgs/AzxN3CPjxOU81qMicQO1RljKZY0z59/GdQH4Q==}
     dependencies:
       unist-util-visit: 4.1.2
     dev: false

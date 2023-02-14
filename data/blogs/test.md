@@ -2,7 +2,7 @@
 title: test
 date: '2023-02-10'
 tags: ['NodeJS', 'commander', 'inquirer', 'chalk']
-draft: false
+draft: true
 summary: test
 images: []
 canonicalUrl: ''

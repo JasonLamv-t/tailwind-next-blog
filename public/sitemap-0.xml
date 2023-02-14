@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-<url><loc>https://jasonlam.cc</loc><lastmod>2023-02-08T14:05:26.141Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://jasonlam.cc/about</loc><lastmod>2023-02-08T14:05:26.141Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://jasonlam.cc/blogs</loc><lastmod>2023-02-08T14:05:26.141Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://jasonlam.cc/projects</loc><lastmod>2023-02-08T14:05:26.141Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://jasonlam.cc/blogs/practice-of-koa-with-typescript-part1</loc><lastmod>2023-02-08T14:05:26.141Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://jasonlam.cc/blogs/Git-abouts/githow-to-manage-your-code-workflow-better</loc><lastmod>2023-02-08T14:05:26.141Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://jasonlam.cc/blogs/cicdbased-github-action</loc><lastmod>2023-02-08T14:05:26.141Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://jasonlam.cc/blogs/ServerlessDevs/serverless-devs-based-pdf2img</loc><lastmod>2023-02-08T14:05:26.141Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://jasonlam.cc/blogs/ZitySpace/the-experience-of-website-internationalization</loc><lastmod>2023-02-08T14:05:26.141Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://jasonlam.cc/blogs/ZitySpace/wechatlogin-embedded-qrcode</loc><lastmod>2023-02-08T14:05:26.141Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://jasonlam.cc/blogs/ServerlessDevs/limitation-and-performance-test-of-docker-container</loc><lastmod>2023-02-08T14:05:26.141Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://jasonlam.cc/blogs/ServerlessDevs/node-based-cicd</loc><lastmod>2023-02-08T14:05:26.141Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://jasonlam.cc/blogs/webmonitor</loc><lastmod>2023-02-08T14:05:26.141Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://jasonlam.cc</loc><lastmod>2023-02-14T22:14:31.509Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://jasonlam.cc/about</loc><lastmod>2023-02-14T22:14:31.509Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://jasonlam.cc/blogs</loc><lastmod>2023-02-14T22:14:31.509Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://jasonlam.cc/projects</loc><lastmod>2023-02-14T22:14:31.509Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://jasonlam.cc/blogs/practice-of-koa-with-typescript-part1</loc><lastmod>2023-02-14T22:14:31.509Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://jasonlam.cc/blogs/Git-abouts/githow-to-manage-your-code-workflow-better</loc><lastmod>2023-02-14T22:14:31.509Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://jasonlam.cc/blogs/cicdbased-github-action</loc><lastmod>2023-02-14T22:14:31.509Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://jasonlam.cc/blogs/ServerlessDevs/serverless-devs-based-pdf2img</loc><lastmod>2023-02-14T22:14:31.509Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://jasonlam.cc/blogs/ZitySpace/the-experience-of-website-internationalization</loc><lastmod>2023-02-14T22:14:31.509Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://jasonlam.cc/blogs/ZitySpace/wechatlogin-embedded-qrcode</loc><lastmod>2023-02-14T22:14:31.509Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://jasonlam.cc/blogs/ServerlessDevs/limitation-and-performance-test-of-docker-container</loc><lastmod>2023-02-14T22:14:31.509Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://jasonlam.cc/blogs/ServerlessDevs/node-based-cicd</loc><lastmod>2023-02-14T22:14:31.509Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://jasonlam.cc/blogs/webmonitor</loc><lastmod>2023-02-14T22:14:31.509Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 </urlset>
