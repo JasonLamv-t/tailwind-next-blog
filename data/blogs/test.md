@@ -21,7 +21,12 @@ some thing here.
   API key from your dashboard. You find it under [Settings &raquo; API](#).
 </Note>
 
-```js {{ title: test }}
+```js:test
+const codeType = 'js';
+const title = 'test';
+```
+
+```js
 const codeType = 'js';
 const title = 'test';
 ```
