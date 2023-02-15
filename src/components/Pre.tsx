@@ -1,16 +1,14 @@
 import { IconCheck, IconCopy } from '@tabler/icons-react';
 import clsx from 'clsx';
-import { ReactElement, useRef, useState } from 'react';
+import { ReactElement, ReactNode, useRef, useState } from 'react';
 
-const Pre = ({ children }: { children?: ReactElement }) => {
+const Pre = ({ children }: { children?: ReactNode }) => {
   const codeBlockRef = useRef<HTMLPreElement>(null);
   const [copied, setCopied] = useState(false);
 
-  const CodeTitle = [children]
-    .flat()
-    .find(
-      (child) => child?.type === 'div' && child.props.className === 'code-title'
-    );
+  const CodeTitle = ([children].flat() as ReactElement[]).find(
+    (child) => child?.type === 'div' && child.props.className === 'code-title'
+  );
 
   const onCopy = () => {
     setCopied(true);
