@@ -26,9 +26,12 @@ const codeType = 'js';
 const title = 'test';
 ```
 
+```js:long line with title
+const codeType = 'js'; // something long long long long long long long long long long long long long long long long long long long long.
+```
+
 ```js
 const codeType = 'js';
-const title = 'test';
 ```
 
 ### H3

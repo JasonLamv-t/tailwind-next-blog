@@ -222,6 +222,8 @@ module.exports = {
             'pre .code-title': {
               height: '2.5rem',
               lineHeight: theme('lineHeight.10'),
+              position: 'sticky',
+              left: 0,
               borderBottomWidth: 'inherit',
               borderBottomColor: 'inherit',
               backgroundColor: 'var(--tw-prose-pre-title-bg)',
