@@ -20,7 +20,7 @@ canonicalUrl:
 3. 提取二维码：提取二维码并不是一件难事，我们可以直接请求微信提供的页面并直接通过正则等方式直接将图片地址从页面数据中截取出来。然而只有二维码并不能完成整个流程，还需要借助页面中的 js 等资源，因此需要保持微信页面在浏览器中正常运行。
 4. 提供微信 JS 资源运行环境：起初的想法是提取微信页面中的资源，但是无法正常运行。最终的解决方案是在 iframe 中加载微信页面并将 iframe 隐藏，以获得与微信认证服务器通信确认的能力。
 
-![流程图](https://tva1.sinaimg.cn/large/e6c9d24egy1h0vxj2glqvj20rm0peq4r.jpg)
+![流程图](https://image-lake.oss-cn-hangzhou.aliyuncs.com/uPic/e6c9d24egy1h0vxj2glqvj20rm0peq4r.jpg)
 
 ## Update
 

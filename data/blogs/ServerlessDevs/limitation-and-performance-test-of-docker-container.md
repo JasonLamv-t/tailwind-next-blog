@@ -13,7 +13,7 @@ canonicalUrl:
 
 宿主机使用 htop 及 ctop 查看进程及占用
 
-![image-20210902054450846](https://tva1.sinaimg.cn/large/008i3skNgy1gu1ujhfwgsj60q704z0te02.jpg)
+![image-20210902054450846](https://image-lake.oss-cn-hangzhou.aliyuncs.com/uPic/008i3skNgy1gu1ujhfwgsj60q704z0te02.jpg)
 
 ![image-20210902054532064](https://tva1.sinaimg.cn/large/008i3skNgy1gu1uk5tj9tj60q603474i02.jpg)
 
@@ -25,15 +25,17 @@ Docker 限制：4Core/2G
 
 ### stress -c 1/2/3/4(approximate result)
 
-![image-20210902062258023](https://tva1.sinaimg.cn/large/008i3skNgy1gu1vn4bne5j60q902x74j02.jpg)
+![image-20210902062258023](https://image-lake.oss-cn-hangzhou.aliyuncs.com/uPic/008i3skNgy1gu1vn4bne5j60q902x74j02.jpg)
 
-![image-20210902062407650](https://tva1.sinaimg.cn/large/008i3skNgy1gu1vobcpt6j60qb050dgv02.jpg)
+![image-20210902062407650](https://image-lake.oss-cn-hangzhou.aliyuncs.com/uPic/008i3skNgy1gu1vobcpt6j60qb050dgv02.jpg)
+
+
 
 ### stress -c 1 --vm 1 --vm-bytes 500M --vm-keep
 
-![image-20210902062909238](https://tva1.sinaimg.cn/large/008i3skNgy1gu1vtk2ccpj60q7031mxg02.jpg)
+![image-20210902062909238](https://image-lake.oss-cn-hangzhou.aliyuncs.com/uPic/008i3skNgy1gu1vtk2ccpj60q7031mxg02.jpg)
 
-![image-20210902062938947](https://tva1.sinaimg.cn/large/008i3skNgy1gu1vu2n9rij60q804zwfh02.jpg)
+![image-20210902062938947](https://image-lake.oss-cn-hangzhou.aliyuncs.com/uPic/008i3skNgy1gu1vu2n9rij60q804zwfh02-20230216034234129.jpg)
 
 ### hardinfo -m benchmark.so -a
 
@@ -83,23 +85,17 @@ PowerPC 740/750 (280.00MHz)	(null)	161.312647
 
 ## E1-2048MB
 
-### stress -c 1
-
-![image-20210902064216456](https://tva1.sinaimg.cn/large/008i3skNgy1gu1w775nn6j60q50313yr02.jpg)
-
-![image-20210902064229313](/Users/linjiaxiang/Library/Application Support/typora-user-images/image-20210902064229313.png)
-
 ### stress -c 2/3/4(approximate result)
 
-![image-20210902064306454](https://tva1.sinaimg.cn/large/008i3skNgy1gu1w82jja4j60q802xjrn02.jpg)
+![image-20210902064306454](https://image-lake.oss-cn-hangzhou.aliyuncs.com/uPic/008i3skNgy1gu1w82jja4j60q802xjrn02.jpg)
 
-![image-20210902064330554](https://tva1.sinaimg.cn/large/008i3skNgy1gu1w8hj6prj60qb050ab602.jpg)
+![image-20210902064330554](https://image-lake.oss-cn-hangzhou.aliyuncs.com/uPic/008i3skNgy1gu1w8hj6prj60qb050ab602.jpg)
 
 ### stress -c 1 --vm 4 --vm-bytes 500M --vm-keep
 
-![image-20210902064622133](https://tva1.sinaimg.cn/large/008i3skNgy1gu1wbgqbnoj60q902vaac02.jpg)
+![image-20210902064622133](https://image-lake.oss-cn-hangzhou.aliyuncs.com/uPic/008i3skNgy1gu1wbgqbnoj60q902vaac02.jpg)
 
-![image-20210902064637917](https://tva1.sinaimg.cn/large/008i3skNgy1gu1wbqkn7uj60q804zdh702.jpg)
+![image-20210902064637917](https://image-lake.oss-cn-hangzhou.aliyuncs.com/uPic/008i3skNgy1gu1wbqkn7uj60q804zdh702.jpg)
 
 Cpu usage 200%-300% on the host
 
@@ -153,21 +149,21 @@ PowerPC 740/750 (280.00MHz)	(null)	161.312647
 
 ### stress -c 1
 
-![image-20210902054728161](https://tva1.sinaimg.cn/large/008i3skNgy1gu1um6k81hj60q803haac02.jpg)
+![image-20210902054728161](https://image-lake.oss-cn-hangzhou.aliyuncs.com/uPic/008i3skNgy1gu1um6k81hj60q803haac02.jpg)
 
-![image-20210902054802486](https://tva1.sinaimg.cn/large/008i3skNgy1gu1umv7d52j60qa051q4102.jpg)
+![image-20210902054802486](https://image-lake.oss-cn-hangzhou.aliyuncs.com/uPic/008i3skNgy1gu1umv7d52j60qa051q4102.jpg)
 
 ### stress -c 2/3/4(approximate result)
 
-![image-20210902054900735](https://tva1.sinaimg.cn/large/008i3skNgy1gu1uns0euwj60qc02zaaa02.jpg)
+![image-20210902054900735](https://image-lake.oss-cn-hangzhou.aliyuncs.com/uPic/008i3skNgy1gu1uns0euwj60qc02zaaa02.jpg)
 
-![image-20210902054918690](https://tva1.sinaimg.cn/large/008i3skNgy1gu1uo39fbnj60qa053jsf02.jpg)
+![image-20210902054918690](https://image-lake.oss-cn-hangzhou.aliyuncs.com/uPic/008i3skNgy1gu1uo39fbnj60qa053jsf02.jpg)
 
 ### stress -c 1 --vm 4 --vm-bytes 500M --vm-keep
 
-![image-20210902060507293](https://tva1.sinaimg.cn/large/008i3skNgy1gu1v4jn7u9j60q402zwer02.jpg)
+![image-20210902060507293](https://image-lake.oss-cn-hangzhou.aliyuncs.com/uPic/008i3skNgy1gu1v4jn7u9j60q402zwer02-20230216034433529.jpg)
 
-![image-20210902060551944](https://tva1.sinaimg.cn/large/008i3skNgy1gu1v5bs66kj60q704wmyi02.jpg)
+![image-20210902060551944](https://image-lake.oss-cn-hangzhou.aliyuncs.com/uPic/008i3skNgy1gu1v5bs66kj60q704wmyi02.jpg)
 
 Cpu usage 300%-400% on the host
 
@@ -221,15 +217,15 @@ PowerPC 740/750 (280.00MHz)	(null)	161.312647
 
 ### stress -c 1/2/3/4(approximate result)
 
-![image-20210902070439847](https://tva1.sinaimg.cn/large/008i3skNgy1gu1wuhu81zj60qb037aab02.jpg)
+![image-20210902070439847](https://image-lake.oss-cn-hangzhou.aliyuncs.com/uPic/008i3skNgy1gu1wuhu81zj60qb037aab02.jpg)
 
-![image-20210902070453132](https://tva1.sinaimg.cn/large/008i3skNgy1gu1wuq5appj60q704z75e02.jpg)
+![image-20210902070453132](https://image-lake.oss-cn-hangzhou.aliyuncs.com/uPic/008i3skNgy1gu1wuq5appj60q704z75e02.jpg)
 
 ### stress -c 1 --vm 4 --vm-bytes 500M --vm-keep
 
-![image-20210902070550389](https://tva1.sinaimg.cn/large/008i3skNgy1gu1wvq8rmdj60q90380t102.jpg)
+![image-20210902070550389](https://image-lake.oss-cn-hangzhou.aliyuncs.com/uPic/008i3skNgy1gu1wvq8rmdj60q90380t102.jpg)
 
-![image-20210902070604889](https://tva1.sinaimg.cn/large/008i3skNgy1gu1wvz4ndgj60q70533zs02.jpg)
+![image-20210902070604889](https://image-lake.oss-cn-hangzhou.aliyuncs.com/uPic/008i3skNgy1gu1wvz4ndgj60q70533zs02.jpg)
 
 Cpu usage 200%-300% on the host
 

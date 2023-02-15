@@ -15,7 +15,7 @@ canonicalUrl:
 
 由于过去接触的项目较为粗浅，基本都是在如下的架构下进行修改:
 
-![image-20220406190726668](https://tva1.sinaimg.cn/large/e6c9d24ely1h107l41nilj20c106haa3.jpg)
+![image-20220406190726668](https://image-lake.oss-cn-hangzhou.aliyuncs.com/uPic/e6c9d24ely1h107l41nilj20c106haa3.jpg)
 
 由于业务场景什么的都比较简单（毕竟是学校里的一些项目），因此也能 handle 住。对于前后端的的自动化，主要是依赖于 IDE/shell script 的组合：
 
@@ -30,7 +30,7 @@ canonicalUrl:
 
 由于目前有一台 ECS，因此暂时托管在 ECS 上，架构比较简单：
 
-![image-20220406190757170](https://tva1.sinaimg.cn/large/e6c9d24ely1h107lnawwlj20lp0lpabc.jpg)
+![image-20220406190757170](https://image-lake.oss-cn-hangzhou.aliyuncs.com/uPic/e6c9d24ely1h107lnawwlj20lp0lpabc.jpg)
 
 在使用 actions 前需要跑通以下步骤：
 
