@@ -16,7 +16,7 @@ canonicalUrl:
 
 方案架构：
 
-![1 (1)](https://tva1.sinaimg.cn/large/008i3skNgy1gsnk6k0ynqj30ik0cddgi.jpg)
+![1 (1)](https://image-lake.oss-cn-hangzhou.aliyuncs.com/uPic/008i3skNgy1gsnk6k0ynqj30ik0cddgi.jpg)
 
 ## 开始之前
 
@@ -39,7 +39,7 @@ canonicalUrl:
 
 前往[RAM 访问控制](https://ram.console.aliyun.com/users)创建一个子用户，赋予其对象存储服务权限「AliyunOSSFullAccess」及管理函数计算(FC)服务权限「AliyunFCFullAccess」并创建 AccessKey。
 
-![image-20210720133222847](https://tva1.sinaimg.cn/large/008i3skNgy1gsncse20oij30s30823z3.jpg)
+![image-20210720133222847](https://image-lake.oss-cn-hangzhou.aliyuncs.com/uPic/008i3skNgy1gsncse20oij30s30823z3.jpg)
 
 ### 对象存储服务(OSS)
 
@@ -53,17 +53,17 @@ canonicalUrl:
 
 前往[日志服务](https://sls.console.aliyun.com/lognext/profile)开通日志服务，并创建一个名为 serverless-cicd-log 的 Project，创建成功后会提示是否创建 logStore，我们选择确认。
 
-![image-20210720135617456](https://tva1.sinaimg.cn/large/008i3skNgy1gsndh8gt29j30ap0bwwev.jpg)
+![image-20210720135617456](https://image-lake.oss-cn-hangzhou.aliyuncs.com/uPic/008i3skNgy1gsndh8gt29j30ap0bwwev.jpg)
 
-![image-20210720135627586](https://tva1.sinaimg.cn/large/008i3skNgy1gsndhen30aj308d05dt8n.jpg)
+![image-20210720135627586](https://image-lake.oss-cn-hangzhou.aliyuncs.com/uPic/008i3skNgy1gsndhen30aj308d05dt8n.jpg)
 
 logStore 我们填写名称，其他保持默认。
 
-![image-20210720135804507](https://tva1.sinaimg.cn/large/008i3skNgy1gsndj2z7npj30es0iyt9v.jpg)
+![image-20210720135804507](https://image-lake.oss-cn-hangzhou.aliyuncs.com/uPic/008i3skNgy1gsndj2z7npj30es0iyt9v.jpg)
 
 创建成功后会提示是否立即接入数据，我们选择取消。
 
-![image-20210720152752200](https://tva1.sinaimg.cn/large/008i3skNgy1gsng4itwpij30aw04ut8n.jpg)
+![image-20210720152752200](https://image-lake.oss-cn-hangzhou.aliyuncs.com/uPic/008i3skNgy1gsng4itwpij30aw04ut8n.jpg)
 
 ### Serverless-Devs 密钥配置
 
@@ -79,7 +79,7 @@ logStore 我们填写名称，其他保持默认。
 
 注意`双##`注释内容与项目生成配置文件的差异，主要有增加日志配置，修改超时时长以及修改 http 触发器合法请求方式：
 
-```yaml
+```yaml:s.yaml
 services:
   fc-deploy-test: #  服务名称
     component: devsapp/fc # 组件名称
@@ -127,19 +127,17 @@ services:
 
 上传名「id_rsa」的私钥文件(绑定到 Github 的 SSH 密钥)及名为「my_ssh_executable.sh」的脚本文件到对象存储桶根目录下
 
-```shell
-# my_ssh_executable.sh
+```shell:my_ssh_executable.sh
 #! /bin/sh
 ID_RSA=/tmp/id_rsa
 exec /usr/bin/ssh -o StrictHostKeyChecking=no -i $ID_RSA "$@"
 ```
 
-![image-20210720170214542](https://tva1.sinaimg.cn/large/008i3skNgy1gsniupvuk3j30xf05sdgd.jpg)
+![image-20210720170214542](https://image-lake.oss-cn-hangzhou.aliyuncs.com/uPic/008i3skNgy1gsniupvuk3j30xf05sdgd.jpg)
 
 ### 修改代码
 
-```javascript
-//index.js
+```javascript:index.js
 const getRawBody = require('raw-body')
 const getFormBody = require('body/form')
 const body = require('body')
@@ -242,7 +240,7 @@ exports.handler = async (req, resp, context) => {
 
 执行`s deploy`一键部署，通过控制台可以查看到部署结果
 
-![image-20210720172223703](https://tva1.sinaimg.cn/large/008i3skNgy1gsnjfonhokj30s00a10tr.jpg)
+![image-20210720172223703](https://image-lake.oss-cn-hangzhou.aliyuncs.com/uPic/008i3skNgy1gsnjfonhokj30s00a10tr.jpg)
 
 ### 配置 GitHub
 
@@ -254,7 +252,7 @@ exports.handler = async (req, resp, context) => {
 
 ### 触发测试
 
-```shell
+```bash
 cd frontend-project-dir
 git tag v1.0 -m 'new version'
 git push origin tag v1.0
@@ -262,9 +260,9 @@ git push origin tag v1.0
 
 ### 输出
 
-![image-20210720181402727](https://tva1.sinaimg.cn/large/008i3skNgy1gsnkxfcz71j30n50ebabh.jpg)
+![image-20210720181402727](https://image-lake.oss-cn-hangzhou.aliyuncs.com/uPic/008i3skNgy1gsnkxfcz71j30n50ebabh.jpg)
 
-![image-20210720181415414](https://tva1.sinaimg.cn/large/008i3skNgy1gsnkxn8w92j30h606rdg2.jpg)
+![image-20210720181415414](https://image-lake.oss-cn-hangzhou.aliyuncs.com/uPic/008i3skNgy1gsnkxn8w92j30h606rdg2.jpg)
 
 ## 附录与参考
 
