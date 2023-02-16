@@ -18,6 +18,11 @@ const Footer = () => {
               key={platform}
             />
           ))}
+          <SocialIconLink
+            className="hover:text-zinc-400"
+            platform="rss"
+            value=""
+          />
         </div>
 
         <div className="mt-4 md:order-2 md:mt-0 text-center text-xs leading-5 text-gray-500">

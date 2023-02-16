@@ -1,7 +1,8 @@
 import siteData from '#/meta/site';
 import Card from '@/components/Card';
 import { CommonSEO } from '@/components/SEO';
-import { getAllBlogMetaAndSlug } from '@/libs/utils';
+import feed from '@/libs/feed';
+import { genFeedFiles, getAllBlogMetaAndSlug } from '@/libs/utils';
 import { BlogMeta } from '@/types/blog';
 
 function Article({ blog }: { blog: BlogMeta & { href: string } }) {
@@ -57,10 +58,13 @@ export default function Home({
 }
 
 export function getStaticProps() {
-  const AllBlogs = getAllBlogMetaAndSlug().map(({ meta, slug }) => ({
+  const allBlogs = getAllBlogMetaAndSlug().map(({ meta, slug }) => ({
     ...meta,
     href: 'blogs/' + slug.join('/'),
   }));
 
-  return { props: { blogs: AllBlogs } };
+  allBlogs.map(feed.addBlogToFeed);
+  genFeedFiles(feed);
+
+  return { props: { blogs: allBlogs } };
 }

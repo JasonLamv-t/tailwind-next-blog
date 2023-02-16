@@ -2,6 +2,7 @@ import siteData from '#/meta/site';
 import { BlogMeta } from '@/types/blog';
 
 import fg from 'fast-glob';
+import { Feed } from 'feed';
 import fs from 'fs';
 import matter from 'gray-matter';
 import { orderBy } from 'lodash-es';
@@ -74,4 +75,11 @@ export const getAllBlogMetaAndSlug = () => {
     );
 
   return orderBy(blogMetaAndSlug, 'meta.date', 'desc');
+};
+
+/**
+ * Write feed date to file in public directory
+ */
+export const genFeedFiles = (feed: Feed) => {
+  fs.writeFileSync(path.resolve('public/rss.xml'), feed.rss2());
 };

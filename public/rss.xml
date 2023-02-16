@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+    <channel>
+        <title>Brachistochrone</title>
+        <link>https://jasonlam.cc</link>
+        <description>Jason Lam's personal website</description>
+        <lastBuildDate>Thu, 16 Feb 2023 11:35:54 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <image>
+            <title>Brachistochrone</title>
+            <url>https://jasonlam.cc/images/logo.jpg</url>
+            <link>https://jasonlam.cc</link>
+        </image>
+        <copyright>All rights reserved 2023, Jason Lam / 林家祥</copyright>
+        <item>
+            <title><![CDATA[Practice of Koa with Typescript - Part 1]]></title>
+            <link>https://jasonlam.ccblogs/practice-of-koa-with-typescript-part1</link>
+            <guid>blogs/practice-of-koa-with-typescript-part1</guid>
+            <pubDate>Fri, 23 Dec 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[最近闲来无事，于是决定对 Koa 框架进行简单的熟悉，并了解和使用一些包。本文介绍了一个基于 TS 的 Koa 项目如何从0开始搭建。]]></description>
+            <author>jasonlamv-t@hotmail.com (Jason Lam / 林家祥)</author>
+        </item>
+        <item>
+            <title><![CDATA[Git-How to manage your code workflow better]]></title>
+            <link>https://jasonlam.ccblogs/Git-abouts/githow-to-manage-your-code-workflow-better</link>
+            <guid>blogs/Git-abouts/githow-to-manage-your-code-workflow-better</guid>
+            <pubDate>Thu, 20 Oct 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[在经历过几个项目的协同开发后，我决定写下这篇文章，以记录我对于 Git 的使用方式的一些思考。]]></description>
+            <author>jasonlamv-t@hotmail.com (Jason Lam / 林家祥)</author>
+        </item>
+        <item>
+            <title><![CDATA[基于 GitHub Action 的 CI/CD 初体验-以本站为例]]></title>
+            <link>https://jasonlam.ccblogs/cicdbased-github-action</link>
+            <guid>blogs/cicdbased-github-action</guid>
+            <pubDate>Mon, 04 Apr 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[因为种种原因，我将博客迁移到以 Next·tailwind 为主的技术框架，因此想要重新搭建一套 CI/CD 的流程，正好借这个机会学习一下 Github action 并了解一下 ACR(Aliyun Container Registry)。]]></description>
+            <author>jasonlamv-t@hotmail.com (Jason Lam / 林家祥)</author>
+        </item>
+        <item>
+            <title><![CDATA[Serverless-Devs实践-基于 GhostScript 的 PDF 转 JPG]]></title>
+            <link>https://jasonlam.ccblogs/ServerlessDevs/serverless-devs-based-pdf2img</link>
+            <guid>blogs/ServerlessDevs/serverless-devs-based-pdf2img</guid>
+            <pubDate>Thu, 15 Jul 2021 16:00:00 GMT</pubDate>
+            <description><![CDATA[该项目是基于GhostScript的PDF转JPG工具，借助Serverless-Devs工具进行依赖安装并部署到阿里云函数计算，是一个serverless的简单示例。]]></description>
+            <author>jasonlamv-t@hotmail.com (Jason Lam / 林家祥)</author>
+        </item>
+        <item>
+            <title><![CDATA[前端国际化实践]]></title>
+            <link>https://jasonlam.ccblogs/ZitySpace/the-experience-of-website-internationalization</link>
+            <guid>blogs/ZitySpace/the-experience-of-website-internationalization</guid>
+            <pubDate>Wed, 10 Nov 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[这是我第一次接触国际化/i18n，在实践过程中学到了一些东西，特地记录一下。这不是一篇友好的快速入门的新手教程，但是有一些过程中的坑和解决技巧。]]></description>
+            <author>jasonlamv-t@hotmail.com (Jason Lam / 林家祥)</author>
+        </item>
+        <item>
+            <title><![CDATA[微信扫码登陆-提取二维码]]></title>
+            <link>https://jasonlam.ccblogs/ZitySpace/wechatlogin-embedded-qrcode</link>
+            <guid>blogs/ZitySpace/wechatlogin-embedded-qrcode</guid>
+            <pubDate>Sat, 02 Oct 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[本文是提出了一种微信扫码登陆时避免打开新窗口，并获取二维码的实现方案]]></description>
+            <author>jasonlamv-t@hotmail.com (Jason Lam / 林家祥)</author>
+        </item>
+        <item>
+            <title><![CDATA[Docker 限制与性能测试]]></title>
+            <link>https://jasonlam.ccblogs/ServerlessDevs/limitation-and-performance-test-of-docker-container</link>
+            <guid>blogs/ServerlessDevs/limitation-and-performance-test-of-docker-container</guid>
+            <pubDate>Mon, 16 Aug 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[本文创作于Serverless-Devs开发时，为实现生成容器资源限制而进行的探究]]></description>
+            <author>jasonlamv-t@hotmail.com (Jason Lam / 林家祥)</author>
+        </item>
+        <item>
+            <title><![CDATA[Serverless-Devs实践-基于 Node 的前端 CICD]]></title>
+            <link>https://jasonlam.ccblogs/ServerlessDevs/node-based-cicd</link>
+            <guid>blogs/ServerlessDevs/node-based-cicd</guid>
+            <pubDate>Sun, 04 Jul 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[Serverless Devs是一个开源开放的 Serverless 开发者平台，致力于为开发者提供强大的工具链体系。通过该平台，开发者可以一键体验多云 Serverless 产品，极速部署 Serverless 项目。本文介绍通过Serverless-Devs部署一个前端CICD系统。]]></description>
+            <author>jasonlamv-t@hotmail.com (Jason Lam / 林家祥)</author>
+        </item>
+        <item>
+            <title><![CDATA[WebMonitor-NodeJS based CLI tool 命令行工具实战]]></title>
+            <link>https://jasonlam.ccblogs/webmonitor</link>
+            <guid>blogs/webmonitor</guid>
+            <pubDate>Wed, 16 Jun 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[第一次开发基于NodeJS的命令行工具]]></description>
+            <author>jasonlamv-t@hotmail.com (Jason Lam / 林家祥)</author>
+        </item>
+    </channel>
+</rss>
