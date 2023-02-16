@@ -1,11 +1,11 @@
-import { Project } from '@/types/project';
-import ServerlessDevsLogo from '@/assets/images/serverless-devs.jpeg';
-import ReactAnnotateLogo from '@/assets/images/react-annotate.jpg';
-import RemarkLogo from '@/assets/images/remark-logo.svg';
-import RehypeLogo from '@/assets/images/rehype-logo.svg';
-import Image from 'next/image';
+import ReactAnnotateLogo from '@/assets/images/projects/react-annotate.jpg';
+import RehypeLogo from '@/assets/images/projects/rehype-logo.svg';
+import RemarkLogo from '@/assets/images/projects/remark-logo.svg';
+import ServerlessDevsLogo from '@/assets/images/projects/serverless-devs.jpeg';
 import Card from '@/components/Card';
 import { CommonSEO } from '@/components/SEO';
+import { Project } from '@/types/project';
+import Image from 'next/image';
 
 const projects: Project[] = [
   {

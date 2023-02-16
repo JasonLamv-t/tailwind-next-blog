@@ -1,5 +1,4 @@
 import authorData from '#/meta/author';
-import { CommonSEO } from '@/components/SEO';
 import SocialIconLink from '@/components/SocialIconLink';
 import {
   IconBriefcase,
@@ -7,7 +6,7 @@ import {
   IconBuildingSkyscraper,
   IconFileText,
   IconMapPin,
-  IconMinusVertical,
+  IconMinusVertical
 } from '@tabler/icons-react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -20,8 +19,6 @@ export default function AuthorLayout({ children }: { children: ReactNode }) {
 
   return (
     <div className="flex flex-col">
-      <CommonSEO title="Jason Lam | Brachistochrone" />
-
       <div className="max-w-4xl mt-8 mx-auto md:ml-10 items-center grid grid-cols-1 sm:grid-cols-3 sm:space-x-6 md:space-x-8 lg:space-x-12">
         <Image
           src={avatar}

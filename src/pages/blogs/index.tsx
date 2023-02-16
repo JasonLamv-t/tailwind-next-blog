@@ -56,10 +56,10 @@ export default function BlogList({
 }
 
 export function getStaticProps() {
-  const AllBlogs = getAllBlogMetaAndSlug().map(({ meta, slug }) => ({
+  const allBlogs = getAllBlogMetaAndSlug().map(({ meta, slug }) => ({
     ...meta,
     href: 'blogs/' + slug.join('/'),
   }));
 
-  return { props: { blogs: AllBlogs } };
+  return { props: { blogs: allBlogs } };
 }
