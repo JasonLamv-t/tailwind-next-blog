@@ -1,9 +1,9 @@
 import { BlogMeta } from '@/types/blog';
 import { getMDXComponent } from 'mdx-bundler/client';
 import { useMemo } from 'react';
-import Pre from './Pre';
-import Note from './Note';
 import Code from './Code';
+import Note from './Note';
+import Pre from './Pre';
 
 export default function MDXRenderer({
   code,
@@ -11,11 +11,11 @@ export default function MDXRenderer({
   meta,
 }: {
   code: string;
-  layout: 'ArticleLayout' | 'AuthorLayout';
+  layout?: 'ArticleLayout';
   meta?: BlogMeta;
 }) {
   const MDXContent = useMemo(() => getMDXComponent(code), [code]);
-  const wrapper = require(`@/layouts/${layout}`).default;
+  const wrapper = layout ? require(`@/layouts/${layout}`).default : '';
   const components = {
     wrapper,
     pre: Pre,
