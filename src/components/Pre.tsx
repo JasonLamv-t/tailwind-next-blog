@@ -1,6 +1,7 @@
 import { IconCheck, IconCopy } from '@tabler/icons-react';
 import clsx from 'clsx';
 import { ReactElement, ReactNode, useRef, useState } from 'react';
+import Button from './Button';
 
 const Pre = ({ children }: { children?: ReactNode }) => {
   const codeBlockRef = useRef<HTMLPreElement>(null);
@@ -26,7 +27,7 @@ const Pre = ({ children }: { children?: ReactNode }) => {
   return (
     <div className="relative group">
       <pre ref={codeBlockRef}>
-        <button
+        <Button
           className={clsx(
             'absolute right-3 p-1 rounded-lg border-0 bg-gray-700 dark:bg-gray-800 hidden group-hover:block',
             !!CodeTitle ? 'top-12 mt-1' : 'top-3'
@@ -38,7 +39,7 @@ const Pre = ({ children }: { children?: ReactNode }) => {
           ) : (
             <IconCopy className="text-gray-300" />
           )}
-        </button>
+        </Button>
         {children}
       </pre>
     </div>

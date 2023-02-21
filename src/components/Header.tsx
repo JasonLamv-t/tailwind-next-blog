@@ -8,6 +8,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { Fragment } from 'react';
+import Button from './Button';
 import Search from './Search';
 
 const navigation = [
@@ -67,7 +68,7 @@ function MobileNavigation({ className }: { className?: string }) {
   return (
     <Popover className={clsx(className)}>
       <Popover.Button
-        className="flex items-center backdrop-blur p-1 rounded-md text-zinc-500 hover:bg-zinc-100 dark:hover:bg-zinc-800/90"
+        className="flex items-center backdrop-blur p-1 rounded-md text-zinc-500 hover:bg-zinc-100 dark:hover:bg-zinc-800/90 focus:[&:not(:focus-visible)]:outline-none"
         type="button"
         aria-label="Open navigation menu"
       >
@@ -96,18 +97,22 @@ function MobileNavigation({ className }: { className?: string }) {
         >
           <Popover.Panel
             focus
-            className="fixed inset-x-4 top-8 z-50 origin-top rounded-3xl bg-white p-8 ring-1 ring-zinc-900/5 dark:bg-zinc-900 dark:ring-zinc-800"
+            className="w-1/2 inset-x-4 fixed left-auto top-6 right-6 z-50 rounded-2xl bg-white p-6 ring-1 ring-zinc-900/5 dark:bg-zinc-900 dark:ring-zinc-800"
           >
-            <div className="flex flex-row-reverse items-center justify-between">
-              <Popover.Button aria-label="Close menu" className="-m-1 p-1">
-                <IconX className="h-6 w-6 text-zinc-500 dark:text-zinc-400" />
+            <div className="fixed top-3 right-12 h-6 w-6 inline-flex gap-1">
+              <ThemeSwitcher className=" hover:bg-inherit" />
+              <Popover.Button
+                aria-label="Close menu"
+                className="focus:[&:not(:focus-visible)]:outline-none"
+              >
+                <Button className="w-8 h-8 text-zinc-500 ">
+                  <IconX className="text-zinc-500 dark:text-zinc-400" />
+                </Button>
               </Popover.Button>
-              <h2 className="text-sm font-medium text-zinc-600 dark:text-zinc-400">
-                Navigation
-              </h2>
             </div>
-            <nav className="mt-6">
-              <ul className="-my-2 divide-y divide-zinc-100 text-base text-zinc-800 dark:divide-zinc-100/5 dark:text-zinc-300">
+
+            <nav className="">
+              <ul className="text-base text-zinc-800  dark:text-zinc-300">
                 {navigation.map(([name, href]) => (
                   <MobileNavItem href={href} key={name}>
                     {name}
@@ -115,6 +120,7 @@ function MobileNavigation({ className }: { className?: string }) {
                 ))}
               </ul>
             </nav>
+            <div></div>
           </Popover.Panel>
         </Transition.Child>
       </Transition.Root>

@@ -1,10 +1,10 @@
 import { IconSearch } from '@tabler/icons-react';
 import clsx from 'clsx';
+import Button from './Button';
 
 export default function Search({ className }: { className?: string }) {
   return (
-    <button
-      type="button"
+    <Button
       aria-label="Open search dialog"
       className={clsx(
         className,
@@ -14,12 +14,14 @@ export default function Search({ className }: { className?: string }) {
     >
       <IconSearch className="h-auto w-5 lg:w-4 lg:ml-1" />
       <div className="w-full text-sm hidden lg:inline-flex items-center">
-        <span className="ml-1 mr-auto text-zinc-400 dark:text-zinc-500">Find something...</span>
+        <span className="ml-1 mr-auto text-zinc-400 dark:text-zinc-500">
+          Find something...
+        </span>
         <kbd className="text-2xs mr-1">
           <kbd className="font-sans">Ctrl </kbd>
           <kbd className="font-sans">K</kbd>
         </kbd>
       </div>
-    </button>
+    </Button>
   );
 }
