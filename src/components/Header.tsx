@@ -2,12 +2,13 @@ import siteData from '#/meta/site';
 import logo from '@/assets/images/logo.jpg';
 import ThemeSwitcher from '@/components/ThemeSwitcher';
 import { Popover, Transition } from '@headlessui/react';
-import { IconMenu2, IconX } from '@tabler/icons-react';
+import { IconMenu2, IconMinusVertical, IconX } from '@tabler/icons-react';
 import clsx from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { Fragment } from 'react';
+import Search from './Search';
 
 const navigation = [
   ['Blogs', '/blogs'],
@@ -50,8 +51,8 @@ function MobileNavItem({ href, children }: { href: string; children: string }) {
 
 function DesktopNavigation({ className }: { className?: string }) {
   return (
-    <nav className={clsx(className, 'ml-auto mr-0')}>
-      <ul className="flex px-3 text-sm font-medium text-zinc-800 backdrop-blur dark:text-zinc-200">
+    <nav className={clsx(className)}>
+      <ul className="flex text-sm font-medium text-zinc-800 backdrop-blur dark:text-zinc-200">
         {navigation.map(([name, href]) => (
           <NavItem href={href} key={name}>
             {name}
@@ -65,8 +66,12 @@ function DesktopNavigation({ className }: { className?: string }) {
 function MobileNavigation({ className }: { className?: string }) {
   return (
     <Popover className={clsx(className)}>
-      <Popover.Button className="group flex items-center rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10 dark:hover:ring-white/20">
-        <IconMenu2 className="h-auto w-5 stroke-zinc-500 group-hover:stroke-zinc-700 dark:group-hover:stroke-zinc-400" />
+      <Popover.Button
+        className="flex items-center backdrop-blur p-1 rounded-md text-zinc-500 hover:bg-zinc-100 dark:hover:bg-zinc-800/90"
+        type="button"
+        aria-label="Open navigation menu"
+      >
+        <IconMenu2 className="h-auto w-6 " />
       </Popover.Button>
       <Transition.Root>
         <Transition.Child
@@ -132,10 +137,14 @@ const Header = () => (
       </div>
     </Link>
 
-    <DesktopNavigation className="hidden sm:block" />
-    <MobileNavigation className="sm:hidden" />
+    <div className="h-8 w-0.5 ml-4 mr-1 bg-zinc-500/80 hidden sm:block "></div>
+    <DesktopNavigation className="ml-0 mr-auto hidden sm:block" />
 
-    <ThemeSwitcher />
+    <div className="inline-flex gap-2 lg:w-full max-w-sm">
+      <Search className="ml-auto" />
+      <MobileNavigation className="sm:hidden" />
+      <ThemeSwitcher className="hidden sm:block" />
+    </div>
   </header>
 );
 

@@ -8,6 +8,7 @@ module.exports = {
       minHeight: {
         48: '12rem',
       },
+      fontSize: { '2xs': ['0.75rem', { lineHeight: '1.25rem' }] },
       typography: (theme) => ({
         invert: {
           css: {
