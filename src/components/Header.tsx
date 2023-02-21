@@ -97,19 +97,16 @@ function MobileNavigation({ className }: { className?: string }) {
         >
           <Popover.Panel
             focus
-            className="w-1/2 inset-x-4 fixed left-auto top-6 right-6 z-50 rounded-2xl bg-white p-6 ring-1 ring-zinc-900/5 dark:bg-zinc-900 dark:ring-zinc-800"
+            className="w-1/2 inset-x-4 fixed left-auto top-6 right-6 z-50 rounded-2xl bg-white p-6 py-4 ring-1 ring-zinc-900/5 dark:bg-zinc-900 dark:ring-zinc-800"
           >
-            <div className="fixed top-3 right-12 h-6 w-6 inline-flex gap-1">
-              <ThemeSwitcher className=" hover:bg-inherit" />
-              <Popover.Button
-                aria-label="Close menu"
-                className="focus:[&:not(:focus-visible)]:outline-none"
-              >
-                <Button className="w-8 h-8 text-zinc-500 ">
-                  <IconX className="text-zinc-500 dark:text-zinc-400" />
-                </Button>
-              </Popover.Button>
-            </div>
+            <Popover.Button
+              aria-label="Close menu"
+              className="fixed top-3 right-3 h-6 w-6 inline-flex focus:[&:not(:focus-visible)]:outline-none"
+            >
+              <Button className="w-8 h-8 text-zinc-500 ">
+                <IconX className="text-zinc-500 dark:text-zinc-400" />
+              </Button>
+            </Popover.Button>
 
             <nav className="">
               <ul className="text-base text-zinc-800  dark:text-zinc-300">
@@ -137,7 +134,7 @@ const Header = () => (
           src={logo}
           alt="logo"
         />
-        <div className="ml-3 h-auto text-2xl font-semibold hidden sm:block">
+        <div className="ml-3 h-auto font-semibold text-md sm:block sm:text-2xl">
           {siteData.title}
         </div>
       </div>
@@ -148,8 +145,8 @@ const Header = () => (
 
     <div className="inline-flex gap-2 lg:w-full max-w-sm">
       <Search className="ml-auto" />
+      <ThemeSwitcher />
       <MobileNavigation className="sm:hidden" />
-      <ThemeSwitcher className="hidden sm:block" />
     </div>
   </header>
 );
