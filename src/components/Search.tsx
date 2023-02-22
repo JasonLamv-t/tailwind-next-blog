@@ -1,8 +1,17 @@
 import { IconSearch } from '@tabler/icons-react';
 import clsx from 'clsx';
+import { useEffect, useState } from 'react';
 import Button from './Button';
 
 export default function Search({ className }: { className?: string }) {
+  const [modifierKey, setModifierKey] = useState<'⌘' | 'Ctrl '>();
+
+  useEffect(() => {
+    setModifierKey(
+      /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform) ? '⌘' : 'Ctrl '
+    );
+  }, []);
+
   return (
     <Button
       aria-label="Open search dialog"
@@ -18,7 +27,7 @@ export default function Search({ className }: { className?: string }) {
           Find something...
         </span>
         <kbd className="text-2xs mr-1">
-          <kbd className="font-sans">Ctrl </kbd>
+          <kbd className="font-sans">{modifierKey}</kbd>
           <kbd className="font-sans">K</kbd>
         </kbd>
       </div>
