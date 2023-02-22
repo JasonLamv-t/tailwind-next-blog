@@ -36,7 +36,7 @@ const codeType = 'js'; // something long long long long long long long long long
 const codeType = 'js';
 ```
 
-### latex
+### latex/katex
 
 Lift($L$) can be determined by Lift Coefficient ($C_L$) like the following
 equation.
