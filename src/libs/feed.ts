@@ -17,7 +17,7 @@ const feedOptions: FeedOptions = {
   image: siteData.url + siteData.logo,
   favicon: siteData.url + 'favicon.ico',
   copyright: `All rights reserved ${new Date().getFullYear()}, ${
-    authorData.name
+    siteData.author
   }`,
   feedLinks: {
     rss2: siteData.url + '/rss.xml',
