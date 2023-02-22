@@ -130,11 +130,11 @@ const Header = () => (
     <Link href="/" aria-label={siteData.title}>
       <div className="flex items-center justify-between">
         <Image
-          className="w-9 h-9 rounded-full sm:w-12 sm:h-12"
+          className="w-10 h-10 rounded-full sm:w-12 sm:h-12"
           src={logo}
           alt="logo"
         />
-        <div className="ml-3 h-auto font-semibold text-md sm:block sm:text-2xl">
+        <div className="ml-3 h-auto font-semibold text-xl sm:block sm:text-2xl">
           {siteData.title}
         </div>
       </div>
