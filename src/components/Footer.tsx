@@ -28,7 +28,9 @@ const Footer = () => {
         <div className="mt-4 md:order-2 md:mt-0 text-center text-xs leading-5 text-gray-500">
           <p className="md:text-right">
             Copyright &copy;
-            {` ${new Date().getFullYear()} Jason Lam. All rights reserved.`}
+            {` ${new Date().getFullYear()} ${
+              siteData.author
+            }. All rights reserved.`}
           </p>
 
           <p className="md:text-right">
