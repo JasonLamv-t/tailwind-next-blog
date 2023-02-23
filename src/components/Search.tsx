@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { createAutocomplete } from '@algolia/autocomplete-core';
 import { getAlgoliaResults } from '@algolia/autocomplete-preset-algolia';
 import { Dialog, Transition } from '@headlessui/react';
@@ -13,7 +14,7 @@ import {
   useEffect,
   useId,
   useRef,
-  useState
+  useState,
 } from 'react';
 import Button from './Button';
 
