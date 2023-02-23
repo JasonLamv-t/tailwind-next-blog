@@ -5,6 +5,17 @@ const nextConfig = {
     unoptimized: true,
   },
   basePath: process.env.BASE_PATH,
+  webpack(config) {
+    config.module.rules = [
+      ...config.module.rules,
+      {
+        test: /\.svg$/,
+        use: ['@svgr/webpack'],
+      },
+    ];
+
+    return config;
+  },
 };
 
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
