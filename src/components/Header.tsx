@@ -2,7 +2,7 @@ import siteData from '#/meta/site';
 import logo from '@/assets/images/logo.jpg';
 import ThemeSwitcher from '@/components/ThemeSwitcher';
 import { Popover, Transition } from '@headlessui/react';
-import { IconMenu2, IconMinusVertical, IconX } from '@tabler/icons-react';
+import { IconMenu2, IconX } from '@tabler/icons-react';
 import clsx from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -143,8 +143,8 @@ const Header = () => (
     <div className="h-8 w-0.5 ml-4 mr-1 bg-zinc-500/80 hidden sm:block "></div>
     <DesktopNavigation className="ml-0 mr-auto hidden sm:block" />
 
-    <div className="inline-flex gap-2 lg:w-full max-w-sm">
-      <Search className="ml-auto" />
+    <div className="inline-flex gap-2 lg:w-full max-w-sm justify-end">
+      {process.env.NODE_ENV !== 'production' && <Search />}
       <ThemeSwitcher />
       <MobileNavigation className="sm:hidden" />
     </div>

@@ -70,8 +70,9 @@ export const getAllBlogMetaAndSlug = () => {
         : formatFilename(filename);
       return { meta, slug, filename };
     })
-    .filter(({ meta: { draft } }) =>
-      process.env.NODE_ENV === 'development' ? true : !draft
+    .filter(
+      ({ meta: { draft } }) =>
+        process.env.NODE_ENV === 'development' ? true : !draft // hide draft in production
     );
 
   return orderBy(blogMetaAndSlug, 'meta.date', 'desc');
