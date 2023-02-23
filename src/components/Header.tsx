@@ -1,3 +1,4 @@
+import config from '#/meta/config';
 import siteData from '#/meta/site';
 import logo from '@/assets/images/logo.jpg';
 import ThemeSwitcher from '@/components/ThemeSwitcher';
@@ -10,6 +11,8 @@ import { useRouter } from 'next/router';
 import { Fragment } from 'react';
 import Button from './Button';
 import Search from './Search';
+
+const { algoliaUseabled, algoliaEnabled } = config;
 
 const navigation = [
   ['Blogs', '/blogs'],
@@ -144,7 +147,7 @@ const Header = () => (
     <DesktopNavigation className="ml-0 mr-auto hidden sm:block" />
 
     <div className="inline-flex gap-2 lg:w-full max-w-sm justify-end">
-      {process.env.NODE_ENV !== 'production' && <Search />}
+      {algoliaUseabled && algoliaEnabled && <Search />}
       <ThemeSwitcher />
       <MobileNavigation className="sm:hidden" />
     </div>

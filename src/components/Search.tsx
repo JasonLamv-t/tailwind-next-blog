@@ -1,9 +1,12 @@
 import AligoliaLogo from '@/assets/icons/algolia-logo.svg';
-import { createAutocomplete } from '@algolia/autocomplete-core';
-import { getAlgoliaResults } from '@algolia/autocomplete-preset-algolia';
+import { resolveResult, Result, useAutocomplete } from '@/libs/algolia';
+import {
+  AutocompleteApi,
+  AutocompleteCollection,
+  AutocompleteState
+} from '@algolia/autocomplete-core';
 import { Dialog, Transition } from '@headlessui/react';
 import { IconLoader2, IconSearch, IconSearchOff } from '@tabler/icons-react';
-import algoliasearch from 'algoliasearch/lite';
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
 import {
@@ -14,123 +17,26 @@ import {
   useEffect,
   useId,
   useRef,
-  useState,
+  useState
 } from 'react';
 import Button from './Button';
 
-// type HierarchyIndex =
-//   | 'lvl0'
-//   | 'lvl1'
-//   | 'lvl2'
-//   | 'lvl3'
-//   | 'lvl4'
-//   | 'lvl5'
-//   | 'lvl6';
-
-// interface Content {
-//   value: string;
-//   matchLevel: string | unknown;
-//   fullyHighlighted?: boolean | unknown;
-//   matchedWords: string[];
-// }
-
-// interface Result extends BaseItem {
-//   url: string;
-//   url_without_anchor: string;
-//   anchor: string;
-//   content: 'content' | HierarchyIndex;
-//   type: string;
-//   hierarchy: {
-//     [key in HierarchyIndex]: string | null;
-//   };
-//   objectID: string;
-//   _snippetResult: {
-//     content: {
-//       value: string;
-//       matchLevel: string | unknown;
-//     };
-//   };
-//   _highlightResult: {
-//     content: Content;
-//     hierarchy: {
-//       [key in HierarchyIndex]: Content;
-//     };
-//   };
-// }
-
-const searchClient = algoliasearch(
-  process.env.NEXT_PUBLIC_DOCSEARCH_APP_ID as string,
-  process.env.NEXT_PUBLIC_DOCSEARCH_API_KEY as string
-);
-
-function useAutocomplete() {
-  const id = useId();
-  const router = useRouter();
-  const [autocompleteState, setAutocompleteState] = useState({});
-
-  const [autocomplete] = useState(() =>
-    createAutocomplete({
-      id,
-      placeholder: 'Find something...',
-      defaultActiveItemId: 0,
-      onStateChange({ state }) {
-        setAutocompleteState(state);
-      },
-      shouldPanelOpen({ state }) {
-        return state.query !== '';
-      },
-      navigator: {
-        navigate({ itemUrl }) {
-          autocomplete.setIsOpen(true);
-          router.push(itemUrl);
-        },
-      },
-      getSources() {
-        return [
-          {
-            sourceId: 'querySuggestions',
-            getItemInputValue({ item }) {
-              return item.query;
-            },
-            getItemUrl({ item }) {
-              const url = new URL(item.url);
-              return `${url.pathname}${url.hash}`;
-            },
-            onSelect({ itemUrl }) {
-              router.push(itemUrl);
-            },
-            getItems({ query }) {
-              return getAlgoliaResults({
-                searchClient,
-                queries: [
-                  {
-                    query,
-                    indexName: process.env
-                      .NEXT_PUBLIC_DOCSEARCH_INDEX_NAME as string,
-                    params: {
-                      hitsPerPage: 5,
-                      highlightPreTag:
-                        '<mark class="underline bg-transparent text-emerald-500">',
-                      highlightPostTag: '</mark>',
-                    },
-                  },
-                ],
-              });
-            },
-          },
-        ];
-      },
-    })
-  );
-
-  return { autocomplete, autocompleteState };
-}
-
-const SearchInput = forwardRef(function SearchInput(
-  { autocomplete, autocompleteState, onClose },
-  inputRef
-) {
-  let inputProps = autocomplete.getInputProps({});
+const SearchInput = forwardRef<
+  HTMLInputElement,
+  {
+    autocomplete: AutocompleteApi<
+      Result,
+      React.ChangeEvent,
+      React.MouseEvent,
+      React.KeyboardEvent
+    >;
+    autocompleteState: AutocompleteState<Result> | null;
+    onClose: () => void;
+  }
+>(function SearchInput({ autocomplete, autocompleteState, onClose }, inputRef) {
+  const inputProps = autocomplete.getInputProps({
+    inputElement: null,
+  });
 
   return (
     <div className="group relative flex h-12">
@@ -139,17 +45,18 @@ const SearchInput = forwardRef(function SearchInput(
         ref={inputRef}
         className={clsx(
           'flex-auto appearance-none bg-transparent pl-10 text-zinc-900 outline-none placeholder:text-zinc-500 focus:w-full focus:flex-none dark:text-white sm:text-sm [&::-webkit-search-cancel-button]:hidden [&::-webkit-search-decoration]:hidden [&::-webkit-search-results-button]:hidden [&::-webkit-search-results-decoration]:hidden',
-          autocompleteState.status === 'stalled' ? 'pr-11' : 'pr-4'
+          autocompleteState?.status === 'stalled' ? 'pr-11' : 'pr-4'
         )}
         {...inputProps}
         onKeyDown={(event) => {
           if (
             event.key === 'Escape' &&
-            !autocompleteState.isOpen &&
-            autocompleteState.query === ''
+            !autocompleteState?.isOpen &&
+            autocompleteState?.query === ''
           ) {
             // In Safari, closing the dialog with the escape key can sometimes cause the scroll position to jump to the
             // bottom of the page. This is a workaround for that until we can figure out a proper fix in Headless UI.
+            // @ts-ignore
             document.activeElement?.blur();
 
             onClose();
@@ -158,7 +65,7 @@ const SearchInput = forwardRef(function SearchInput(
           }
         }}
       />
-      {autocompleteState.status === 'stalled' && (
+      {autocompleteState?.status === 'stalled' && (
         <div className="absolute inset-y-0 right-3 flex items-center">
           <IconLoader2 className="h-5 w-5 animate-spin stroke-zinc-300  dark:stroke-zinc-400 " />
         </div>
@@ -167,34 +74,24 @@ const SearchInput = forwardRef(function SearchInput(
   );
 });
 
-function resolveResult(result) {
-  let allLevels = Object.keys(result.hierarchy);
-  let hierarchy = Object.entries(result._highlightResult.hierarchy).filter(
-    ([, { value }]) => Boolean(value)
-  );
-  let levels = hierarchy.map(([level]) => level);
-
-  let level =
-    result.type === 'content'
-      ? levels.pop()
-      : levels
-          .filter(
-            (level) =>
-              allLevels.indexOf(level) <= allLevels.indexOf(result.type)
-          )
-          .pop();
-
-  return {
-    titleHtml: result._highlightResult.hierarchy[level].value,
-    hierarchyHtml: hierarchy
-      .slice(0, levels.indexOf(level))
-      .map(([, { value }]) => value),
-  };
-}
-
-function SearchResult({ result, resultIndex, autocomplete, collection }) {
-  let id = useId();
-  let { titleHtml, hierarchyHtml } = resolveResult(result);
+function SearchResult({
+  result,
+  resultIndex,
+  autocomplete,
+  collection,
+}: {
+  result: Result;
+  resultIndex: number;
+  autocomplete: AutocompleteApi<
+    Result,
+    React.ChangeEvent,
+    React.MouseEvent,
+    React.KeyboardEvent
+  > | null;
+  collection: AutocompleteCollection<Result>;
+}) {
+  const id = useId();
+  const { titleHtml, hierarchyHtml } = resolveResult(result);
 
   return (
     <li
@@ -203,7 +100,7 @@ function SearchResult({ result, resultIndex, autocomplete, collection }) {
         resultIndex > 0 && 'border-t border-zinc-100 dark:border-zinc-800'
       )}
       aria-labelledby={`${id}-hierarchy ${id}-title`}
-      {...autocomplete.getItemProps({
+      {...autocomplete?.getItemProps({
         item: result,
         source: collection.source,
       })}
@@ -240,8 +137,21 @@ function SearchResult({ result, resultIndex, autocomplete, collection }) {
   );
 }
 
-function SearchResults({ autocomplete, query, collection }) {
-  if (collection.items.length === 0) {
+function SearchResults({
+  autocomplete,
+  query,
+  collection,
+}: {
+  autocomplete: AutocompleteApi<
+    Result,
+    React.ChangeEvent,
+    React.MouseEvent,
+    React.KeyboardEvent
+  >;
+  query?: string;
+  collection?: AutocompleteCollection<Result>;
+}) {
+  if (!collection || collection.items.length === 0) {
     return (
       <div className="p-6 text-center">
         <IconSearchOff className="mx-auto h-4 w-4 stroke-zinc-900 dark:stroke-zinc-600" />
@@ -257,10 +167,10 @@ function SearchResults({ autocomplete, query, collection }) {
   }
 
   return (
-    <ul role="list" {...autocomplete.getListProps()}>
+    <ul {...autocomplete.getListProps()}>
       {collection.items.map((result, resultIndex) => (
         <SearchResult
-          key={result.objectID}
+          key={result.objectID as string}
           result={result}
           resultIndex={resultIndex}
           autocomplete={autocomplete}
@@ -280,9 +190,9 @@ function SearchDialog({
   setOpen: Dispatch<SetStateAction<boolean>>;
   className?: string;
 }) {
-  const formRef = useRef(null);
-  const panelRef = useRef(null);
-  const inputRef = useRef(null);
+  const formRef = useRef<HTMLFormElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
   const { autocomplete, autocompleteState } = useAutocomplete();
 
@@ -356,12 +266,12 @@ function SearchDialog({
                     className="border-t border-zinc-200 bg-white empty:hidden dark:bg-zinc-900 dark:ring-zinc-800 dark:border-zinc-100/5 dark:bg-white/2.5"
                     {...autocomplete.getPanelProps({})}
                   >
-                    {autocompleteState.isOpen && (
+                    {autocompleteState?.isOpen && (
                       <>
                         <SearchResults
                           autocomplete={autocomplete}
-                          query={autocompleteState.query}
-                          collection={autocompleteState.collections[0]}
+                          query={autocompleteState?.query}
+                          collection={autocompleteState?.collections[0]}
                         />
                         <p className="flex items-center justify-end gap-2 border-t border-zinc-100 px-4 py-2 text-xs text-zinc-400 dark:border-zinc-800 dark:text-zinc-500">
                           Search by{' '}
