@@ -2,7 +2,7 @@ import {
   AutocompleteApi,
   AutocompleteState,
   BaseItem,
-  createAutocomplete
+  createAutocomplete,
 } from '@algolia/autocomplete-core';
 import { getAlgoliaResults } from '@algolia/autocomplete-preset-algolia';
 import algoliasearch from 'algoliasearch';
@@ -89,9 +89,9 @@ export function useAutocomplete() {
                 const url = new URL(item.url as string);
                 return `${url.pathname}${url.hash}`;
               },
-              // onSelect({ itemUrl }) {
-              //   router.push(itemUrl);
-              // },
+              onSelect({ itemUrl }) {
+                router.push(itemUrl as string);
+              },
               getItems({ query }) {
                 return getAlgoliaResults({
                   searchClient,
