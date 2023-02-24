@@ -3,11 +3,13 @@ import {
   IconBrandBilibili,
   IconBrandFacebook,
   IconBrandGithub,
+  IconBrandInstagram,
   IconBrandLinkedin,
   IconBrandTwitter,
+  IconBrandWeibo,
   IconBrandYoutube,
   IconMail,
-  IconRss
+  IconRss,
 } from '@tabler/icons-react';
 import clsx from 'clsx';
 import { toString } from 'lodash-es';
@@ -28,6 +30,8 @@ const SocialLinks: { [key: string]: SocialLink } = {
   facebook: { Icon: IconBrandFacebook, prefix: 'https://www.facebook.com/' },
   youtube: { Icon: IconBrandYoutube, prefix: 'https://www.youtube.com/' },
   bilibili: { Icon: IconBrandBilibili, prefix: 'https://space.bilibili.com/' },
+  weibo: { Icon: IconBrandWeibo },
+  instagram: { Icon: IconBrandInstagram, prefix: 'https://www.instagram.com/' },
 };
 
 const SocialIconLink = ({

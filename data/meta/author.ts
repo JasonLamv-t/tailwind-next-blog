@@ -17,12 +17,13 @@ interface AuthorData {
   social: {
     email?: string;
     github?: string;
-    linkedin?: string;
+    linkedin?: string; // full link
     twitter?: string;
     facebook?: string;
     youtube?: string;
-    acfun?: string;
     bilibili?: string;
+    weibo?: string; // full link
+    instagram?: string;
   };
 }
 
@@ -41,6 +42,8 @@ const authorData: AuthorData = {
     github: 'JasonLamv-t',
     linkedin: 'https://www.linkedin.cn/injobs/in/jason-lam-0827181b0',
     bilibili: '10905363',
+    instagram: 'jasonlamvt',
+    weibo: 'https://weibo.com/u/5609011652',
     // twitter: 'JasonLamv-t',
     // facebook: 'jasonlamv.t',
     // youtube: '@jasonlamv-t'
