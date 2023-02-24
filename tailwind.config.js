@@ -254,6 +254,7 @@ module.exports = {
             table: {
               width: '100%',
               tableLayout: 'auto',
+              wordBreak: 'break-word',
               textAlign: 'left',
               fontSize: theme('fontSize.sm')[0],
             },
