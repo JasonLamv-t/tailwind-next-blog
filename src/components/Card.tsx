@@ -28,12 +28,14 @@ export default function Card({
 
 Card.Title = function Title({
   as: Component = 'h2',
+  className,
   children,
 }: {
   as?: ElementType;
+  className?: string;
   children: ReactNode;
 }) {
-  return <Component>{children}</Component>;
+  return <Component className={className}>{children}</Component>;
 };
 
 Card.Badges = function Badges({ badges }: { badges: string[] }) {
