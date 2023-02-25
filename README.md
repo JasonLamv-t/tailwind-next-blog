@@ -19,6 +19,7 @@ If you have any questions in use, please ask the issue, and I will reply and dea
 - MDX support via [mdx-bundler](https://github.com/kentcdodds/mdx-bundler)
 - Support for nested routing of blog posts
 - List of projects in waterfall flow view
+- Additional build-in markdown syntax support via mdx, can also customize.
 
 ## Quick Start
 
