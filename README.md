@@ -10,6 +10,7 @@ If you have any questions in use, please ask the issue, and I will reply and dea
 
 ![NextJS version](https://img.shields.io/badge/NextJS-13-yellow) ![TailwindCSS version](https://img.shields.io/badge/TailwindCSS-3-blue) ![TypeScript](https://img.shields.io/badge/TypeScript-blue) ![pnpm](https://img.shields.io/badge/pnpm-red)
 
+- GFM support
 - Preconfigured security headers, which is SEO friendly, supports RSS and Sitemap
 - Support search everything in the blog via [Algolia](https://algolia.com/).[Docsearch](https://docsearch.algolia.com/)
 - Mobile-friendly view
