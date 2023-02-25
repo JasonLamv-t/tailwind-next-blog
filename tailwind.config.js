@@ -117,7 +117,7 @@ module.exports = {
             a: {
               color: 'var(--tw-prose-links)',
               fontWeight: theme('fontWeight.semibold'),
-              textDecoration: 'underline',
+              textDecoration: 'none',
               textDecorationColor: 'var(--tw-prose-underline)',
               transitionProperty: 'color, text-decoration-color',
               transitionDuration: theme('transitionDuration.150'),
@@ -127,6 +127,7 @@ module.exports = {
             },
             'a:hover': {
               color: 'var(--tw-prose-links-hover)',
+              textDecoration: 'underline',
               textDecorationColor: 'var(--tw-prose-underline-hover)',
             },
             strong: {
