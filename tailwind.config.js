@@ -225,6 +225,8 @@ module.exports = {
               lineHeight: theme('lineHeight.10'),
               position: 'sticky',
               left: 0,
+              borderTopLeftRadius: theme('borderRadius.2xl'),
+              borderTopRightRadius: theme('borderRadius.2xl'),
               borderBottomWidth: 'inherit',
               borderBottomColor: 'inherit',
               backgroundColor: 'var(--tw-prose-pre-title-bg)',
