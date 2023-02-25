@@ -17,6 +17,7 @@ import Link from 'next/link';
 
 interface SocialLink {
   Icon: Icon;
+  title?: string;
   prefix?: string;
   suffix?: string;
 }
@@ -24,14 +25,38 @@ interface SocialLink {
 const SocialLinks: { [key: string]: SocialLink } = {
   rss: { Icon: IconRss, prefix: '/rss.xml' },
   email: { Icon: IconMail, prefix: 'mailto:' },
-  github: { Icon: IconBrandGithub, prefix: 'https://github.com/' },
-  linkedin: { Icon: IconBrandLinkedin },
-  twitter: { Icon: IconBrandTwitter, prefix: 'https://twitter.com/' },
-  facebook: { Icon: IconBrandFacebook, prefix: 'https://www.facebook.com/' },
-  youtube: { Icon: IconBrandYoutube, prefix: 'https://www.youtube.com/' },
-  bilibili: { Icon: IconBrandBilibili, prefix: 'https://space.bilibili.com/' },
-  weibo: { Icon: IconBrandWeibo },
-  instagram: { Icon: IconBrandInstagram, prefix: 'https://www.instagram.com/' },
+  github: {
+    Icon: IconBrandGithub,
+    prefix: 'https://github.com/',
+    title: 'Github',
+  },
+  linkedin: { Icon: IconBrandLinkedin, title: 'Linkedin' },
+  twitter: {
+    Icon: IconBrandTwitter,
+    prefix: 'https://twitter.com/',
+    title: 'Twitter',
+  },
+  facebook: {
+    Icon: IconBrandFacebook,
+    prefix: 'https://www.facebook.com/',
+    title: 'Facebook',
+  },
+  youtube: {
+    Icon: IconBrandYoutube,
+    prefix: 'https://www.youtube.com/',
+    title: 'Youtube',
+  },
+  bilibili: {
+    Icon: IconBrandBilibili,
+    prefix: 'https://space.bilibili.com/',
+    title: 'Bilibili',
+  },
+  weibo: { Icon: IconBrandWeibo, title: 'Weibo' },
+  instagram: {
+    Icon: IconBrandInstagram,
+    prefix: 'https://www.instagram.com/',
+    title: 'Instagram',
+  },
 };
 
 const SocialIconLink = ({
@@ -43,9 +68,10 @@ const SocialIconLink = ({
   value: string;
   className?: string;
 }) => {
-  const { Icon, prefix, suffix } = SocialLinks[platform];
+  const { Icon, prefix, suffix, title } = SocialLinks[platform];
   return (
     <Link
+      title={title ?? platform}
       href={toString(prefix) + value + toString(suffix)}
       className={clsx(className, 'w-6 h-6')}
     >
