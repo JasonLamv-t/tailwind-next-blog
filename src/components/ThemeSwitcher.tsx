@@ -18,7 +18,7 @@ const ThemeSwitcher = ({ className }: { className?: string }) => {
       className={clsx(
         className,
         'focus:[&:not(:focus-visible)]:outline-none',
-        'px-1.5 items-center w-8 h-8 backdrop-blur rounded-md dark:hover:bg-zinc-800/90 text-zinc-500 hover:bg-zinc-100'
+        'px-1.5 items-center w-8 h-8 rounded-md dark:hover:bg-zinc-800/90 text-zinc-500 hover:bg-zinc-100'
       )}
       onClick={() =>
         setTheme(

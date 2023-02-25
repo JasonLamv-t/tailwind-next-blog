@@ -2,7 +2,7 @@ import { resolveResult, Result, useAutocomplete } from '@/libs/algolia';
 import {
   AutocompleteApi,
   AutocompleteCollection,
-  AutocompleteState
+  AutocompleteState,
 } from '@algolia/autocomplete-core';
 import { Dialog, Transition } from '@headlessui/react';
 import { IconLoader2, IconSearch, IconSearchOff } from '@tabler/icons-react';
@@ -16,7 +16,7 @@ import {
   useEffect,
   useId,
   useRef,
-  useState
+  useState,
 } from 'react';
 import Button from './Button';
 
@@ -332,7 +332,7 @@ export default function Search({ className }: { className?: string }) {
         aria-label="Open search dialog"
         className={clsx(
           className,
-          'w-8 h-8 inline-flex p-1.5 backdrop-blur items-center rounded-md text-zinc-500 hover:bg-zinc-100 dark:hover:bg-zinc-800/90',
+          'w-8 h-8 inline-flex p-1.5 items-center rounded-md text-zinc-500 hover:bg-zinc-100 dark:hover:bg-zinc-800/90',
           'lg:w-full max-w-xs lg:hover:bg-inherit lg:rounded-full lg:ring-1 ring-zinc-900/10 transition hover:ring-zinc-900/20 dark:lg:bg-white/5 dark:ring-inset dark:ring-white/10 dark:hover:ring-white/20 focus:[&:not(:focus-visible)]:outline-none'
         )}
         onClick={() => setDialogOpen(true)}

@@ -71,7 +71,7 @@ function MobileNavigation({ className }: { className?: string }) {
   return (
     <Popover className={clsx(className)}>
       <Popover.Button
-        className="flex items-center backdrop-blur p-1 rounded-md text-zinc-500 hover:bg-zinc-100 dark:hover:bg-zinc-800/90 focus:[&:not(:focus-visible)]:outline-none"
+        className="flex items-center p-1 rounded-md text-zinc-500 hover:bg-zinc-100 dark:hover:bg-zinc-800/90 focus:[&:not(:focus-visible)]:outline-none"
         type="button"
         aria-label="Open navigation menu"
       >
