@@ -29,8 +29,10 @@ const Pre = ({ children }: { children?: ReactNode }) => {
       <pre ref={codeBlockRef}>
         <Button
           className={clsx(
-            'absolute right-3 p-1 rounded-lg border-0 bg-gray-700 dark:bg-gray-800 hidden group-hover:block',
-            !!CodeTitle ? 'top-12 mt-1' : 'top-3'
+            'absolute right-3 p-1 rounded-lg border-0',
+            ' bg-gray-700 dark:bg-gray-800 hidden group-hover:block ring-1 ring-gray-600',
+            !!CodeTitle ? 'top-12 mt-1' : 'top-3',
+            copied ? 'ring-green-400' : 'hover:ring-gray-300'
           )}
           onClick={onCopy}
         >
