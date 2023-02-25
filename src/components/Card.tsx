@@ -35,7 +35,9 @@ Card.Title = function Title({
   className?: string;
   children: ReactNode;
 }) {
-  return <Component className={className}>{children}</Component>;
+  return (
+    <Component className={clsx(className, 'font-bold')}>{children}</Component>
+  );
 };
 
 Card.Badges = function Badges({ badges }: { badges: string[] }) {
