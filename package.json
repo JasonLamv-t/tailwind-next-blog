@@ -9,7 +9,8 @@
     "build": "pnpm prebuild && next build && next-sitemap",
     "export": "pnpm build && next export",
     "serve": "pnpm build && next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "newpost": "node scripts/newpost.mjs"
   },
   "dependencies": {
     "@algolia/autocomplete-core": "^1.8.2",
@@ -56,6 +57,8 @@
     "@types/lodash-es": "^4.17.6",
     "autoprefixer": "^10.4.13",
     "clsx": "^1.2.1",
+    "github-slugger": "^2.0.0",
+    "inquirer": "^9.1.4",
     "next-sitemap": "^3.1.52",
     "postcss": "^8.4.21",
     "postcss-preset-env": "^7.8.3",
