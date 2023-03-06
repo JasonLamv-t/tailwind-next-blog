@@ -5,12 +5,13 @@
   "homepage": "https://jasonlam.cc",
   "scripts": {
     "dev": "next dev",
-    "prebuild": "node scripts/prebuild.js",
-    "build": "pnpm prebuild && next build && next-sitemap",
-    "export": "pnpm build && next export",
-    "serve": "pnpm build && next start",
+    "prebuild": "node scripts/prebuild.mjs",
+    "build": "npm run prebuild && next build && npm run postbuild",
+    "postbuild": "next-sitemap",
+    "export": "npm run build && next export",
+    "serve": "npm run build && next start",
     "lint": "next lint",
-    "newpost": "node scripts/newpost.mjs"
+    "newpost": "node scripts/newpost.ts"
   },
   "dependencies": {
     "@algolia/autocomplete-core": "^1.8.2",

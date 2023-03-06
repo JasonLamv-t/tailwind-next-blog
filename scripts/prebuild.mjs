@@ -1,4 +1,4 @@
-const fs = require('fs').promises;
+import fs from 'fs/promises';
 
 fs.cp('data/resources', 'public/resources', {
   recursive: true,
