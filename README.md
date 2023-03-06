@@ -31,7 +31,7 @@ If you have any questions in use, please ask the issue, and I will reply and dea
    - `data/author.md`: custom content which will be displayed in the about page.
    - `data/projects.ts`: projects information.
    - `data/meta/config.ts`: configuration of environment, will be remove soon.
-   - `data/blogs`: position to store the blogs files in md/mdx format, support nested structure.
+   - `data/blogs`: position to store the blogs files in md/mdx format, support nested structure. Recommended generating new post via `pnpm newpost`, or you can touch the file manually.
    - `data/resources`: this directory will be copied under the public directory automatically when building.
    - `env.local`: environment, refer `env.example` & `data/meta/config.ts` for now.
 3. Installation via `pnpm i`, or you can use your preferred package manager.
