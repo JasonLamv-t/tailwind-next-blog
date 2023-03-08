@@ -19,8 +19,8 @@ If you have any questions in use, please ask the issue, and I will reply and dea
 - Syntax & line highlighting in VSCode style, and display line numbers in code blocks via [rehype-prism-plus](https://github.com/timlrx/rehype-prism-plus)
 - MDX support via [mdx-bundler](https://github.com/kentcdodds/mdx-bundler)
 - Support for nested routing of blog posts
-- List of projects in waterfall flow view
-- Additional build-in markdown syntax support via mdx, can also customize.
+- List of projects&resources in waterfall flow view
+- Additional build-in markdown syntax support via mdx, can also customize
 
 ## Quick Start
 
@@ -30,6 +30,7 @@ If you have any questions in use, please ask the issue, and I will reply and dea
    - `data/meta/author.ts`: author information.
    - `data/author.md`: custom content which will be displayed in the about page.
    - `data/projects.ts`: projects information.
+   - `data/resources.ts`: resources information.
    - `data/meta/config.ts`: configuration of environment, will be remove soon.
    - `data/blogs`: position to store the blogs files in md/mdx format, support nested structure. Recommended generating new post via `pnpm newpost`, or you can touch the file manually.
    - `data/resources`: this directory will be copied under the public directory automatically when building.
