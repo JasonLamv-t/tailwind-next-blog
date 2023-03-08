@@ -17,6 +17,7 @@ const { algoliaUseabled, algoliaEnabled } = config;
 const navigation = [
   ['Blogs', '/blogs'],
   ['Projects', '/projects'],
+  ['Resources', '/resources'],
   ['About', '/about'],
 ];
 
@@ -130,23 +131,25 @@ function MobileNavigation({ className }: { className?: string }) {
 
 const Header = () => (
   <header className="flex items-center justify-between py-6 sm:py-10">
-    <Link href="/" aria-label={siteData.title}>
-      <div className="flex items-center justify-between">
-        <Image
-          className="w-10 h-10 rounded-full sm:w-12 sm:h-12"
-          src={logo}
-          alt="logo"
-        />
-        <div className="ml-3 h-auto font-semibold text-xl sm:block sm:text-2xl">
-          {siteData.title}
-        </div>
+    <Link
+      href="/"
+      aria-label={siteData.title}
+      className="flex flex-shrink-0 items-center justify-between"
+    >
+      <Image
+        className="w-10 h-10 rounded-full sm:w-12 sm:h-12"
+        src={logo}
+        alt="logo"
+      />
+      <div className="ml-3 h-auto font-semibold text-xl sm:hidden md:block md:text-2xl">
+        {siteData.title}
       </div>
     </Link>
 
-    <div className="h-8 w-0.5 ml-4 mr-1 bg-zinc-500/80 hidden sm:block "></div>
-    <DesktopNavigation className="ml-0 mr-auto hidden sm:block" />
+    <div className="h-8 w-0.5 ml-4 mr-1 bg-zinc-500/80 hidden sm:flex "></div>
+    <DesktopNavigation className="ml-0 mr-auto hidden sm:flex" />
 
-    <div className="inline-flex gap-2 lg:w-full max-w-sm justify-end">
+    <div className="flex gap-2 lg:w-full justify-end pl-10">
       {algoliaUseabled && algoliaEnabled && <Search />}
       <ThemeSwitcher />
       <MobileNavigation className="sm:hidden" />
