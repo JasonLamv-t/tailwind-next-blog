@@ -22,7 +22,6 @@ export default function Image({
         }}
         className={clsx('cursor-zoom-in', open ? 'invisible' : '')}
       />
-      ;
       <Transition
         show={open}
         enter="ease-out duration-300"
@@ -52,7 +51,6 @@ export default function Image({
           </div>
         </Dialog>
       </Transition>
-      ;
     </>
   );
 }
