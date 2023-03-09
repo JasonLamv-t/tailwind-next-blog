@@ -4,6 +4,7 @@ import { useMemo } from 'react';
 import Code from './Code';
 import Note from './Note';
 import Pre from './Pre';
+import Image from './Image';
 
 export default function MDXRenderer({
   code,
@@ -21,6 +22,7 @@ export default function MDXRenderer({
     pre: Pre,
     code: Code,
     Note: Note,
+    img: Image,
   };
 
   return <MDXContent components={components} {...meta} />;

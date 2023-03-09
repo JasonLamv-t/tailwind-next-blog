@@ -25,6 +25,8 @@ export default function Projects() {
             {project.logo && (
               <Card.Eyebrow>
                 <Image
+                  width={500}
+                  height={400}
                   src={project.logo}
                   alt={`logo of ${project.name}`}
                   className="mb-4 sm:rounded-lg sm:min-h-48 object-cover"

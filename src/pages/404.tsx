@@ -5,7 +5,7 @@ import Link from 'next/link';
 export default function NotFound() {
   return (
     <>
-      <CommonSEO title="Page not found | Brachistochrone" description=''/>
+      <CommonSEO title="Page not found | Brachistochrone" description="" />
       <main className="mx-auto flex w-full max-w-7xl flex-grow flex-col justify-center px-6 lg:px-8">
         <div className="py-32">
           <div className="text-center">

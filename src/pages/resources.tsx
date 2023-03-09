@@ -25,6 +25,8 @@ export default function Resources() {
             {resource.logo && (
               <Card.Eyebrow>
                 <Image
+                  width={500}
+                  height={400}
                   src={resource.logo}
                   alt={`logo of ${resource.name}`}
                   className="mb-4 sm:rounded-lg sm:min-h-48 object-cover"

@@ -1,10 +1,9 @@
 import siteData from '#/meta/site';
 import { Head, Html, Main, NextScript } from 'next/document';
-import Link from 'next/link';
 
 export default function Document() {
   return (
-    <Html>
+    <Html lang={siteData.language}>
       <Head>
         {/* for remark-math&rehype-katex */}
         <link
