@@ -2,6 +2,9 @@
 const nextConfig = {
   reactStrictMode: true,
   basePath: process.env.BASE_PATH,
+  images: {
+    unoptimized: true,
+  },
 };
 
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
