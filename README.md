@@ -36,4 +36,11 @@ If you have any questions in use, please ask the issue, and I will reply and dea
    - `data/resources`: this directory will be copied under the public directory automatically when building.
    - `env.local`: environment, refer `env.example` & `data/meta/config.ts` for now.
 3. Installation via `pnpm i`, or you can use your preferred package manager.
-4. Development: run `pnpm dev` and check the `package.json` for more details.
+4. Run `pnpm newpost` and answer some questions then the new post will be created in the `data/blogs` directory, edit it.
+5. Development:
+   - for dev: run `pnpm dev` and check the `package.json` for more details
+   - for node/pm2 and so on: run `pnpm serve`
+   - for docker:
+     - refer to `Dockerfile.example` to edit Dockerfile
+     - run `docker built --file Dockerfile -t tailwind-next-blog .` to build the image with the tag - 'tailwind-next-blog'
+     - then run `docker run -d -p 3000:3000 tailwin-next-blog` and open the localhost:3000 in your browser
