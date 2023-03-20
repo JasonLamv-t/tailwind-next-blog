@@ -40,7 +40,7 @@ const authorData: AuthorData = {
   social: {
     email: 'jasonlamv-t@hotmail.com',
     github: 'JasonLamv-t',
-    linkedin: 'https://www.linkedin.cn/injobs/in/jason-lam-0827181b0',
+    linkedin: 'https://www.linkedin.com/in/jason-lam-0827181b0/',
     bilibili: '10905363',
     instagram: 'jasonlamvt',
     weibo: 'https://weibo.com/u/5609011652',
