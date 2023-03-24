@@ -2,6 +2,7 @@ import ReactAnnotateLogo from '@/assets/images/projects/react-annotate.jpg';
 import RehypeLogo from '@/assets/images/projects/rehype-logo.svg';
 import RemarkLogo from '@/assets/images/projects/remark-logo.svg';
 import ServerlessDevsLogo from '@/assets/images/projects/serverless-devs.jpeg';
+import MDNLogo from '@/assets/images/projects/mdn.png';
 import { StaticImageData } from 'next/image';
 
 export interface Project {
@@ -12,6 +13,12 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+  {
+    name: 'MDN Web Docs / Localization',
+    description: '参与 MDN 文档的本地化，包括翻译、审查并向 MDN 社区提出建设意见',
+    link: 'https://github.com/mdn/translated-content',
+    logo: MDNLogo,
+  },
   {
     name: 'Rehype code title',
     description:
