@@ -11,7 +11,7 @@
     "export": "npm run build && next export",
     "serve": "npm run build && next start",
     "lint": "next lint",
-    "newpost": "node scripts/newpost.ts"
+    "newpost": "node scripts/newpost.mjs"
   },
   "dependencies": {
     "@algolia/autocomplete-core": "^1.8.3",
