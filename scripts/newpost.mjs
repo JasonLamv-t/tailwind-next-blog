@@ -73,7 +73,7 @@ inquirer
     },
   ])
   .then((res) => {
-    const { title, summary, draft, tags, canonicalUrl } = res;
+    const { title, summary, draft, canonicalUrl } = res;
 
     const fileName = slug(title);
     const date = new Date()
@@ -81,7 +81,8 @@ inquirer
       .split('/')
       .reverse()
       .join('-');
-    res.tags = res.tags === '' ? [] : res.tags.split(',').map((t) => t.trim());
+    const tags =
+      res.tags === '' ? [] : res.tags.split(',').map((t) => t.trim());
     const meta = matter.stringify('', {
       title,
       date,
