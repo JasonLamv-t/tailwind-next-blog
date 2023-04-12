@@ -37,7 +37,7 @@ Homebrew 或者说 brew 是 Mac 上最具盛名的包管理工具，目前在 Gi
 
 - [git](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git)：提供了额外的 git 命令缩写和脚本
 - [gitignore](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/gitignore)：通过请求 gitignore 快速生成对应的 gitignore 内容
-- [z](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/z) / [autojump](<[autojump](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/autojump)>)：快速跳转路径，两者选一即可
+- [z](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/z) / [autojump](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/autojump)：快速跳转路径，两者选一即可
 - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting/)：语法高亮
 - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)：命令提示和补全
 
