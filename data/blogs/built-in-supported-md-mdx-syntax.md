@@ -11,6 +11,7 @@ tags:
     'Tailwind-next-blog',
   ]
 draft: false
+pinned: true
 summary: Built-in supported MD/MDX syntax of the Tailwind-Next-Blog.
 images: []
 canonicalUrl: ''

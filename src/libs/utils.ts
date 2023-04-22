@@ -75,7 +75,11 @@ export const getAllBlogMetaAndSlug = () => {
         process.env.NODE_ENV === 'development' ? true : !draft // hide draft in production
     );
 
-  return orderBy(blogMetaAndSlug, 'meta.date', 'desc');
+  return orderBy(
+    blogMetaAndSlug,
+    [(meta) => meta.meta.pinned ?? false, 'meta.date'],
+    ['desc', 'desc']
+  );
 };
 
 /**

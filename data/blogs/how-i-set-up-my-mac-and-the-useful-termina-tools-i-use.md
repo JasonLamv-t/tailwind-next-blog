@@ -15,7 +15,7 @@ canonicalUrl:
 
 ### [Homebrew](https://brew.sh/)
 
-Homebrew 或者说 brew 是 Mac 上最具盛名的包管理工具，目前在 GitHub 上已经有35k Star。通过以下命令你可以快速安装：
+Homebrew 或者说 brew 是 Mac 上最具盛名的包管理工具，目前在 GitHub 上已经有 35k Star。通过以下命令你可以快速安装：
 
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -37,7 +37,7 @@ Homebrew 或者说 brew 是 Mac 上最具盛名的包管理工具，目前在 Gi
 
 - [git](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git)：提供了额外的 git 命令缩写和脚本
 - [gitignore](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/gitignore)：通过请求 gitignore 快速生成对应的 gitignore 内容
-- [z](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/z) / [autojump]([autojump](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/autojump))：快速跳转路径，两者选一即可
+- [z](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/z) / [autojump](<[autojump](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/autojump)>)：快速跳转路径，两者选一即可
 - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting/)：语法高亮
 - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)：命令提示和补全
 
@@ -49,7 +49,7 @@ Homebrew 或者说 brew 是 Mac 上最具盛名的包管理工具，目前在 Gi
 
 以下包基本都可以通过 brew 安装
 
-- tldr：显示tldr-pages项目中命令行工具的简单帮助页面，提供命令行的常用例子和提示，比如`tldr tldr`
+- tldr：显示 tldr-pages 项目中命令行工具的简单帮助页面，提供命令行的常用例子和提示，比如`tldr tldr`
 - nvm：安装、卸载或切换 Node.js 版本
 - pyenv：用于管理和切换 python 虚拟环境
 - bat：更好的 cat，有语法高亮和 Git 集成
@@ -65,4 +65,3 @@ Homebrew 或者说 brew 是 Mac 上最具盛名的包管理工具，目前在 Gi
 - [Bob](https://github.com/ripperhe/Bob)：翻译插件，支持 OCR 等多种功能和多个平台
 - [MonitorControl](https://github.com/MonitorControl/MonitorControl)：支持通过快捷键控制第三方外置显示器的亮度和音量
 - [noTunes](https://github.com/tombonez/noTunes)：完美屏蔽 iTunes，在没有打开任何音乐软件的情况下按播放键可以打开指定的软件
-  

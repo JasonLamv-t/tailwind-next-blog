@@ -62,6 +62,12 @@ inquirer
       default: false,
     },
     {
+      name: 'pinned',
+      message: 'Set post as pinned?',
+      type: 'confirm',
+      default: false,
+    },
+    {
       name: 'tags',
       message: 'Any Tags? Separate them with , or leave empty if no tags.',
       type: 'input',
@@ -73,7 +79,7 @@ inquirer
     },
   ])
   .then((res) => {
-    const { title, summary, draft, canonicalUrl } = res;
+    const { title, summary, draft, pinned, canonicalUrl } = res;
 
     const fileName = slug(title);
     const date = new Date()
@@ -88,6 +94,7 @@ inquirer
       date,
       summary,
       draft,
+      pinned,
       tags,
       canonicalUrl,
     });
