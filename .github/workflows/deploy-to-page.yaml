@@ -26,17 +26,20 @@ concurrency:
 jobs:
   # Build job
   build:
+    if: github.repository == 'jasonlamv-t/jasonlamv-t.github.io'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      - name: Setup Pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: latest
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: '16'
-          cache: ${{ steps.detect-package-manager.outputs.manager }}
-      - name: Install Pnpm
-        run: npm i --location=global pnpm
+          node-version: '18.x'
+          cache: pnpm
       - name: Setup Pages
         uses: actions/configure-pages@v2
         with:
@@ -45,16 +48,6 @@ jobs:
           #
           # You may remove this line if you want to manage the configuration yourself.
           static_site_generator: next
-      - name: Restore cache
-        uses: actions/cache@v3
-        with:
-          path: |
-            .next/cache
-          # Generate a new cache whenever packages or source files change.
-          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
-          # If source files changed but packages didn't, rebuild from a prior cache.
-          restore-keys: |
-            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
       - name: Install dependencies
         run: pnpm install
       - name: Build and Export with Next.js
