@@ -21,6 +21,7 @@ If you have any questions in use, please ask the issue, and I will reply and dea
 - Support for nested routing of blog posts
 - List of projects&resources in waterfall flow view
 - Additional build-in markdown syntax support via mdx, can also customize
+- Pinned Article
 
 ## Quick Start
 

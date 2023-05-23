@@ -4,6 +4,8 @@ import { CommonSEO } from '@/components/SEO';
 import feed from '@/libs/feed';
 import { genFeedFiles, getAllBlogMetaAndSlug } from '@/libs/utils';
 import { BlogMeta } from '@/types/blog';
+import { IconPinFilled } from '@tabler/icons-react';
+import clsx from 'clsx';
 
 function Article({ blog }: { blog: BlogMeta & { href: string } }) {
   return (
@@ -22,7 +24,10 @@ function Article({ blog }: { blog: BlogMeta & { href: string } }) {
             <span className="h-auto ml-2">{blog.dateString}</span>
           </div>
         </Card.Eyebrow>
-        <Card.Title>{blog.title}</Card.Title>
+        <Card.Title>
+          {blog.title}
+          <IconPinFilled className={clsx(blog.pinned ? 'ml-1 group-hover:block hidden' : 'hidden')} />
+        </Card.Title>
         <Card.Badges badges={blog.tags} />
         <Card.Description>{blog.summary}</Card.Description>
         <Card.CTA>Read more</Card.CTA>

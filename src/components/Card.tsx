@@ -36,7 +36,7 @@ Card.Title = function Title({
   children: ReactNode;
 }) {
   return (
-    <Component className={clsx(className, 'font-bold')}>{children}</Component>
+    <Component className={clsx(className, 'font-bold inline-flex')}>{children}</Component>
   );
 };
 
