@@ -22,7 +22,7 @@ export default function RootLayout({
       <body>
         <Providers>
           <Header />
-          <main className="mb-auto">{children}</main>
+          <main>{children}</main>
           <Footer />
         </Providers>
       </body>
