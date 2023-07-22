@@ -1,15 +1,15 @@
-'use client'
+'use client';
 
 import config from '#/meta/config';
 import siteData from '#/meta/site';
 import logo from '@/assets/images/logo.jpg';
+import Button from '@/components/Button';
 import ThemeSwitcher from '@/components/ThemeSwitcher';
 import { Popover, Transition } from '@headlessui/react';
 import { IconMenu2, IconX } from '@tabler/icons-react';
 import clsx from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
-import Button from '@/components/Button';
 import { usePathname } from 'next/navigation';
 import { Fragment } from 'react';
 import Search from './Search';

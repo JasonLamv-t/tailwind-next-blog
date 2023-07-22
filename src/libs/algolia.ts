@@ -135,12 +135,12 @@ export function resolveResult(result: Result) {
     result.type === 'content'
       ? levels.pop()!
       : levels
-          .filter(
-            (level) =>
-              allLevels.indexOf(level) <=
-              allLevels.indexOf(result.type as HierarchyIndex)
-          )
-          .pop()!;
+        .filter(
+          (level) =>
+            allLevels.indexOf(level) <=
+            allLevels.indexOf(result.type as HierarchyIndex)
+        )
+        .pop()!;
 
   return {
     titleHtml: result._highlightResult.hierarchy[level].value,

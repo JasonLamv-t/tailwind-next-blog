@@ -1,10 +1,10 @@
 'use client';
 
+import Button from '@/components/Button';
 import { IconMoon, IconSun } from '@tabler/icons-react';
 import clsx from 'clsx';
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
-import Button from '@/components/Button';
 
 const ThemeSwitcher = ({ className }: { className?: string }) => {
   const [mounted, setMounted] = useState<boolean>(false);

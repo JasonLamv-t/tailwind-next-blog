@@ -1,8 +1,8 @@
+import MDNLogo from '@/assets/images/projects/mdn.png';
 import ReactAnnotateLogo from '@/assets/images/projects/react-annotate.jpg';
 import RehypeLogo from '@/assets/images/projects/rehype-logo.svg';
 import RemarkLogo from '@/assets/images/projects/remark-logo.svg';
 import ServerlessDevsLogo from '@/assets/images/projects/serverless-devs.jpeg';
-import MDNLogo from '@/assets/images/projects/mdn.png';
 import { StaticImageData } from 'next/image';
 
 export interface Project {

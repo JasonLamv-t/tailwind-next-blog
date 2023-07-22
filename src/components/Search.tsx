@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import { resolveResult, Result, useAutocomplete } from '@/libs/algolia';
 import {
