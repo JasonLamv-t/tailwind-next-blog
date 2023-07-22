@@ -44,6 +44,9 @@ dependencies:
   eslint-config-next:
     specifier: 13.4.10
     version: 13.4.10(eslint@8.45.0)(typescript@5.1.6)
+  lodash-es:
+    specifier: ^4.17.21
+    version: 4.17.21
   next:
     specifier: 13.4.10
     version: 13.4.10(react-dom@18.2.0)(react@18.2.0)
@@ -71,6 +74,11 @@ dependencies:
   typescript:
     specifier: 5.1.6
     version: 5.1.6
+
+devDependencies:
+  '@types/lodash-es':
+    specifier: ^4.17.8
+    version: 4.17.8
 
 packages:
 
@@ -837,6 +845,16 @@ packages:
   /@types/json5@0.0.29:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
     dev: false
+
+  /@types/lodash-es@4.17.8:
+    resolution: {integrity: sha512-euY3XQcZmIzSy7YH5+Unb3b2X12Wtk54YWINBvvGQ5SmMvwb11JQskGsfkH/5HXK77Kr8GF0wkVDIxzAisWtog==}
+    dependencies:
+      '@types/lodash': 4.14.195
+    dev: true
+
+  /@types/lodash@4.14.195:
+    resolution: {integrity: sha512-Hwx9EUgdwf2GLarOjQp5ZH8ZmblzcbTBC2wtQWNKARBSxM9ezRIAUpeDTgoQRAFB0+8CNWXVA9+MaSOzOF3nPg==}
+    dev: true
 
   /@types/node@20.4.2:
     resolution: {integrity: sha512-Dd0BYtWgnWJKwO1jkmTrzofjK2QXXcai0dmtzvIBhcA+RsG5h8R3xlyta0kGOZRNfL9GuRtb1knmPEhQrePCEw==}
@@ -2347,6 +2365,10 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       p-locate: 5.0.0
+    dev: false
+
+  /lodash-es@4.17.21:
+    resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
     dev: false
 
   /lodash.castarray@4.4.0:
