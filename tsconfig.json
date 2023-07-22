@@ -21,9 +21,10 @@
     ],
     "paths": {
       "@/*": ["./src/*"],
-      "#/*": ["./data/*"]
+      "#/*": ["./data/*"],
+      "contentlayer/generated": ["./.contentlayer/generated"] // For markdown file load, see: https://www.contentlayer.dev/docs
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", ".contentlayer/generated"],
   "exclude": ["node_modules"]
 }

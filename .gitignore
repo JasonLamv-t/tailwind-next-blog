@@ -226,3 +226,6 @@ dist
 
 ### Build Artifacts ###
 /public/*.xml
+
+# contentlayer
+.contentlayer
