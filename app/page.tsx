@@ -3,9 +3,9 @@ import Card from '@/components/Card';
 import { IconPinFilled } from '@tabler/icons-react';
 import clsx from 'clsx';
 import { Post, allPosts } from 'contentlayer/generated';
-import { compareDesc } from 'date-fns';
+import { orderBy } from 'lodash-es';
 
-function Article(post: Post) {
+const Article = (post: Post) => {
   return (
     <article className="md:grid md:grid-cols-4 md:items-baseline">
       <Card href={post.url} className="md:col-span-4">
@@ -23,11 +23,13 @@ function Article(post: Post) {
       </Card>
     </article>
   );
-}
+};
 
-export default function Home() {
-  const posts = allPosts.sort((a, b) =>
-    compareDesc(new Date(a.date), new Date(b.date))
+const Home = () => {
+  const posts = orderBy(
+    allPosts,
+    [(post) => post.pinned ?? false, 'date'],
+    ['desc', 'desc']
   );
 
   return (
@@ -46,4 +48,6 @@ export default function Home() {
       </div>
     </div>
   );
-}
+};
+
+export default Home;
