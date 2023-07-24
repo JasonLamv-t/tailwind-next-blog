@@ -1,5 +1,6 @@
-import fs from 'fs/promises';
+// import fs from 'fs/promises';
 
-fs.cp('data/resources', 'public/resources', {
-  recursive: true,
-});
+// fs.cp('data/resources', 'public/resources', {
+//   recursive: true,
+// });
+// TODO: add back

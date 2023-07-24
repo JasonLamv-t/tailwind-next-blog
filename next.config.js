@@ -7,7 +7,7 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  output: 'standalone'
+  output: 'export' // TODO: toggle for start
 };
 
 module.exports = withContentlayer(nextConfig);
