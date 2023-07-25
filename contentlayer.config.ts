@@ -14,23 +14,33 @@ import siteData from './data/meta/site';
 
 export const Post = defineDocumentType(() => ({
   name: 'Post',
-  filePathPattern: `**/*.mdx`,
+  filePathPattern: `posts/**/*.mdx`,
   contentType: 'mdx',
   fields: {
     title: { type: 'string', required: true },
     date: { type: 'date', required: true },
     pinned: { type: 'boolean', required: false, default: false },
+    draft: { type: 'boolean', required: false, default: false },
     tags: { type: 'list', required: true, of: { type: 'string' } },
     summary: { type: 'string', required: true },
+    canonicalUrl: { type: 'string', required: false, default: '' },
   },
   computedFields: {
-    url: { type: 'string', resolve: (post) => post.url || post._raw.flattenedPath },
+    url: { type: 'string', resolve: (post) => post.canonicalUrl ? `posts/${post.canonicalUrl}` : post._raw.flattenedPath },
+  },
+}));
+
+export const Author = defineDocumentType(() => ({
+  name: 'Author',
+  filePathPattern: `authors/**/*.mdx`,
+  fields: {
+    isDefault: { type: 'boolean', required: false, default: false }
   },
 }));
 
 export default makeSource({
   contentDirPath: 'data',
-  documentTypes: [Post],
+  documentTypes: [Post, Author],
   mdx: {
     remarkPlugins: [
       remarkGfm,

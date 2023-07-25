@@ -20,6 +20,8 @@ export const generateMetadata = ({
     (post) => post.url === decodeURI('posts/' + params.slug.join('/'))
   );
 
+  console.log(allPosts.map(({ url }) => url), decodeURI('posts/' + params.slug.join('/')));
+
   if (!post) throw new Error(`Post not found for slug: ${params.slug}`);
   return { title: post.title };
 };
