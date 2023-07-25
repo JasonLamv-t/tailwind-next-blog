@@ -27,7 +27,7 @@ const Article = (post: Post) => {
 
 const Home = () => {
   const posts = orderBy(
-    allPosts,
+    allPosts.filter((post) => !post.draft),
     [(post) => post.pinned ?? false, 'date'],
     ['desc', 'desc']
   );

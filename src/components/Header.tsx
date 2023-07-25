@@ -17,7 +17,7 @@ import Search from './Search';
 const { algoliaUseabled, algoliaEnabled } = config;
 
 const navigation = [
-  ['Blogs', '/blogs'],
+  ['Blogs', '/posts'],
   ['Projects', '/projects'],
   ['Resources', '/resources'],
   ['About', '/about'],
