@@ -21,11 +21,11 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
+      "@/*": ["./app/*"],
       "#/*": ["./data/*"],
       "contentlayer/generated": ["./.contentlayer/generated"] // For markdown file load, see: https://www.contentlayer.dev/docs
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", ".contentlayer/generated"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", ".contentlayer/generated", "additional.d.ts"],
   "exclude": ["node_modules"]
 }

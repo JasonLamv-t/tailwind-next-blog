@@ -1,8 +1,8 @@
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import { Providers } from '@/components/Provider';
+import '@/globals.css';
 import type { Metadata } from 'next';
-import './globals.css';
 
 export const metadata: Metadata = {
   title: 'Create Next ',
@@ -15,7 +15,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
       <body>
         <Providers>
           <Header />
-          <main>{children}</main>
+          <main className="mb-auto">{children}</main>
           <Footer />
         </Providers>
       </body>

@@ -1,7 +1,7 @@
 import Code from '@/components/Code';
+import Image from '@/components/Image';
 import Note from '@/components/Note';
 import Pre from '@/components/Pre';
-import Image from '@/components/Image';
 import { allPosts } from 'contentlayer/generated';
 import { format, parseISO } from 'date-fns';
 import { useMDXComponent } from 'next-contentlayer/hooks';
@@ -20,7 +20,8 @@ export const generateMetadata = ({
     (post) => post.url === decodeURI('posts/' + params.slug.join('/'))
   );
 
-  console.log(allPosts.map(({ url }) => url), decodeURI('posts/' + params.slug.join('/')));
+  // TODO: remove this line
+  // console.log(allPosts.map(({ url }) => url), decodeURI('posts/' + params.slug.join('/')));
 
   if (!post) throw new Error(`Post not found for slug: ${params.slug}`);
   return { title: post.title };

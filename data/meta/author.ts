@@ -1,9 +1,9 @@
-import avatar from '@/assets/images/avatar-22.jpg';
+// import avatar from '@/assets/images/avatar-22.jpg';
 import { StaticImageData } from 'next/image';
 
 interface AuthorData {
   name: string;
-  avatar: string | StaticImageData;
+  // avatar: string | StaticImageData;
   occupation: string;
   company: {
     name: string;
@@ -29,7 +29,7 @@ interface AuthorData {
 
 const authorData: AuthorData = {
   name: 'Jason Lam / 林家祥',
-  avatar: avatar,
+  // avatar: avatar,
   occupation: 'Full Stack Engineer',
   company: { name: '', link: '' },
   organization: {
