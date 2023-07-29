@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "prepare": "husky install",
     "dev": "next dev",
     "prebuild": "node scripts/prebuild.mjs",
     "build": "next build",
@@ -34,7 +35,6 @@
     "@types/react": "18.2.15",
     "@types/react-dom": "18.2.7",
     "algoliasearch": "^4.19.1",
-    "autoprefixer": "10.4.14",
     "clsx": "^2.0.0",
     "contentlayer": "^0.3.4",
     "date-fns": "^2.30.0",
@@ -62,6 +62,14 @@
     "typescript": "5.1.6"
   },
   "devDependencies": {
-    "@types/lodash-es": "^4.17.8"
+    "@commitlint/cli": "^17.6.7",
+    "@commitlint/config-conventional": "^17.6.7",
+    "@types/lodash-es": "^4.17.8",
+    "@typescript-eslint/eslint-plugin": "^6.2.0",
+    "autoprefixer": "10.4.14",
+    "eslint-config-prettier": "^8.9.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.3",
+    "prettier": "^3.0.0"
   }
 }
