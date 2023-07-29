@@ -1,6 +1,16 @@
-import { allAuthors } from "contentlayer/generated";
+import { Author, allAuthors } from "contentlayer/generated";
 
-const getAuthor = (slug?: string) => {
+/**
+ * get the default author or the first author
+ */
+export function getAuthor(): Author;
+/**
+ * search the author with the given slug
+ * @param slug author's slug in the url or the alias
+ * @returns found `Author` or `undefined`
+ */
+export function getAuthor(slug: string): Author | undefined;
+export function getAuthor(slug?: string) {
   if (!allAuthors.length) throw new Error('Please add authors first');
 
   const defaultAuthor = allAuthors.find((author) => author.isDefault) || allAuthors[0];
@@ -9,5 +19,3 @@ const getAuthor = (slug?: string) => {
   if (!slug) return defaultAuthor;
   else return foundAuthor;
 };
-
-export default getAuthor;

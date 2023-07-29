@@ -1,10 +1,6 @@
-import Code from '@/components/Code';
-import Image from '@/components/Image';
-import Note from '@/components/Note';
-import Pre from '@/components/Pre';
+import MDX from '@/components/MDX';
 import { allPosts } from 'contentlayer/generated';
 import { format, parseISO } from 'date-fns';
-import { useMDXComponent } from 'next-contentlayer/hooks';
 
 export const generateStaticParams = async () =>
   allPosts.map((post) => ({
@@ -20,9 +16,6 @@ export const generateMetadata = ({
     (post) => post.url === decodeURI('posts/' + params.slug.join('/'))
   );
 
-  // TODO: remove this line
-  // console.log(allPosts.map(({ url }) => url), decodeURI('posts/' + params.slug.join('/')));
-
   if (!post) throw new Error(`Post not found for slug: ${params.slug}`);
   return { title: post.title };
 };
@@ -32,14 +25,6 @@ const PostLayout = ({ params }: { params: { slug: string[] } }) => {
     (post) => post.url === decodeURI('posts/' + params.slug.join('/'))
   );
   if (!post) throw new Error(`Post not found for slug: ${params.slug}`);
-
-  const MDXContent = useMDXComponent(post.body.code);
-  const components = {
-    pre: Pre,
-    code: Code,
-    Note: Note,
-    img: Image,
-  };
 
   return (
     <div className="md:px-8">
@@ -57,7 +42,7 @@ const PostLayout = ({ params }: { params: { slug: string[] } }) => {
           </time>
         </header>
         <div className="">
-          <MDXContent components={components} />
+          <MDX code={post.body.code} />
         </div>
       </article>
     </div>

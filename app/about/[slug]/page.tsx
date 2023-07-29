@@ -1,7 +1,8 @@
 'use client';
 
+import MDX from '@/components/MDX';
 import SocialIconLink from '@/components/SocialIconLink';
-import getAuthor from '@/libs/author';
+import { getAuthor } from '@/libs/author';
 import {
   IconBriefcase,
   IconBuildingCommunity,
@@ -14,7 +15,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
-const AboutLayout = ({ params: { slug } }: { params: { slug: string } }) => {
+const AuthorPage = ({ params: { slug } }: { params: { slug: string } }) => {
   const author = getAuthor(slug);
   if (!author) notFound();
 
@@ -108,11 +109,11 @@ const AboutLayout = ({ params: { slug } }: { params: { slug: string } }) => {
           </div>
         </div>
       </div>
-      {/* <div className="prose max-w-none dark:prose-invert">
-        <MDXRenderer code={code} />
-      </div> */}
+      <div className="prose max-w-none dark:prose-invert">
+        <MDX code={author.body.code} />
+      </div>
     </div>
   );
 };
 
-export default AboutLayout;
+export default AuthorPage;

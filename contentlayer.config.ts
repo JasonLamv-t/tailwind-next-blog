@@ -50,6 +50,7 @@ export const Post = defineDocumentType(() => ({
 export const Author = defineDocumentType(() => ({
   name: 'Author',
   filePathPattern: `authors/**/*.mdx`,
+  contentType: 'mdx',
   fields: {
     isDefault: { type: 'boolean', required: false, default: false },
     name: { type: 'string', required: true },
