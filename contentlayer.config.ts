@@ -31,7 +31,7 @@ export const SocialLink = defineNestedType(() => ({
 
 export const Post = defineDocumentType(() => ({
   name: 'Post',
-  filePathPattern: `posts/**/*.mdx`,
+  filePathPattern: 'posts/**/*.mdx',
   contentType: 'mdx',
   fields: {
     title: { type: 'string', required: true },
@@ -49,7 +49,7 @@ export const Post = defineDocumentType(() => ({
 
 export const Author = defineDocumentType(() => ({
   name: 'Author',
-  filePathPattern: `authors/**/*.mdx`,
+  filePathPattern: 'authors/**/*.mdx',
   contentType: 'mdx',
   fields: {
     isDefault: { type: 'boolean', required: false, default: false },
@@ -67,9 +67,21 @@ export const Author = defineDocumentType(() => ({
   }
 }));
 
+export const Project = defineDocumentType(() => ({
+  name: 'Project',
+  filePathPattern: 'projects/**/*.mdx',
+  contentType: 'mdx',
+  fields: {
+    name: { type: 'string', required: true },
+    description: { type: 'string', required: true },
+    link: { type: 'string', required: true }, // TODO: set to false and add project detail page
+    coverPath: { type: 'string', required: false }
+  }
+}));
+
 export default makeSource({
   contentDirPath: 'data',
-  documentTypes: [Post, Author],
+  documentTypes: [Post, Author, Project],
   mdx: {
     remarkPlugins: [
       remarkGfm,
