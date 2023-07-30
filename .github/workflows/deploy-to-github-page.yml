@@ -53,6 +53,7 @@ jobs:
       - name: Build and Export with Next.js
         env:
           NODE_ENV: production
+          BASE_PATH: /tailwind-next-blog
         run: pnpm build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
