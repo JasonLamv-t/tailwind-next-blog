@@ -39,3 +39,7 @@ If you have any questions in use, please ask the issue, and I will reply and dea
   - [ ] Chinese documentation
   - [ ] Demo via GitHub and Vercel
   - [ ] Infinity scrolling of the homepage
+
+- Need Fix
+
+  - [ ] The resouces url error under the data directory caused by the base path configuration
