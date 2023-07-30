@@ -5,7 +5,6 @@
   "scripts": {
     "prepare": "husky install",
     "dev": "next dev",
-    "prebuild": "node scripts/prebuild.mjs",
     "build": "next build",
     "postbuild": "next-sitemap",
     "export": "npm run build && next export",

@@ -4,3 +4,6 @@ Allow: /
 
 # Host
 Host: https://jasonlam.cc
+
+# Sitemaps
+Sitemap: https://jasonlam.cc/sitemap.xml
