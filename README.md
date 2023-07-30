@@ -35,6 +35,7 @@ If you have any questions in use, please ask the issue, and I will reply and dea
 
 - TODO
 
-  - [ ] Pagination for the list page
+  - [ ] Pagination for the list page and the post page
   - [ ] Chinese documentation
   - [ ] Demo via GitHub and Vercel
+  - [ ] Infinity scrolling of the homepage
