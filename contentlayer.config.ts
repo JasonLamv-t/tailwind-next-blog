@@ -1,6 +1,9 @@
 import rehypeCodeTitle from '@jasonlamv-t/rehype-code-title';
-import { IconLink } from '@tabler/icons-react';
-import { defineDocumentType, defineNestedType, makeSource } from 'contentlayer/source-files';
+import {
+  defineDocumentType,
+  defineNestedType,
+  makeSource,
+} from 'contentlayer/source-files';
 import { h } from 'hastscript';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import { Element } from 'rehype-autolink-headings/lib';
@@ -10,23 +13,39 @@ import rehypePrism from 'rehype-prism-plus';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 import remarkSlug from 'remark-slug';
+import { IconLink } from './app/components/MDX/IconLink';
 import siteData from './data/meta/site';
 
 export const Link = defineNestedType(() => ({
   name: 'Link',
   fields: {
     name: { type: 'string', required: true },
-    url: { type: 'string', required: false }
-  }
+    url: { type: 'string', required: false },
+  },
 }));
 
 export const SocialLink = defineNestedType(() => ({
   name: 'SocialLink',
   fields: {
     // PreDefined in component/SocialIconLink
-    platform: { type: 'enum', options: ['rss', 'email', 'github', 'linkedin', 'twitter', 'facebook', 'youtube', 'bilibili', 'weibo', 'instagram'], required: true },
-    value: { type: 'string', required: true }
-  }
+    platform: {
+      type: 'enum',
+      options: [
+        'rss',
+        'email',
+        'github',
+        'linkedin',
+        'twitter',
+        'facebook',
+        'youtube',
+        'bilibili',
+        'weibo',
+        'instagram',
+      ],
+      required: true,
+    },
+    value: { type: 'string', required: true },
+  },
 }));
 
 export const Post = defineDocumentType(() => ({
@@ -43,7 +62,13 @@ export const Post = defineDocumentType(() => ({
     canonicalUrl: { type: 'string', required: false, default: '' },
   },
   computedFields: {
-    url: { type: 'string', resolve: (post) => post.canonicalUrl ? `posts/${post.canonicalUrl}` : post._raw.flattenedPath },
+    url: {
+      type: 'string',
+      resolve: (post) =>
+        post.canonicalUrl
+          ? `posts/${post.canonicalUrl}`
+          : post._raw.flattenedPath,
+    },
   },
 }));
 
@@ -55,17 +80,27 @@ export const Author = defineDocumentType(() => ({
     isDefault: { type: 'boolean', required: false, default: false },
     name: { type: 'string', required: true },
     alias: { type: 'string', required: false, default: '' },
-    avatarPath: { type: 'string', required: false, default: '/data/images/logo.jpg' },
+    avatarPath: {
+      type: 'string',
+      required: false,
+      default: '/data/images/logo.jpg',
+    },
     location: { type: 'string', required: false },
     occupation: { type: 'string', required: false },
     company: { type: 'nested', of: Link, required: false },
     organizations: { type: 'list', of: Link, required: false },
     social: { type: 'list', of: SocialLink, required: false },
-    resumePath: { type: 'string', required: false }
+    resumePath: { type: 'string', required: false },
   },
   computedFields: {
-    url: { type: 'string', resolve: (author) => author.alias ? `about/${author.alias}` : author._raw.flattenedPath.replace('authors', 'about') },
-  }
+    url: {
+      type: 'string',
+      resolve: (author) =>
+        author.alias
+          ? `about/${author.alias}`
+          : author._raw.flattenedPath.replace('authors', 'about'),
+    },
+  },
 }));
 
 export const Project = defineDocumentType(() => ({
@@ -76,19 +111,15 @@ export const Project = defineDocumentType(() => ({
     name: { type: 'string', required: true },
     description: { type: 'string', required: true },
     link: { type: 'string', required: true }, // TODO: set to false and add project detail page
-    coverPath: { type: 'string', required: false }
-  }
+    coverPath: { type: 'string', required: false },
+  },
 }));
 
 export default makeSource({
   contentDirPath: 'data',
   documentTypes: [Post, Author, Project],
   mdx: {
-    remarkPlugins: [
-      remarkGfm,
-      remarkMath,
-      remarkSlug,
-    ],
+    remarkPlugins: [remarkGfm, remarkMath, remarkSlug],
     rehypePlugins: [
       rehypeKatex,
       [
@@ -111,6 +142,6 @@ export default makeSource({
         },
       ],
       rehypePresetMinify,
-    ]
-  }
+    ],
+  },
 });
