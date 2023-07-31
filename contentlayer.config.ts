@@ -60,7 +60,8 @@ export const Author = defineDocumentType(() => ({
     occupation: { type: 'string', required: false },
     company: { type: 'nested', of: Link, required: false },
     organizations: { type: 'list', of: Link, required: false },
-    social: { type: 'list', of: SocialLink, required: false }
+    social: { type: 'list', of: SocialLink, required: false },
+    resumePath: { type: 'string', required: false }
   },
   computedFields: {
     url: { type: 'string', resolve: (author) => author.alias ? `about/${author.alias}` : author._raw.flattenedPath.replace('authors', 'about') },

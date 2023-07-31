@@ -15,7 +15,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
-const AuthorPage = ({ params: { slug } }: { params: { slug: string } }) => {
+const AuthorPage = ({ params: { slug } }: { params: { slug: string; }; }) => {
   const author = getAuthor(slug);
   if (!author) notFound();
 
@@ -27,6 +27,7 @@ const AuthorPage = ({ params: { slug } }: { params: { slug: string } }) => {
     company,
     organizations,
     social,
+    resumePath
   } = author;
 
   return (
@@ -52,6 +53,7 @@ const AuthorPage = ({ params: { slug } }: { params: { slug: string } }) => {
                 {occupation}
               </li>
             )}
+
             {company && (
               <li className="inline-flex">
                 <IconBuildingSkyscraper className="mr-1" />
@@ -64,6 +66,7 @@ const AuthorPage = ({ params: { slug } }: { params: { slug: string } }) => {
                 )}
               </li>
             )}
+
             {organizations && (
               <li key={name} className="inline-flex">
                 <IconBuildingCommunity className="mr-1" />
@@ -85,6 +88,7 @@ const AuthorPage = ({ params: { slug } }: { params: { slug: string } }) => {
                 ))}
               </li>
             )}
+
             {location && (
               <li className="inline-flex">
                 <IconMapPin className="mr-1" />
@@ -102,10 +106,13 @@ const AuthorPage = ({ params: { slug } }: { params: { slug: string } }) => {
                 key={platform}
               />
             ))}
-            <IconMinusVertical />
-            <Link href="/data/(public)/resources/resume.pdf" title="resume">
-              <IconFileText className="text-zinc-500 transition hover:text-teal-500 dark:text-zinc-200 dark:hover:text-teal-500" />
-            </Link>
+
+            {resumePath && <>
+              <IconMinusVertical />
+              <Link href={resumePath} title="resume">
+                <IconFileText className="text-zinc-500 transition hover:text-teal-500 dark:text-zinc-200 dark:hover:text-teal-500" />
+              </Link>
+            </>}
           </div>
         </div>
       </div>
