@@ -1,10 +1,10 @@
-import MDX from "@/components/MDX";
-import { allPosts } from "contentlayer/generated";
-import { format, parseISO } from "date-fns";
+import MDX from '@/components/MDX';
+import { allPosts } from 'contentlayer/generated';
+import { format, parseISO } from 'date-fns';
 
 export const generateStaticParams = async () =>
   allPosts.map((post) => ({
-    slug: post.url.split("/").slice(1),
+    slug: post.url.split('/').slice(1),
   }));
 
 export const generateMetadata = ({
@@ -13,7 +13,7 @@ export const generateMetadata = ({
   params: { slug: string[] };
 }) => {
   const post = allPosts.find(
-    (post) => post.url === decodeURI("posts/" + params.slug.join("/")),
+    (post) => post.url === decodeURI('posts/' + params.slug.join('/'))
   );
 
   if (!post) throw new Error(`Post not found for slug: ${params.slug}`);
@@ -22,7 +22,7 @@ export const generateMetadata = ({
 
 const PostLayout = ({ params }: { params: { slug: string[] } }) => {
   const post = allPosts.find(
-    (post) => post.url === decodeURI("posts/" + params.slug.join("/")),
+    (post) => post.url === decodeURI('posts/' + params.slug.join('/'))
   );
   if (!post) throw new Error(`Post not found for slug: ${params.slug}`);
 
@@ -37,7 +37,7 @@ const PostLayout = ({ params }: { params: { slug: string[] } }) => {
           >
             <span className="h-4 w-0.5 rounded-full bg-zinc-200 dark:bg-zinc-500" />
             <span className="ml-3">
-              {format(parseISO(post.date), "yyyy-MM-dd")}
+              {format(parseISO(post.date), 'yyyy-MM-dd')}
             </span>
           </time>
         </header>
