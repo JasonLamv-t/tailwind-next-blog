@@ -53,7 +53,8 @@ jobs:
       - name: Build and Export with Next.js
         env:
           NODE_ENV: production
-          BASE_PATH: /tailwind-next-blog
+          # If your specified the base path, you need to do extra setting to ensure the images'url was correct.
+          # BASE_PATH: /tailwind-next-blog 
         run: pnpm build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1

@@ -1,8 +1,8 @@
-'use client'
+'use client';
 
 import Card from '@/components/Card';
-import Image from 'next/image';
 import { allProjects } from 'contentlayer/generated';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import Masonry from 'react-masonry-css';
 
