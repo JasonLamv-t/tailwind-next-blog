@@ -32,12 +32,18 @@ const Footer = () => {
 
           <p className="md:text-right">
             {config.footer?.beian && (
-              <Link href="https://beian.miit.gov.cn/">
+              <Link
+                href="https://beian.miit.gov.cn/"
+                className="hover:text-zinc-400"
+              >
                 {config.footer.beian} •{' '}
               </Link>
             )}
             Power by{' '}
-            <Link href="https://github.com/jasonlamv-t/tailwind-next-blog">
+            <Link
+              href="https://github.com/jasonlamv-t/tailwind-next-blog"
+              className="hover:text-zinc-400"
+            >
               <span className="font-semibold">Tailwind Next Blog</span>.
             </Link>
           </p>
