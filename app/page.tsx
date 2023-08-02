@@ -1,4 +1,4 @@
-import siteData from '#/meta/site';
+import { siteMeta } from '#/config';
 import Card from '@/components/Card';
 import { IconPinFilled } from '@tabler/icons-react';
 import clsx from 'clsx';
@@ -38,7 +38,7 @@ const Home = () => {
         <h1 className="text-3xl font-extrabold leading-9 tracking-tight sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
           Latest
         </h1>
-        <div className="text-lg leading-7">{siteData.description}</div>
+        <div className="text-lg leading-7">{siteMeta.description}</div>
       </div>
 
       <div className="flex flex-col space-y-2">

@@ -3,6 +3,7 @@
 import MDX from '@/components/MDX';
 import SocialIconLink from '@/components/SocialIconLink';
 import { getAuthor } from '@/libs/author';
+import { Platform } from '@/types/Platform';
 import {
   IconBriefcase,
   IconBuildingCommunity,
@@ -15,7 +16,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
-const AuthorPage = ({ params: { slug } }: { params: { slug: string; }; }) => {
+const AuthorPage = ({ params: { slug } }: { params: { slug: string } }) => {
   const author = getAuthor(slug);
   if (!author) notFound();
 
@@ -27,7 +28,7 @@ const AuthorPage = ({ params: { slug } }: { params: { slug: string; }; }) => {
     company,
     organizations,
     social,
-    resumePath
+    resumePath,
   } = author;
 
   return (
@@ -101,18 +102,20 @@ const AuthorPage = ({ params: { slug } }: { params: { slug: string; }; }) => {
             {social?.map(({ platform, value }) => (
               <SocialIconLink
                 className="text-zinc-500 transition hover:text-teal-500 dark:text-zinc-200 dark:hover:text-teal-500 mr-0.5"
-                platform={platform}
+                platform={Platform[platform]}
                 value={value}
                 key={platform}
               />
             ))}
 
-            {resumePath && <>
-              <IconMinusVertical />
-              <Link href={resumePath} title="resume">
-                <IconFileText className="text-zinc-500 transition hover:text-teal-500 dark:text-zinc-200 dark:hover:text-teal-500" />
-              </Link>
-            </>}
+            {resumePath && (
+              <>
+                <IconMinusVertical />
+                <Link href={resumePath} title="resume">
+                  <IconFileText className="text-zinc-500 transition hover:text-teal-500 dark:text-zinc-200 dark:hover:text-teal-500" />
+                </Link>
+              </>
+            )}
           </div>
         </div>
       </div>

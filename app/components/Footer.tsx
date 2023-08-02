@@ -1,16 +1,13 @@
-import authorData from '#/meta/author';
-import siteData from '#/meta/site';
-import SocialIconLink from '@/components/SocialIconLink';
+import config from '#/config';
 import Link from 'next/link';
+import SocialIconLink from './SocialIconLink';
 
 const Footer = () => {
-  const socialData = Object.entries(authorData.social);
-
   return (
     <footer className="mt-4">
       <div className="mx-auto max-w-7xl py-10 md:flex md:items-center md:justify-between">
         <div className="flex justify-center space-x-4 md:order-1 ">
-          {socialData.map(([platform, value]) => (
+          {config.footer?.socialLinks?.map(([platform, value]) => (
             <SocialIconLink
               className="hover:text-zinc-400"
               platform={platform}
@@ -20,7 +17,7 @@ const Footer = () => {
           ))}
           <SocialIconLink
             className="hover:text-zinc-400"
-            platform="rss"
+            platform="RSS"
             value=""
           />
         </div>
@@ -29,13 +26,15 @@ const Footer = () => {
           <p className="md:text-right">
             Copyright &copy;
             {` ${new Date().getFullYear()} ${
-              siteData.author
+              config.siteMeta.author
             }. All rights reserved.`}
           </p>
 
           <p className="md:text-right">
-            {siteData.beian && (
-              <Link href="https://beian.miit.gov.cn/">{siteData.beian} • </Link>
+            {config.footer?.beian && (
+              <Link href="https://beian.miit.gov.cn/">
+                {config.footer.beian} •{' '}
+              </Link>
             )}
             Power by{' '}
             <Link href="https://github.com/jasonlamv-t/tailwind-next-blog">

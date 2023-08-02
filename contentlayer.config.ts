@@ -14,7 +14,8 @@ import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 import remarkSlug from 'remark-slug';
 import { IconLink } from './app/components/MDX/IconLink';
-import siteData from './data/meta/site';
+import Platform from './app/types/Platform';
+import { feature } from './data/config';
 
 export const Link = defineNestedType(() => ({
   name: 'Link',
@@ -27,21 +28,9 @@ export const Link = defineNestedType(() => ({
 export const SocialLink = defineNestedType(() => ({
   name: 'SocialLink',
   fields: {
-    // PreDefined in component/SocialIconLink
     platform: {
       type: 'enum',
-      options: [
-        'rss',
-        'email',
-        'github',
-        'linkedin',
-        'twitter',
-        'facebook',
-        'youtube',
-        'bilibili',
-        'weibo',
-        'instagram',
-      ],
+      options: Object.keys(Platform),
       required: true,
     },
     value: { type: 'string', required: true },
@@ -138,7 +127,7 @@ export default makeSource({
         rehypePrism,
         {
           ignoreMissing: true,
-          showLineNumbers: siteData.showCodeLineNumbers ?? false,
+          showLineNumbers: feature?.showCodeLineNumbers ?? false,
         },
       ],
       rehypePresetMinify,

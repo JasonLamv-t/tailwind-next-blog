@@ -1,3 +1,4 @@
+import Platform from '@/types/Platform';
 import {
   Icon,
   IconBrandBilibili,
@@ -17,46 +18,23 @@ import Link from 'next/link';
 
 interface SocialLink {
   Icon: Icon;
-  title?: string;
   prefix?: string;
   suffix?: string;
 }
 
-const SocialLinks: { [key: string]: SocialLink } = {
-  rss: { Icon: IconRss, prefix: '/rss.xml' },
-  email: { Icon: IconMail, prefix: 'mailto:' },
-  github: {
-    Icon: IconBrandGithub,
-    prefix: 'https://github.com/',
-    title: 'Github',
-  },
-  linkedin: { Icon: IconBrandLinkedin, title: 'Linkedin' },
-  twitter: {
-    Icon: IconBrandTwitter,
-    prefix: 'https://twitter.com/',
-    title: 'Twitter',
-  },
-  facebook: {
-    Icon: IconBrandFacebook,
-    prefix: 'https://www.facebook.com/',
-    title: 'Facebook',
-  },
-  youtube: {
-    Icon: IconBrandYoutube,
-    prefix: 'https://www.youtube.com/',
-    title: 'Youtube',
-  },
-  bilibili: {
-    Icon: IconBrandBilibili,
-    prefix: 'https://space.bilibili.com/',
-    title: 'Bilibili',
-  },
-  weibo: { Icon: IconBrandWeibo, title: 'Weibo' },
-  instagram: {
-    Icon: IconBrandInstagram,
-    prefix: 'https://www.instagram.com/',
-    title: 'Instagram',
-  },
+type SocialLinks = { [p in Platform | 'RSS']: SocialLink };
+
+const socialLinks: SocialLinks = {
+  RSS: { Icon: IconRss, prefix: '/rss.xml' },
+  Email: { Icon: IconMail, prefix: 'mailto:' },
+  GitHub: { Icon: IconBrandGithub, prefix: 'https://github.com/' },
+  Linkedin: { Icon: IconBrandLinkedin },
+  Twitter: { Icon: IconBrandTwitter, prefix: 'https://twitter.com/' },
+  Facebook: { Icon: IconBrandFacebook, prefix: 'https://www.facebook.com/' },
+  Youtube: { Icon: IconBrandYoutube, prefix: 'https://www.youtube.com/' },
+  Bilibili: { Icon: IconBrandBilibili, prefix: 'https://space.bilibili.com/' },
+  Weibo: { Icon: IconBrandWeibo },
+  Instagram: { Icon: IconBrandInstagram, prefix: 'https://www.instagram.com/' },
 };
 
 const SocialIconLink = ({
@@ -64,14 +42,14 @@ const SocialIconLink = ({
   value,
   className,
 }: {
-  platform: string;
+  platform: Platform | 'RSS';
   value: string;
   className?: string;
 }) => {
-  const { Icon, prefix, suffix, title } = SocialLinks[platform];
+  const { Icon, prefix, suffix } = socialLinks[platform];
   return (
     <Link
-      title={title ?? platform}
+      title={platform}
       href={toString(prefix) + value + toString(suffix)}
       className={clsx(className, 'w-6 h-6')}
     >

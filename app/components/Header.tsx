@@ -1,11 +1,8 @@
 'use client';
 
-import config from '#/meta/config';
-import siteData from '#/meta/site';
+import { navigation, siteMeta } from '#/config';
 import logo from '@/assets/logo.jpg';
 import Button from '@/components/Button';
-import Search from '@/components/Search';
-import ThemeSwitcher from '@/components/ThemeSwitcher';
 import { Popover, Transition } from '@headlessui/react';
 import { IconMenu2, IconX } from '@tabler/icons-react';
 import clsx from 'clsx';
@@ -13,15 +10,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Fragment } from 'react';
-
-const { algoliaUseabled, algoliaEnabled } = config;
-
-const navigation = [
-  ['Blogs', '/posts'],
-  ['Projects', '/projects'],
-  ['Resources', '/resources'],
-  ['About', '/about'],
-];
+import ThemeSwitcher from './ThemeSwitcher';
 
 function NavItem({ href, children }: { href: string; children: string }) {
   const isActive = usePathname() === href;
@@ -135,7 +124,7 @@ const Header = () => (
   <header className="flex items-center justify-between py-6 sm:py-10">
     <Link
       href="/"
-      aria-label={siteData.title}
+      aria-label={siteMeta.title}
       className="flex flex-shrink-0 items-center justify-between"
     >
       <Image
@@ -144,7 +133,7 @@ const Header = () => (
         alt="logo"
       />
       <div className="ml-3 h-auto font-semibold text-xl sm:hidden md:block md:text-2xl">
-        {siteData.title}
+        {siteMeta.title}
       </div>
     </Link>
 
@@ -152,7 +141,8 @@ const Header = () => (
     <DesktopNavigation className="ml-0 mr-auto hidden sm:flex" />
 
     <div className="flex gap-2 lg:w-full justify-end pl-10">
-      {algoliaUseabled && algoliaEnabled && <Search />}
+      {/* TODO: re-enable */}
+      {/* {algoliaUseabled && algoliaEnabled && <Search />} */}
       <ThemeSwitcher />
       <MobileNavigation className="sm:hidden" />
     </div>
