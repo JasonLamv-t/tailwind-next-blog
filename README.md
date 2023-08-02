@@ -35,6 +35,7 @@ If you have any questions in use, please ask the issue, and I will reply and dea
 
 - TODO
 
+  - [x] Configurate all in one
   - [ ] Pagination for the list page and the post page
   - [ ] Chinese documentation
   - [ ] Demo via GitHub and Vercel
