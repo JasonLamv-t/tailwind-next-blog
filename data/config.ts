@@ -1,11 +1,14 @@
+import { Author } from 'next/dist/lib/metadata/types/metadata-types';
+import { OpenGraph } from 'next/dist/lib/metadata/types/opengraph-types';
+import { Twitter } from 'next/dist/lib/metadata/types/twitter-types';
 import Platform from '../app/types/Platform';
 
 interface Config {
   siteMeta: {
     title: string;
-    headerTitle: string;
-    author: string;
     description: string;
+    authors?: Author[];
+    keywords?: string[] | string;
     locale: string;
     language: string;
     theme: 'system' | 'light' | 'dark';
@@ -13,6 +16,8 @@ interface Config {
     logo: string;
     banner: string;
     siteRepo?: string;
+    openGraph?: OpenGraph;
+    twitter?: Twitter;
   };
   navigation: [title: string, path: string][];
   feature?: {
@@ -28,8 +33,7 @@ interface Config {
 const config: Config = {
   siteMeta: {
     title: 'Tailwind-next-blog',
-    headerTitle: 'Tailwind-next-blog',
-    author: 'Jason Lam',
+    authors: [{ name: 'Jason Lam', url: '/about/JasonLamv-t' }],
     description: 'Demo of Tailwind-next-blog',
     locale: 'zh-CN',
     language: 'zh-cn, en-us',

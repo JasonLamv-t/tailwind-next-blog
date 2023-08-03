@@ -1,6 +1,9 @@
+import { siteMeta } from '#/config';
 import MDX from '@/components/MDX';
+import { getAuthor } from '@/libs/author';
 import { allPosts } from 'contentlayer/generated';
 import { format, parseISO } from 'date-fns';
+import { Metadata } from 'next';
 
 export const generateStaticParams = async () =>
   allPosts.map((post) => ({
@@ -11,13 +14,23 @@ export const generateMetadata = ({
   params,
 }: {
   params: { slug: string[] };
-}) => {
+}): Metadata => {
   const post = allPosts.find(
     (post) => post.url === decodeURI('posts/' + params.slug.join('/'))
   );
 
   if (!post) throw new Error(`Post not found for slug: ${params.slug}`);
-  return { title: post.title };
+
+  const authorsOfPost = getAuthor(post.author?.split(',') || []);
+  const authors = authorsOfPost?.map((author) => ({
+    name: author.name,
+    url: '/' + author.url,
+  }));
+  return {
+    title: `${post.title}|${siteMeta.title}`,
+    description: post.summary,
+    authors,
+  };
 };
 
 const PostLayout = ({ params }: { params: { slug: string[] } }) => {

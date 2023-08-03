@@ -43,6 +43,7 @@ export const Post = defineDocumentType(() => ({
   contentType: 'mdx',
   fields: {
     title: { type: 'string', required: true },
+    author: { type: 'string', required: false }, // multiAuthor splitting with ','
     date: { type: 'date', required: true },
     pinned: { type: 'boolean', required: false, default: false },
     draft: { type: 'boolean', required: false, default: false },
