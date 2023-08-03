@@ -69,7 +69,7 @@ const AuthorPage = ({ params: { slug } }: { params: { slug: string } }) => {
             )}
 
             {organizations && (
-              <li key={name} className="inline-flex">
+              <li className="inline-flex">
                 <IconBuildingCommunity className="mr-1" />
                 {organizations.map(({ name, url }, index) => (
                   <>
