@@ -40,6 +40,7 @@
     "eslint": "8.45.0",
     "eslint-config-next": "13.4.10",
     "hastscript": "^7.2.0",
+    "katex": "^0.16.8",
     "lodash-es": "^4.17.21",
     "next": "13.4.12",
     "next-contentlayer": "^0.3.4",

@@ -3,3 +3,4 @@
 @tailwind utilities;
 
 @import './rehypePrism.css';
+@import 'node_modules/katex/dist/katex.css';
