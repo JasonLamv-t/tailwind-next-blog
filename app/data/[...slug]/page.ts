@@ -6,7 +6,7 @@ export const generateStaticParams = async () => {
   const params = filePaths.map((filePath) => ({
     slug: filePath.split('/').slice(1),
   }));
-  console.log(filePaths, params);
+
   return params;
 };
 

@@ -92,7 +92,7 @@ const SearchInput = forwardRef<
   );
 });
 
-function SearchResult({
+const SearchResult = ({
   result,
   resultIndex,
   autocomplete,
@@ -107,7 +107,7 @@ function SearchResult({
     React.KeyboardEvent
   > | null;
   collection: AutocompleteCollection<Result>;
-}) {
+}) => {
   const id = useId();
   const { titleHtml, hierarchyHtml } = resolveResult(result);
 
@@ -153,9 +153,9 @@ function SearchResult({
       )}
     </li>
   );
-}
+};
 
-function SearchResults({
+const SearchResults = ({
   autocomplete,
   query,
   collection,
@@ -168,7 +168,7 @@ function SearchResults({
   >;
   query?: string;
   collection?: AutocompleteCollection<Result>;
-}) {
+}) => {
   if (!collection || collection.items.length === 0) {
     return (
       <div className="p-6 text-center">
@@ -197,9 +197,9 @@ function SearchResults({
       ))}
     </ul>
   );
-}
+};
 
-function SearchDialog({
+const SearchDialog = ({
   open,
   setOpen,
   className,
@@ -207,7 +207,7 @@ function SearchDialog({
   open: boolean;
   setOpen: Dispatch<SetStateAction<boolean>>;
   className?: string;
-}) {
+}) => {
   const formRef = useRef<HTMLFormElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -215,98 +215,92 @@ function SearchDialog({
   const pathname = usePathname();
 
   useEffect(() => {
-    console.log(pathname);
     setOpen(false);
   }, [setOpen, pathname]);
 
   return (
-    open && (
-      <Transition.Root
-        show={true}
-        as={Fragment}
-        afterLeave={() => autocomplete.setQuery('')}
+    <Transition.Root
+      show={open}
+      as={Fragment}
+      afterLeave={() => autocomplete.setQuery('')}
+    >
+      <Dialog
+        onClose={setOpen}
+        className={clsx('fixed inset-0 z-50', className)}
       >
-        <Dialog
-          onClose={setOpen}
-          className={clsx('fixed inset-0 z-50', className)}
+        <Transition.Child
+          as={Fragment}
+          enter="ease-out duration-300"
+          enterFrom="opacity-0"
+          enterTo="opacity-100"
+          leave="ease-in duration-200"
+          leaveFrom="opacity-100"
+          leaveTo="opacity-0"
         >
+          <div className="fixed inset-0 bg-zinc-400/25 backdrop-blur-sm dark:bg-black/40" />
+        </Transition.Child>
+
+        <div className="fixed inset-0 overflow-y-auto px-4 py-4 sm:py-20 sm:px-6 md:py-32 lg:px-8 lg:py-[15vh]">
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
-            enterFrom="opacity-0"
-            enterTo="opacity-100"
+            enterFrom="opacity-0 scale-95"
+            enterTo="opacity-100 scale-100"
             leave="ease-in duration-200"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
+            leaveFrom="opacity-100 scale-100"
+            leaveTo="opacity-0 scale-95"
           >
-            <div className="fixed inset-0 bg-zinc-400/25 backdrop-blur-sm dark:bg-black/40" />
-          </Transition.Child>
+            <Dialog.Panel className="mx-auto overflow-hidden rounded-lg bg-zinc-50 shadow-xl ring-1 ring-zinc-900/7.5 dark:bg-zinc-900 dark:ring-zinc-800 sm:max-w-xl">
+              <div {...autocomplete.getRootProps({})}>
+                <form
+                  ref={formRef}
+                  {...autocomplete.getFormProps({
+                    inputElement: inputRef.current,
+                  })}
+                >
+                  <SearchInput
+                    ref={inputRef}
+                    autocomplete={autocomplete}
+                    autocompleteState={autocompleteState}
+                    onClose={() => setOpen(false)}
+                  />
 
-          <div className="fixed inset-0 overflow-y-auto px-4 py-4 sm:py-20 sm:px-6 md:py-32 lg:px-8 lg:py-[15vh]">
-            <Transition.Child
-              as={Fragment}
-              enter="ease-out duration-300"
-              enterFrom="opacity-0 scale-95"
-              enterTo="opacity-100 scale-100"
-              leave="ease-in duration-200"
-              leaveFrom="opacity-100 scale-100"
-              leaveTo="opacity-0 scale-95"
-            >
-              <Dialog.Panel className="mx-auto overflow-hidden rounded-lg bg-zinc-50 shadow-xl ring-1 ring-zinc-900/7.5 dark:bg-zinc-900 dark:ring-zinc-800 sm:max-w-xl">
-                <div {...autocomplete.getRootProps({})}>
-                  <form
-                    ref={formRef}
-                    {...autocomplete.getFormProps({
-                      inputElement: inputRef.current,
-                    })}
+                  <div
+                    ref={panelRef}
+                    className="border-t border-zinc-200 bg-white empty:hidden dark:bg-zinc-900 dark:ring-zinc-800 dark:border-zinc-100/5 dark:bg-white/2.5"
+                    {...autocomplete.getPanelProps({})}
                   >
-                    <SearchInput
-                      ref={inputRef}
-                      autocomplete={autocomplete}
-                      autocompleteState={autocompleteState}
-                      onClose={() => setOpen(false)}
-                    />
-
-                    <div
-                      ref={panelRef}
-                      className="border-t border-zinc-200 bg-white empty:hidden dark:bg-zinc-900 dark:ring-zinc-800 dark:border-zinc-100/5 dark:bg-white/2.5"
-                      {...autocomplete.getPanelProps({})}
-                    >
-                      {autocompleteState?.isOpen && (
-                        <>
-                          <SearchResults
-                            autocomplete={autocomplete}
-                            query={autocompleteState?.query}
-                            collection={autocompleteState?.collections[0]}
-                          />
-                          <p className="flex items-center justify-end gap-2 border-t border-zinc-100 px-4 py-2 text-xs text-zinc-400 dark:border-zinc-800 dark:text-zinc-500">
-                            Search by{' '}
-                            <AlgoliaLogo className="h-4 w-auto fill-[#003DFF] dark:fill-zinc-400" />
-                          </p>
-                        </>
-                      )}
-                    </div>
-                  </form>
-                </div>
-              </Dialog.Panel>
-            </Transition.Child>
-          </div>
-        </Dialog>
-      </Transition.Root>
-    )
+                    {autocompleteState?.isOpen && (
+                      <>
+                        <SearchResults
+                          autocomplete={autocomplete}
+                          query={autocompleteState?.query}
+                          collection={autocompleteState?.collections[0]}
+                        />
+                        <p className="flex items-center justify-end gap-2 border-t border-zinc-100 px-4 py-2 text-xs text-zinc-400 dark:border-zinc-800 dark:text-zinc-500">
+                          Search by{' '}
+                          <AlgoliaLogo className="h-4 w-auto fill-[#003DFF] dark:fill-zinc-400" />
+                        </p>
+                      </>
+                    )}
+                  </div>
+                </form>
+              </div>
+            </Dialog.Panel>
+          </Transition.Child>
+        </div>
+      </Dialog>
+    </Transition.Root>
   );
-}
+};
 
-export default function AlgoliaSearch({ className }: { className?: string }) {
-  const [isMac, setIsMac] = useState<boolean>();
+const AlgoliaSearch = ({ className }: { className?: string }) => {
+  const isMac = /(Mac|iPhone|iPod|iPad)/i.test(navigator.userAgent);
   const [dialogOpen, setDialogOpen] = useState(false);
 
   useEffect(() => {
-    const isApple = /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform);
-    setIsMac(isApple);
-
     const keydown = (event: KeyboardEvent) => {
-      if (event.key === 'k' && (isApple ? event.metaKey : event.ctrlKey)) {
+      if (event.key === 'k' && (isMac ? event.metaKey : event.ctrlKey)) {
         event.preventDefault();
         setDialogOpen(true);
       }
@@ -316,7 +310,7 @@ export default function AlgoliaSearch({ className }: { className?: string }) {
     return () => {
       window.removeEventListener('keydown', keydown);
     };
-  }, []);
+  }, [isMac]);
 
   return (
     <>
@@ -343,4 +337,6 @@ export default function AlgoliaSearch({ className }: { className?: string }) {
       <SearchDialog open={dialogOpen} setOpen={setDialogOpen} />
     </>
   );
-}
+};
+
+export default AlgoliaSearch;

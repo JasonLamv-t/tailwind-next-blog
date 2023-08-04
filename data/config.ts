@@ -29,15 +29,26 @@ interface Config {
     beian?: string;
     socialLinks?: [platform: Platform, value: string][];
   };
-  env: { isAlgoliaAvailable: boolean }; // For env verify
+  // For env verify
+  env: {
+    algolia: {
+      app_id: string | undefined;
+      api_key: string | undefined;
+      index_name: string | undefined;
+    };
+    isAlgoliaAvailable: boolean;
+  };
 }
 
 const checkConfigAndEnvironments = (config: Omit<Config, 'env'>): Config => {
+  const algolia = {
+    app_id: process.env.NEXT_PUBLIC_DOCSEARCH_APP_ID,
+    api_key: process.env.NEXT_PUBLIC_DOCSEARCH_API_KEY,
+    index_name: process.env.NEXT_PUBLIC_DOCSEARCH_INDEX_NAME,
+  };
   const env = {
-    isAlgoliaAvailable:
-      !!process.env.NEXT_PUBLIC_DOCSEARCH_APP_ID &&
-      !!process.env.NEXT_PUBLIC_DOCSEARCH_API_KEY &&
-      !!process.env.NEXT_PUBLIC_DOCSEARCH_INDEX_NAME,
+    algolia,
+    isAlgoliaAvailable: Object.values(algolia).every((v) => !!v),
   };
   return { ...config, env };
 };

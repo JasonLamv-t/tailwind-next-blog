@@ -8,6 +8,7 @@ import { getAlgoliaResults } from '@algolia/autocomplete-preset-algolia';
 import algoliasearch from 'algoliasearch';
 import { useRouter } from 'next/navigation';
 import { useId, useState } from 'react';
+import { env } from '#/config';
 
 export type HierarchyIndex =
   | 'lvl0'
@@ -50,11 +51,11 @@ export interface Result extends BaseItem {
 }
 
 const searchClient = algoliasearch(
-  process.env.NEXT_PUBLIC_DOCSEARCH_APP_ID as string,
-  process.env.NEXT_PUBLIC_DOCSEARCH_API_KEY as string
+  env.algolia.app_id as string,
+  env.algolia.api_key as string
 );
 
-export function useAutocomplete() {
+export const useAutocomplete = () => {
   const id = useId();
   const router = useRouter();
   const [autocompleteState, setAutocompleteState] =
@@ -98,8 +99,7 @@ export function useAutocomplete() {
                   queries: [
                     {
                       query,
-                      indexName: process.env
-                        .NEXT_PUBLIC_DOCSEARCH_INDEX_NAME as string,
+                      indexName: env.algolia.index_name,
                       params: {
                         hitsPerPage: 5,
                         highlightPreTag:
@@ -122,9 +122,9 @@ export function useAutocomplete() {
   );
 
   return { autocomplete, autocompleteState };
-}
+};
 
-export function resolveResult(result: Result) {
+export const resolveResult = (result: Result) => {
   const allLevels = Object.keys(result.hierarchy) as HierarchyIndex[];
   const hierarchy = Object.entries(result._highlightResult.hierarchy).filter(
     ([, { value }]) => Boolean(value)
@@ -148,4 +148,4 @@ export function resolveResult(result: Result) {
       .slice(0, levels.indexOf(level))
       .map(([, { value }]) => value),
   };
-}
+};
