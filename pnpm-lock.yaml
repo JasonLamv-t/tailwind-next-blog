@@ -59,6 +59,9 @@ dependencies:
   eslint-config-next:
     specifier: 13.4.10
     version: 13.4.10(eslint@8.45.0)(typescript@5.1.6)
+  flexsearch:
+    specifier: ^0.7.31
+    version: 0.7.31
   hastscript:
     specifier: ^7.2.0
     version: 7.2.0
@@ -3584,6 +3587,10 @@ packages:
 
   /flatted@3.2.7:
     resolution: {integrity: sha512-5nqDSxl8nn5BSNxyR3n4I6eDmbolI6WT+QqR547RwxQapgjQBmtktdP+HTBb/a/zLsbzERTONyUB5pefh5TtjQ==}
+
+  /flexsearch@0.7.31:
+    resolution: {integrity: sha512-XGozTsMPYkm+6b5QL3Z9wQcJjNYxp0CYn3U1gO7dwD6PAqU1SVWZxI9CCg3z+ml3YfqdPnrBehaBrnH2AGKbNA==}
+    dev: false
 
   /for-each@0.3.3:
     resolution: {integrity: sha512-jqYfLp7mo9vIyQf8ykW2v7A+2N4QjeCeI5+Dz9XraiO1ign81wjiH7Fb9vSOWvQfNtmSa4H2RoQTrrXivdUZmw==}
