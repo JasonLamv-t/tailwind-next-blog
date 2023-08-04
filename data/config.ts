@@ -16,21 +16,33 @@ interface Config {
     logo: string;
     banner: string;
     siteRepo?: string;
-    openGraph?: OpenGraph;
-    twitter?: Twitter;
+    openGraph?: OpenGraph; // TODO: add example setting
+    twitter?: Twitter; // TODO: add example setting
   };
   navigation: [title: string, path: string][];
   feature?: {
     showCodeLineNumbers?: boolean;
-    search?: 'local' | 'algolia';
+    // TODO: To be implemented for local
+    search?: 'algolia'; // | 'local'
   };
   footer?: {
     beian?: string;
     socialLinks?: [platform: Platform, value: string][];
   };
+  env: { isAlgoliaAvailable: boolean }; // For env verify
 }
 
-const config: Config = {
+const checkConfigAndEnvironments = (config: Omit<Config, 'env'>): Config => {
+  const env = {
+    isAlgoliaAvailable:
+      !!process.env.NEXT_PUBLIC_DOCSEARCH_APP_ID &&
+      !!process.env.NEXT_PUBLIC_DOCSEARCH_API_KEY &&
+      !!process.env.NEXT_PUBLIC_DOCSEARCH_INDEX_NAME,
+  };
+  return { ...config, env };
+};
+
+const config: Config = checkConfigAndEnvironments({
   siteMeta: {
     title: 'Tailwind-next-blog',
     authors: [{ name: 'Jason Lam', url: '/about/JasonLamv-t' }],
@@ -49,6 +61,9 @@ const config: Config = {
     ['Projects', '/projects'],
     ['About', '/about'],
   ],
+  feature: {
+    search: 'algolia',
+  },
   footer: {
     beian: '粤ICP备2021039182号',
     socialLinks: [
@@ -60,29 +75,11 @@ const config: Config = {
       [Platform.weibo, 'https://weibo.com/u/5609011652'],
     ],
   },
-};
+});
 
 export { config, config as default };
 export const siteMeta = config.siteMeta;
 export const navigation = config.navigation;
 export const feature = config.feature;
 export const footer = config.footer;
-
-// TODO: clean this snippet
-// interface Config {
-//   algoliaEnabled: boolean;
-// }
-
-// const config: Config = {
-//   algoliaEnabled: true,
-// };
-
-// const checkConfigAndEnvironments = (config: Config) => {
-//   const algoliaUseabled =
-//     !!process.env.NEXT_PUBLIC_DOCSEARCH_APP_ID &&
-//     !!process.env.NEXT_PUBLIC_DOCSEARCH_API_KEY &&
-//     !!process.env.NEXT_PUBLIC_DOCSEARCH_INDEX_NAME;
-//   return { ...config, algoliaUseabled };
-// };
-
-// export default checkConfigAndEnvironments(config);
+export const env = config.env;

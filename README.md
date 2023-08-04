@@ -19,8 +19,9 @@ If you have any questions in use, please ask the issue, and I will reply and dea
   - [x] Light and dark theme
   - [x] Support for nested routing of blog posts
   - [x] Pinned Article
-  - [ ] Additional build-in markdown syntax support via mdx, can also customize
-  - [ ] Preconfigured security headers, which is SEO friendly, supports RSS and Sitemap
+  - [x] Additional build-in markdown syntax support via mdx, can also customize
+  - [x] Preconfigured security headers, which is SEO friendly
+  - [ ] Support RSS and Sitemap
 
 - Markdown
 
@@ -31,7 +32,8 @@ If you have any questions in use, please ask the issue, and I will reply and dea
 - Advanced development
 
   - [x] MDX support via [contentlayer](https://www.contentlayer.dev/) and [mdx-bundler](https://github.com/kentcdodds/mdx-bundler)
-  - [ ] Support search everything in the blog via [Algolia](https://algolia.com/).[Docsearch](https://docsearch.algolia.com/)
+  - [x] Support search everything in the blog via [Algolia](https://algolia.com/).[Docsearch](https://docsearch.algolia.com/)
+  - [ ] Support full-text search locally via @TBD
 
 - TODO
 

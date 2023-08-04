@@ -1,16 +1,17 @@
 'use client';
 
-import { navigation, siteMeta } from '#/config';
+import { env, feature, navigation, siteMeta } from '#/config';
 import logo from '@/assets/logo.jpg';
 import Button from '@/components/Button';
 import { Popover, Transition } from '@headlessui/react';
 import { IconMenu2, IconX } from '@tabler/icons-react';
+import AlgoliaSearch from '@/components/AlgoliaSearch';
+import ThemeSwitcher from 'app/components/ThemeSwitcher';
 import clsx from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Fragment } from 'react';
-import ThemeSwitcher from './ThemeSwitcher';
 
 function NavItem({ href, children }: { href: string; children: string }) {
   const isActive = usePathname() === href;
@@ -120,33 +121,37 @@ function MobileNavigation({ className }: { className?: string }) {
   );
 }
 
-const Header = () => (
-  <header className="flex items-center justify-between py-6 sm:py-10">
-    <Link
-      href="/"
-      aria-label={siteMeta.title}
-      className="flex flex-shrink-0 items-center justify-between"
-    >
-      <Image
-        className="w-10 h-10 rounded-full sm:w-12 sm:h-12"
-        src={logo}
-        alt="logo"
-      />
-      <div className="ml-3 h-auto font-semibold text-xl sm:hidden md:block md:text-2xl">
-        {siteMeta.title}
+const Header = () => {
+  const isAlgoliaEnabled = feature?.search === 'algolia';
+  const { isAlgoliaAvailable } = env;
+
+  return (
+    <header className="flex items-center justify-between py-6 sm:py-10">
+      <Link
+        href="/"
+        aria-label={siteMeta.title}
+        className="flex flex-shrink-0 items-center justify-between"
+      >
+        <Image
+          className="w-10 h-10 rounded-full sm:w-12 sm:h-12"
+          src={logo}
+          alt="logo"
+        />
+        <div className="ml-3 h-auto font-semibold text-xl sm:hidden md:block md:text-2xl">
+          {siteMeta.title}
+        </div>
+      </Link>
+
+      <div className="h-8 w-0.5 ml-4 mr-1 bg-zinc-500/80 hidden sm:flex "></div>
+      <DesktopNavigation className="ml-0 mr-auto hidden sm:flex" />
+
+      <div className="flex gap-2 lg:w-full justify-end pl-10">
+        {isAlgoliaEnabled && isAlgoliaAvailable && <AlgoliaSearch />}
+        <ThemeSwitcher />
+        <MobileNavigation className="sm:hidden" />
       </div>
-    </Link>
-
-    <div className="h-8 w-0.5 ml-4 mr-1 bg-zinc-500/80 hidden sm:flex "></div>
-    <DesktopNavigation className="ml-0 mr-auto hidden sm:flex" />
-
-    <div className="flex gap-2 lg:w-full justify-end pl-10">
-      {/* TODO: re-enable */}
-      {/* {algoliaUseabled && algoliaEnabled && <Search />} */}
-      <ThemeSwitcher />
-      <MobileNavigation className="sm:hidden" />
-    </div>
-  </header>
-);
+    </header>
+  );
+};
 
 export default Header;

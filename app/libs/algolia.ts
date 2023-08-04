@@ -6,7 +6,7 @@ import {
 } from '@algolia/autocomplete-core';
 import { getAlgoliaResults } from '@algolia/autocomplete-preset-algolia';
 import algoliasearch from 'algoliasearch';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { useId, useState } from 'react';
 
 export type HierarchyIndex =
@@ -135,12 +135,12 @@ export function resolveResult(result: Result) {
     result.type === 'content'
       ? levels.pop()!
       : levels
-        .filter(
-          (level) =>
-            allLevels.indexOf(level) <=
-            allLevels.indexOf(result.type as HierarchyIndex)
-        )
-        .pop()!;
+          .filter(
+            (level) =>
+              allLevels.indexOf(level) <=
+              allLevels.indexOf(result.type as HierarchyIndex)
+          )
+          .pop()!;
 
   return {
     titleHtml: result._highlightResult.hierarchy[level].value,
