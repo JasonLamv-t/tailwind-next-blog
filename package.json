@@ -21,6 +21,9 @@
       "@opentelemetry/sdk-trace-base": "1.13.0",
       "@opentelemetry/sdk-trace-node": "1.13.0",
       "@opentelemetry/semantic-conventions": "1.13.0"
+    },
+    "patchedDependencies": {
+      "flexsearch@0.7.31": "patches/flexsearch@0.7.31.patch"
     }
   },
   "dependencies": {
@@ -30,6 +33,7 @@
     "@jasonlamv-t/rehype-code-title": "^0.0.4",
     "@tabler/icons-react": "^2.27.0",
     "@tailwindcss/typography": "^0.5.9",
+    "@types/flexsearch": "^0.7.3",
     "@types/node": "20.4.2",
     "@types/react": "18.2.15",
     "@types/react-dom": "18.2.7",

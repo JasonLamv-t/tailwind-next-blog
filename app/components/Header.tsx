@@ -5,13 +5,20 @@ import logo from '@/assets/logo.jpg';
 import Button from '@/components/Button';
 import { Popover, Transition } from '@headlessui/react';
 import { IconMenu2, IconX } from '@tabler/icons-react';
-import AlgoliaSearch from '@/components/AlgoliaSearch';
 import ThemeSwitcher from 'app/components/ThemeSwitcher';
 import clsx from 'clsx';
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Fragment } from 'react';
+
+const FlexSearch = dynamic(() => import('app/components/FlexSearch'), {
+  ssr: false,
+});
+const AlgoliaSearch = dynamic(() => import('app/components/AlgoliaSearch'), {
+  ssr: false,
+});
 
 function NavItem({ href, children }: { href: string; children: string }) {
   const isActive = usePathname() === href;
@@ -146,7 +153,8 @@ const Header = () => {
       <DesktopNavigation className="ml-0 mr-auto hidden sm:flex" />
 
       <div className="flex gap-2 lg:w-full justify-end pl-10">
-        {isAlgoliaEnabled && isAlgoliaAvailable && <AlgoliaSearch />}
+        {/* {isAlgoliaEnabled && isAlgoliaAvailable && <AlgoliaSearch />} */}
+        <FlexSearch />
         <ThemeSwitcher />
         <MobileNavigation className="sm:hidden" />
       </div>

@@ -13,6 +13,11 @@ overrides:
   '@opentelemetry/sdk-trace-node': 1.13.0
   '@opentelemetry/semantic-conventions': 1.13.0
 
+patchedDependencies:
+  flexsearch@0.7.31:
+    hash: uyw6ivpbfx7v2sahyemwiyw3f4
+    path: patches/flexsearch@0.7.31.patch
+
 dependencies:
   '@algolia/autocomplete-core':
     specifier: ^1.10.0
@@ -32,6 +37,9 @@ dependencies:
   '@tailwindcss/typography':
     specifier: ^0.5.9
     version: 0.5.9(tailwindcss@3.3.3)
+  '@types/flexsearch':
+    specifier: ^0.7.3
+    version: 0.7.3
   '@types/node':
     specifier: 20.4.2
     version: 20.4.2
@@ -61,7 +69,7 @@ dependencies:
     version: 13.4.10(eslint@8.45.0)(typescript@5.1.6)
   flexsearch:
     specifier: ^0.7.31
-    version: 0.7.31
+    version: 0.7.31(patch_hash=uyw6ivpbfx7v2sahyemwiyw3f4)
   framer-motion:
     specifier: ^10.15.0
     version: 10.15.0(react-dom@18.2.0)(react@18.2.0)
@@ -1841,6 +1849,10 @@ packages:
     resolution: {integrity: sha512-LG4opVs2ANWZ1TJoKc937iMmNstM/d0ae1vNbnBvBhqCSezgVUOzcLCqbI5elV8Vy6WKwKjaqR+zO9VKirBBCA==}
     dev: false
 
+  /@types/flexsearch@0.7.3:
+    resolution: {integrity: sha512-HXwADeHEP4exXkCIwy2n1+i0f1ilP1ETQOH5KDOugjkTFZPntWo0Gr8stZOaebkxsdx+k0X/K6obU/+it07ocg==}
+    dev: false
+
   /@types/hast@2.3.5:
     resolution: {integrity: sha512-SvQi0L/lNpThgPoleH53cdjB3y9zpLlVjRbqB3rH8hx1jiRSBGAhyjV3H+URFjNVRqt2EdYNrbZE5IsGlNfpRg==}
     dependencies:
@@ -3605,9 +3617,10 @@ packages:
   /flatted@3.2.7:
     resolution: {integrity: sha512-5nqDSxl8nn5BSNxyR3n4I6eDmbolI6WT+QqR547RwxQapgjQBmtktdP+HTBb/a/zLsbzERTONyUB5pefh5TtjQ==}
 
-  /flexsearch@0.7.31:
+  /flexsearch@0.7.31(patch_hash=uyw6ivpbfx7v2sahyemwiyw3f4):
     resolution: {integrity: sha512-XGozTsMPYkm+6b5QL3Z9wQcJjNYxp0CYn3U1gO7dwD6PAqU1SVWZxI9CCg3z+ml3YfqdPnrBehaBrnH2AGKbNA==}
     dev: false
+    patched: true
 
   /for-each@0.3.3:
     resolution: {integrity: sha512-jqYfLp7mo9vIyQf8ykW2v7A+2N4QjeCeI5+Dz9XraiO1ign81wjiH7Fb9vSOWvQfNtmSa4H2RoQTrrXivdUZmw==}
