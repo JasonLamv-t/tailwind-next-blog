@@ -1,0 +1,278 @@
+---
+title: Built-in supported MD/MDX syntax
+date: '2023-02-25'
+tags:
+  [
+    'NextJS',
+    'Tailwindcss',
+    'blog',
+    'framework',
+    'starter',
+    'Tailwind-next-blog',
+  ]
+draft: false
+pinned: true
+summary: Built-in supported MD/MDX syntax of the Tailwind-Next-Blog.
+canonicalUrl: build-in-syntax
+---
+
+### Basic inline syntax
+
+This Blog was based on **Tailwind Next Blog**, a blog template open source project at [Github](https://github.com/jasonlamv-t/tailwind-next-blog). You can use this template via run `npx degit https://github.com/JasonLamv-t/tailwind-next-blog` in a empty directory to initialize for your own blog.
+
+### Header
+
+The above header was `h3`, your can define a header like this: 
+
+```MDX
+# This is H1
+## This is H2
+### This is H3
+#### This is H4
+##### This is H5
+###### This is H6
+```
+
+And the effect like this:
+
+# This is H1
+## This is H2
+### This is H3
+#### This is H4
+##### This is H5
+###### This is H6
+
+<Info>Header 2&3 has auto-gen link, your can hover to check the effect.</Info>
+
+### Footnote
+
+```md
+A Footnote[^1] example.
+
+[^1]: Reference
+```
+
+A Footnote[^1] example.
+
+[^1]: Reference
+
+### Emphasis
+
+```MDX
+_This text will be italic_
+
+**This text will be bold**
+
+_You **can** combine them_ or **combine them _like_ this**
+```
+
+_This text will be italic_
+
+**This text will be bold**
+
+_You **can** combine them_ or **combine them _like_ this**
+
+### Lists
+
+#### Ordered
+
+```md
+1. lv_1 
+2. lv_2
+   1. lv_2_1
+      1. lv_2_1_1
+   2. lv_2_2
+3. lv_3
+```
+
+1. lv_1 
+2. lv_2
+   1. lv_2_1
+      1. lv_2_1_1
+   2. lv_2_2
+3. lv_3
+  
+#### Unordered
+
+```md
+- Item 1
+- Item 2
+  - Item 2_1 in nested
+    - Item 2_1_1 in nested
+  - Item 2_2 in nested
+- Item 3
+```
+
+- Item 1
+- Item 2
+  - Item 2_1 in nested
+    - Item 2_1_1 in nested
+  - Item 2_2 in nested
+- Item 3
+
+#### Tasklist
+
+```md
+- [ ] to do
+- [x] done
+```
+
+- [ ] to do
+- [x] done
+
+### Images
+
+```md
+![logo](/data/images/logo.jpg)
+```
+
+![logo](/data/images/logo.jpg)
+
+### Inline code
+
+```md
+This is a simple `example` of inline code
+```
+
+This is a simple `example` of inline code
+
+### Code block
+
+````
+```
+const hint = 'Basic usage example';
+```
+````
+
+```
+const hint = 'Basic usage example';
+```
+
+#### Syntax highlighting
+
+````
+```ts
+const hint = 'Basic usage example';
+```
+````
+
+```ts
+const hint = 'Basic usage example';
+```
+
+#### With title
+
+````md
+```ts:Title
+const codeType = 'ts';
+const title = 'Code blocks with title';
+```
+````
+
+```ts:Title
+const codeType = 'ts';
+const title = 'Code blocks with title';
+```
+
+#### Show line numbers
+
+````md
+```ts:Show-line-numbers showLineNumbers
+const title = 'Code blocks with title';
+```
+````
+
+```ts:Show-line-numbers showLineNumbers
+const title = 'Code blocks with title';
+```
+
+#### Highlight code
+
+````md
+```ts:Highlight showLineNumbers {2, 4-6}
+const navigation = [
+  ['Blogs', '/blogs'],
+  ['Projects', '/projects'],
+  ['About', '/about'],
+];
+```
+````
+
+```ts:Highlight showLineNumbers {2, 4-6}
+const navigation = [
+  ['Blogs', '/blogs'],
+  ['Projects', '/projects'],
+  ['About', '/about'],
+];
+```
+
+### Math
+
+```md
+Lift($L$) can be determined by Lift Coefficient ($C_L$) like the following
+equation.
+
+$$
+L = \frac{1}{2} \rho v^2 S C_L
+$$
+```
+
+Lift($L$) can be determined by Lift Coefficient ($C_L$) like the following
+equation.
+
+$$
+L = \frac{1}{2} \rho v^2 S C_L
+$$
+
+### Quote
+
+```md
+> quote: note about that...
+```
+
+> quote: note about that...
+
+### Note(additional)
+
+```md
+<Info>This is a Information.</Info>
+
+<Warn>
+  This is a Warning.
+</Warn>
+```
+
+<Info>This is a Information.</Info>
+
+<Warn>
+  This is a Warning.
+</Warn>
+
+### Wide table
+
+```md
+|                              | E1-512M | E1-2048M  | E1-3072M  | C1-2048M  |
+| ---------------------------- | ------- | --------- | --------- | --------- |
+| CPU(only) maximum usage      | 32%/45% | 100%/110% | 200%/202% | 100%/105% |
+| CPU(with RAM) maximum usage  | 32%/45% | 136%/140% | 200%/400% | 80%/300%  |
+| CPU Blowfish(less is better) | 24.643  | 6.055     | 4.016     | 8.323     |
+```
+
+|                              | E1-512M | E1-2048M  | E1-3072M  | C1-2048M  |
+| ---------------------------- | ------- | --------- | --------- | --------- |
+| CPU(only) maximum usage      | 32%/45% | 100%/110% | 200%/202% | 100%/105% |
+| CPU(with RAM) maximum usage  | 32%/45% | 136%/140% | 200%/400% | 80%/300%  |
+| CPU Blowfish(less is better) | 24.643  | 6.055     | 4.016     | 8.323     |
+
+### Strikethrough
+
+Any text with `~~deleted~~` will be ~~delete~~.
+
+### Autolink literals
+
+```md
+www.example.com, https://example.com, contact@example.com, and [example.com](https://example.com).
+```
+
+www.example.com, https://example.com, contact@example.com, and [example.com](https://example.com).
+

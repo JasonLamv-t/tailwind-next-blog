@@ -1,0 +1,63 @@
+---
+title: Git-How to manage your code workflow better
+date: '2022-10-20'
+tags: ['Git', 'GitHub', 'Workflow']
+draft: false
+summary: 在经历过几个项目的协同开发后，我决定写下这篇文章，以记录我对于 Git 的使用方式的一些思考。
+canonicalUrl:
+---
+
+## Git 的基本操作
+
+Git 的基础使用还是相对比较简单的，很多网站都有基本入门教程，这里仅进行简单记录或记录我自己实际用到的一些命令
+
+- init：初始化仓库，用于没有「.git」文件夹的情况，初始化后会在当前目录下生成「.git」文件夹
+- clone：克隆远程仓库。需要注意的是基于 ssh 协议的 link 在后续进行操作时可能会有权限问题，建议使用 https 或者 gh 来进行操作
+- add：将变更保存到暂存区
+- status：查看当前状态
+- commit：将暂存区的变更进行确认提交。「-m」携带行内提交信息；「--amend」覆盖/修改上一次的提交
+- push：将本地分支推送到远程数据库，需要设置上游分支。「-f」强制推送，极度危险的操作
+- pull：拉取远程分支并合并到本地。「-r」进行 「rebase」变基到上游分支
+- fetch：获取远程数据库中本地没有的变动
+- rebase：变基，需要指定目标分支，将当前分支已提交的变更的分出点变更到目标
+- checkout/switch：检出/切换，都可以切换分支或者切到某个提交上，我更喜欢使用 switch。具体的不同后续再写
+- reset：重置，用于撤销/重做某些变更，有不同参数，是一个比较常用且不正确使用具有风险的操作，需要补充详细内容
+- tag：打标签。我自己实际使用比较少，所以基本没有什么了解
+
+## Git 技巧
+
+### Git 命令缩写与别名
+
+如果你用的是「oh-my-zsh」，那么正常情况下应该默认有 「git」插件，如果没有的话就自己装一下 😆。这个插件附带了很多命令以及常用参数的别名，以及一些复杂操作的脚本（比如重命名分支）：[命令列表](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git)。当然还有其他的与 Git 有关的插件，请自行打开 Oh-My-Zsh 的[插件列表](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins)进行查看
+
+### VSCode Git 插件
+
+VSCode 上有很有 Git 的插件，在这里我建议通过这个 [Git & GitHub Extension Pack](https://marketplace.visualstudio.com/items?itemName=vinirossa.vscode-gitandgithub-pack) 安装，它包含了以下插件：
+
+- [GitLens — Git supercharged](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
+- [Git History](https://marketplace.visualstudio.com/items?itemName=donjayamanne.githistory)
+- [Git Graph](https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph)
+- [GitHub Codespaces](https://marketplace.visualstudio.com/items?itemName=github.codespaces)
+- [Git Tags](https://marketplace.visualstudio.com/items?itemName=howardzuo.vscode-git-tags)
+- [GitHub Pull Requests and Issues](https://marketplace.visualstudio.com/items?itemName=github.vscode-pull-request-github)
+- [Open in GitHub, Bitbucket, Gitlab, VisualStudio.com !](https://marketplace.visualstudio.com/items?itemName=ziyasal.vscode-open-in-github)
+- [Remote Repositories](https://marketplace.visualstudio.com/items?itemName=github.remotehub)
+
+## Git Flow/工作流
+
+对于代码，我们通常是以工程/项目作为单位进行组织，对于 Git 来说，则是仓库/Repo。对于个人开发者，尤其是刚刚入门或者刚使用 Git 的人来说，协作需求不多，更多的是个人的代码历史和版本的管理控制，在这个阶段，我们经常只在一个分支，通常是 master/main 上进行开发。笔者也是从这个阶段过来的，这样开发当然并没有非常大的问题，但是一旦项目进入到需要协同的阶段，亦或者在 CI/CD 上有新的要求，可能需要对整个 Git 工作流和仓库进行重新组织和管理。网上也有不同的流程规范，一旦你尝试用合理规范去约束个人行为以便代码管理更加高效，你就会爱上这种感觉。经过我个人的实践，我得出了一套既适用于个人也适用于小团队的工作流程。
+
+根据业务和开发流程以及代码健壮性，有以下几种分支：
+
+- master/main：健壮的主分支。应该确保主分支都是可以基本运行且没有重大 Bug（即通过自测/测试）的，而且原则上不允许任何人直接对主分支进行直接修改，只能通过 PR/MR（Pull Request/Merge Request）来进行更新
+- [pre-]release/test/...：流程分支。根据具体的业务流程要求，需要切出不同的流程分支，用来进行发布前的测试，功能集成和预发布等
+- develop：开发分支。开发分支可以以不同含义进行组织管理，譬如开发者、特性/功能、紧急修复等，对应的前缀应该是 username、feature/function、hotfix，具体根据情况灵活变动
+
+以上三种分支的健壮性通常来说是依次递减的，而且流程分支和开发分支可以以不同含义存在多个，以下流程为例子：
+
+![image-20221028155259255](https://image-lake.oss-cn-hangzhou.aliyuncs.com/image-20221028155259255.png)
+
+参考文献：
+
+- [Git - Documentation (git-scm.com)](https://git-scm.com/doc)
+- [Pro Git 中文版（第二版）](https://www.progit.cn/)

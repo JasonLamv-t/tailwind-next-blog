@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Tailwind Next Blog
 
-## Getting Started
+Refactoring for v3, please check [master](https://github.com/JasonLamv-t/tailwind-next-blog/tree/master) branch for v1.
 
-First, run the development server:
+[![Repo stars](https://img.shields.io/github/stars/jasonlamv-t/tailwind-next-blog?style=social)](https://GitHub.com/jasonlamv-t/tailwind-next-blog/stargazers/) ![Commit activity](https://img.shields.io/github/commit-activity/m/jasonlamv-t/tailwind-next-blog?logo=github&style=social) ![Last commit](https://img.shields.io/github/last-commit/jasonlamv-t/tailwind-next-blog?logo=github&style=social)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+This is a personal blog project template modeled after [Tailwind-Nextjs-Starter-Blog](https://github.com/timlrx/tailwind-nextjs-starter-blog) based on [NextJS](https://nextjs.org/) and [TailwindCSS](https://tailwindcss.com), which can be used out of the box and has a high degree of custom freedom. You can check my blog for v1: [Brachistochrone](https://jasonlam.cc)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+If you have any questions in use, please ask the issue, and I will reply and deal with it as soon as possible.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Features / Roadmap
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+![NextJS version](https://img.shields.io/badge/NextJS-13-yellow) ![TailwindCSS version](https://img.shields.io/badge/TailwindCSS-3-blue) ![TypeScript](https://img.shields.io/badge/TypeScript-blue) ![pnpm](https://img.shields.io/badge/pnpm-red)
 
-## Learn More
+- Out of box
 
-To learn more about Next.js, take a look at the following resources:
+  - [x] All your need to set only the `data` directory
+  - [x] Mobile-friendly view
+  - [x] Light and dark theme
+  - [x] Support for nested routing of blog posts
+  - [x] Pinned Article
+  - [x] Additional build-in markdown syntax support via mdx, can also customize
+  - [x] Preconfigured security headers, which is SEO friendly
+  - [ ] Support RSS and Sitemap
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Markdown
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+  - [x] GFM support
+  - [x] Math display supported via [KaTeX](https://katex.org/) & [remark-math](https://github.com/remarkjs/remark-math)
+  - [x] Syntax & line highlighting in VSCode style, and display line numbers in code blocks via [rehype-prism-plus](https://github.com/timlrx/rehype-prism-plus)
 
-## Deploy on Vercel
+- Advanced development
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+  - [x] MDX support via [contentlayer](https://www.contentlayer.dev/) and [mdx-bundler](https://github.com/kentcdodds/mdx-bundler)
+  - [ ] Support search everything in the blog via [Algolia](https://algolia.com/).[Docsearch](https://docsearch.algolia.com/)
+  - [ ] Support full-text search locally via @TBD
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- TODO
+
+  - [x] Configurate all in one
+  - [ ] Pagination for the list page and the post page
+  - [ ] Chinese documentation
+  - [ ] Demo via GitHub and Vercel
+  - [ ] Infinity scrolling of the homepage
+
+- Need Fix
+
+  - [ ] The resouces url error under the data directory caused by the base path configuration
+  - [ ] Refacotor the header component to replace deprecated API
+
+## Get Started
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/JasonLamv-t/tailwind-next-blog)

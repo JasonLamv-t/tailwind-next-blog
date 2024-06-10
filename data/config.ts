@@ -1,0 +1,99 @@
+import { Author } from 'next/dist/lib/metadata/types/metadata-types';
+import { OpenGraph } from 'next/dist/lib/metadata/types/opengraph-types';
+import { Twitter } from 'next/dist/lib/metadata/types/twitter-types';
+import SocialMedia from '../types/SocialMedia';
+
+interface Config {
+  siteMeta: {
+    title: string;
+    description: string;
+    authors?: Author[];
+    keywords?: string[] | string;
+    locale: string;
+    language: string;
+    theme: 'system' | 'light' | 'dark';
+    url: string;
+    logo: string;
+    banner: string;
+    siteRepo?: string;
+    openGraph?: OpenGraph; // TODO: add example setting
+    x?: Twitter; // TODO: add example setting
+  };
+  navigation: [title: string, path: string][];
+  feature?: {
+    showCodeLineNumbers?: boolean;
+    // TODO: To be implemented for local
+    search?: 'algolia'; // | 'local'
+  };
+  footer?: {
+    beian?: string;
+    socialLinks?: [SocialMedia: SocialMedia, value: string][];
+  };
+  // For env verify
+  env: {
+    algolia: {
+      app_id: string | undefined;
+      api_key: string | undefined;
+      index_name: string | undefined;
+    };
+    isAlgoliaAvailable: boolean;
+  };
+}
+
+const checkConfigAndEnvironments = (config: Omit<Config, 'env'>): Config => {
+  const algolia = {
+    app_id: process.env.NEXT_PUBLIC_DOCSEARCH_APP_ID,
+    api_key: process.env.NEXT_PUBLIC_DOCSEARCH_API_KEY,
+    index_name: process.env.NEXT_PUBLIC_DOCSEARCH_INDEX_NAME,
+  };
+  const env = {
+    algolia,
+    isAlgoliaAvailable: Object.values(algolia).every((v) => !!v),
+  };
+  return { ...config, env };
+};
+
+const config: Config = checkConfigAndEnvironments({
+  siteMeta: {
+    title: 'Tailwind-next-blog',
+    authors: [{ name: 'Jason Lam', url: '/about/JasonLamv-t' }],
+    description: 'Demo of Tailwind-next-blog',
+    locale: 'zh-CN',
+    language: 'zh-cn, en-us',
+    theme: 'system',
+    url: 'https://tailwind-next-blog.jasonlam.cc',
+    logo: '/data/images/logo.jpg',
+    banner:
+      'a personal blog project template based on NextJS and TailwindCSS, which can be used out of the box and has a high degree of custom freedom.',
+    siteRepo: 'https://github.com/JasonLamv-t/tailwind-next-blog',
+  },
+  navigation: [
+    ['Blogs', '/posts'],
+    ['Projects', '/projects'],
+    ['Resources', '/resources'],
+    ['About', '/about'],
+  ],
+  feature: {
+    search: 'algolia',
+  },
+  footer: {
+    // beian: '你的备案号',
+    socialLinks: [
+      [SocialMedia.email, 'jasonlamv-t@hotmail.com'],
+      [SocialMedia.github, 'JasonLamv-t'],
+      [SocialMedia.linkedin, 'https://www.linkedin.com/in/jason-lam-0827181b0'],
+      [SocialMedia.bilibili, '10905363'],
+      [SocialMedia.instagram, 'jasonlamvt'],
+      [SocialMedia.weibo, 'https://weibo.com/u/5609011652'],
+    ],
+  },
+});
+
+// const { siteMeta, navigation, feature, footer, env } = config;
+// export { siteMeta, navigation, feature, footer, env };
+export { config, config as default };
+export const siteMeta = config.siteMeta;
+export const navigation = config.navigation;
+export const feature = config.feature;
+export const footer = config.footer;
+export const env = config.env;
