@@ -8,6 +8,7 @@ import {
   IconBriefcase,
   IconBuildingCommunity,
   IconBuildingSkyscraper,
+  IconFileCv,
   IconFileText,
   IconMapPin,
   IconMinusVertical,
@@ -111,8 +112,8 @@ const AuthorPage = ({ params: { slug } }: { params: { slug: string; }; }) => {
             {resumePath && (
               <>
                 <IconMinusVertical />
-                <Link href={resumePath} title="resume">
-                  <IconFileText className="text-zinc-500 transition hover:text-teal-500 dark:text-zinc-200 dark:hover:text-teal-500" />
+                <Link href={resumePath} title="CV">
+                  <IconFileCv className="text-zinc-500 transition hover:text-teal-500 dark:text-zinc-200 dark:hover:text-teal-500" />
                 </Link>
               </>
             )}
