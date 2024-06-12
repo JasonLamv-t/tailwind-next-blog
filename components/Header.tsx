@@ -1,7 +1,7 @@
 'use client';
 
-import { env, feature, navigation, siteMeta } from '#/config';
-import logo from '@/assets/logo.jpg';
+import { navigations, siteMeta } from '#/config';
+import logo from '#/public/images/logo.jpg';
 import Button from '@/components/Button';
 import ThemeSwitcher from '@/components/ThemeSwitcher';
 import { Popover, Transition } from '@headlessui/react';
@@ -53,7 +53,7 @@ function DesktopNavigation({ className }: { className?: string; }) {
   return (
     <nav className={clsx(className)}>
       <ul className="flex text-sm font-medium text-zinc-800 backdrop-blur dark:text-zinc-200">
-        {navigation.map(([name, href]) => (
+        {navigations.map(([name, href]) => (
           <NavItem href={href} key={name}>
             {name}
           </NavItem>
@@ -109,7 +109,7 @@ function MobileNavigation({ className }: { className?: string; }) {
 
             <nav className="">
               <ul className="text-base text-zinc-800  dark:text-zinc-300">
-                {navigation.map(([name, href]) => (
+                {navigations.map(([name, href]) => (
                   <MobileNavItem href={href} key={name}>
                     {name}
                   </MobileNavItem>
@@ -125,8 +125,8 @@ function MobileNavigation({ className }: { className?: string; }) {
 }
 
 const Header = () => {
-  const isAlgoliaEnabled = feature?.search === 'algolia';
-  const { isAlgoliaAvailable } = env;
+  // const isAlgoliaEnabled = feature?.search === 'algolia';
+  // const { isAlgoliaAvailable } = env;
 
   return (
     <header className="flex items-center justify-between py-6 sm:py-10">

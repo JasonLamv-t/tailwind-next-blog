@@ -1,16 +1,16 @@
 # Tailwind Next Blog
 
-Refactoring for v3, please check [master](https://github.com/JasonLamv-t/tailwind-next-blog/tree/master) branch for v1.
-
 [![Repo stars](https://img.shields.io/github/stars/jasonlamv-t/tailwind-next-blog?style=social)](https://GitHub.com/jasonlamv-t/tailwind-next-blog/stargazers/) ![Commit activity](https://img.shields.io/github/commit-activity/m/jasonlamv-t/tailwind-next-blog?logo=github&style=social) ![Last commit](https://img.shields.io/github/last-commit/jasonlamv-t/tailwind-next-blog?logo=github&style=social)
 
-This is a personal blog project template modeled after [Tailwind-Nextjs-Starter-Blog](https://github.com/timlrx/tailwind-nextjs-starter-blog) based on [NextJS](https://nextjs.org/) and [TailwindCSS](https://tailwindcss.com), which can be used out of the box and has a high degree of custom freedom. You can check my blog for v1: [Brachistochrone](https://jasonlam.cc)
+> Refactoring for v3, please check [master](https://github.com/JasonLamv-t/tailwind-next-blog/tree/master) branch for v1.
+
+This is a personal blog project template modeled after [Tailwind-Nextjs-Starter-Blog](https://github.com/timlrx/tailwind-nextjs-starter-blog) based on [NextJS](https://nextjs.org/) and [TailwindCSS](https://tailwindcss.com), which can be used out of the box and has a high degree of custom freedom. Here is the [DEMO](https://tailwind-next-blog.vercel.app)
 
 If you have any questions in use, please ask the issue, and I will reply and deal with it as soon as possible.
 
 ## Features / Roadmap
 
-![NextJS version](https://img.shields.io/badge/NextJS-13-yellow) ![TailwindCSS version](https://img.shields.io/badge/TailwindCSS-3-blue) ![TypeScript](https://img.shields.io/badge/TypeScript-blue) ![pnpm](https://img.shields.io/badge/pnpm-red)
+![NextJS version](https://img.shields.io/badge/NextJS-14-yellow) ![TailwindCSS version](https://img.shields.io/badge/TailwindCSS-3-blue) ![TypeScript](https://img.shields.io/badge/TypeScript-blue) ![pnpm](https://img.shields.io/badge/pnpm-red)
 
 - Out of box
 
@@ -40,7 +40,7 @@ If you have any questions in use, please ask the issue, and I will reply and dea
   - [x] Configurate all in one
   - [ ] Pagination for the list page and the post page
   - [ ] Chinese documentation
-  - [ ] Demo via GitHub and Vercel
+  - [x] Demo via GitHub and Vercel
   - [ ] Infinity scrolling of the homepage
 
 - Need Fix
