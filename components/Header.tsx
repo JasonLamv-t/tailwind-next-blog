@@ -4,7 +4,8 @@ import { navigations, siteMeta } from '#/config';
 import logo from '#/public/images/logo.jpg';
 import Button from '@/components/Button';
 import ThemeSwitcher from '@/components/ThemeSwitcher';
-import { Popover, Transition } from '@headlessui/react';
+// import { Popover, Transition } from '@headlessui/react';
+import { Popover, PopoverContent, PopoverTrigger } from '@nextui-org/react';
 import { IconMenu2, IconX } from '@tabler/icons-react';
 import clsx from 'clsx';
 import Image from 'next/image';
@@ -63,65 +64,79 @@ function DesktopNavigation({ className }: { className?: string; }) {
   );
 }
 
-function MobileNavigation({ className }: { className?: string; }) {
-  return (
-    <Popover className={clsx(className)}>
-      <Popover.Button
-        className="flex items-center p-1 rounded-md text-zinc-500 hover:bg-zinc-100 dark:hover:bg-zinc-800/90 focus:[&:not(:focus-visible)]:outline-none"
-        type="button"
-        aria-label="Open navigation menu"
-      >
-        <IconMenu2 className="h-auto w-6 " />
-      </Popover.Button>
-      <Transition.Root>
-        <Transition.Child
-          as={Fragment}
-          enter="duration-150 ease-out"
-          enterFrom="opacity-0"
-          enterTo="opacity-100"
-          leave="duration-150 ease-in"
-          leaveFrom="opacity-100"
-          leaveTo="opacity-0"
-        >
-          <Popover.Overlay className="fixed inset-0 z-50 bg-zinc-800/40 backdrop-blur-sm dark:bg-black/80" />
-        </Transition.Child>
-        <Transition.Child
-          as={Fragment}
-          enter="duration-150 ease-out"
-          enterFrom="opacity-0 scale-95"
-          enterTo="opacity-100 scale-100"
-          leave="duration-150 ease-in"
-          leaveFrom="opacity-100 scale-100"
-          leaveTo="opacity-0 scale-95"
-        >
-          <Popover.Panel
-            focus
-            className="w-1/2 inset-x-4 fixed left-auto top-6 right-6 z-50 rounded-2xl bg-white p-6 py-4 ring-1 ring-zinc-900/5 dark:bg-zinc-900 dark:ring-zinc-800"
-          >
-            <Popover.Button
-              aria-label="Close menu"
-              className="fixed top-3 right-3 h-6 w-6 inline-flex focus:[&:not(:focus-visible)]:outline-none"
-            >
-              <Button className="w-8 h-8 text-zinc-500 ">
-                <IconX className="text-zinc-500 dark:text-zinc-400" />
-              </Button>
-            </Popover.Button>
+// function MobileNavigation({ className }: { className?: string; }) {
+//   return (
+//     <Popover className={clsx(className)}>
+//       <Popover.Button
+//         className="flex items-center p-1 rounded-md text-zinc-500 hover:bg-zinc-100 dark:hover:bg-zinc-800/90 focus:[&:not(:focus-visible)]:outline-none"
+//         type="button"
+//         aria-label="Open navigation menu"
+//       >
+//         <IconMenu2 className="h-auto w-6 " />
+//       </Popover.Button>
+//       <Transition.Root>
+//         <Transition.Child
+//           as={Fragment}
+//           enter="duration-150 ease-out"
+//           enterFrom="opacity-0"
+//           enterTo="opacity-100"
+//           leave="duration-150 ease-in"
+//           leaveFrom="opacity-100"
+//           leaveTo="opacity-0"
+//         >
+//           <Popover.Overlay className="fixed inset-0 z-50 bg-zinc-800/40 backdrop-blur-sm dark:bg-black/80" />
+//         </Transition.Child>
+//         <Transition.Child
+//           as={Fragment}
+//           enter="duration-150 ease-out"
+//           enterFrom="opacity-0 scale-95"
+//           enterTo="opacity-100 scale-100"
+//           leave="duration-150 ease-in"
+//           leaveFrom="opacity-100 scale-100"
+//           leaveTo="opacity-0 scale-95"
+//         >
+//           <Popover.Panel
+//             focus
+//             className="w-1/2 inset-x-4 fixed left-auto top-6 right-6 z-50 rounded-2xl bg-white p-6 py-4 ring-1 ring-zinc-900/5 dark:bg-zinc-900 dark:ring-zinc-800"
+//           >
+//             <Popover.Button
+//               aria-label="Close menu"
+//               className="fixed top-3 right-3 h-6 w-6 inline-flex focus:[&:not(:focus-visible)]:outline-none"
+//             >
+//               <Button className="w-8 h-8 text-zinc-500 ">
+//                 <IconX className="text-zinc-500 dark:text-zinc-400" />
+//               </Button>
+//             </Popover.Button>
 
-            <nav className="">
-              <ul className="text-base text-zinc-800  dark:text-zinc-300">
-                {navigations.map(([name, href]) => (
-                  <MobileNavItem href={href} key={name}>
-                    {name}
-                  </MobileNavItem>
-                ))}
-              </ul>
-            </nav>
-            <div></div>
-          </Popover.Panel>
-        </Transition.Child>
-      </Transition.Root>
-    </Popover>
-  );
+//             <nav className="">
+//               <ul className="text-base text-zinc-800  dark:text-zinc-300">
+//                 {navigations.map(([name, href]) => (
+//                   <MobileNavItem href={href} key={name}>
+//                     {name}
+//                   </MobileNavItem>
+//                 ))}
+//               </ul>
+//             </nav>
+//             <div></div>
+//           </Popover.Panel>
+//         </Transition.Child>
+//       </Transition.Root>
+//     </Popover>
+//   );
+// }
+
+function MobileNavigation({ className }: { className?: string; }) {
+  return <Popover className={clsx(className)}>
+    <PopoverTrigger>
+      <IconMenu2 className="h-auto w-6 " />
+    </PopoverTrigger>
+    <PopoverContent>
+      <div className="px-1 py-2">
+        <div className="text-small font-bold">Popover Content</div>
+        <div className="text-tiny">This is the popover content</div>
+      </div>
+    </PopoverContent>
+  </Popover>;
 }
 
 const Header = () => {

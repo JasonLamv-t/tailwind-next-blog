@@ -9,7 +9,6 @@ import {
   IconBuildingCommunity,
   IconBuildingSkyscraper,
   IconFileCv,
-  IconFileText,
   IconMapPin,
   IconMinusVertical,
 } from '@tabler/icons-react';
